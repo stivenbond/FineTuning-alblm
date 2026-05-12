@@ -1,0 +1,27 @@
+# TODO AFTER SUBMISSION Data — never commit raw articles or model weights to git
+# Model artifacts
+training/checkpoints/
+training/final/
+*.gguf
+*.bin
+*.safetensors
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+
+# Secrets
+.env
+*.key
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+evals/results/
+
+# Keep schema, prompts, specs, configs in git — these define the project

@@ -1,0 +1,162 @@
+Të është dhënë një artikull cilësor në gjuhën shqipe që respekton *Drejtshkrimin e Gjuhës Shqipe* dhe pasqyron një zë të qëndrueshëm të markës, të përcaktuar në JSON-in e udhëzimeve të markës; detyra jote është që fillimisht ta transformosh në mënyrë të brendshme këtë “artikull të artë” në një version të degraduar në mënyrë delikate duke futur gabime të kontrolluara dhe realiste në disa dimensione, dhe më pas të gjenerosh një JSON të strukturuar vlerësimi që pasqyron këto degradime sipas skemës së ofruar AlbanianEditorTrainingExample. Degradimi duhet të jetë natyral dhe i larmishëm, duke përfshirë, por pa u kufizuar në, gabime drejtshkrimore, mospërputhje gramatikore, keqpërdorim të standardeve leksikore të shqipes si përdorimi i panevojshëm i huazimeve (p.sh., përdorimi i “aktivitet” në vend të “veprimtari”), dobësi strukturore (p.sh., rrjedhë logjike e ndërprerë, kalime të dobëta ose progresion i paqartë), shtjellim të pabarabartë ose të pamjaftueshëm të pikave kryesore, si dhe probleme stili në të shkruar si përdorimi i tepërt i formës pësore, mospërputhje toni ose prania e sarkazmës apo ironisë delikate që bie ndesh me përshkruesit e synuar të tonit në udhëzimet e markës; gjithashtu, fut devijime të rastësishme nga kufizimet e markës si niveli i formalitetit, formulimet e preferuara, pritshmëritë për gjatësinë e fjalive ose zëri narrativ (p.sh., përdorim i paqëllimshëm i vetës së parë nëse nuk lejohet). Artikulli i modifikuar duhet të mbetet koherent dhe i besueshëm, jo i korruptuar artificialisht. Nuk duhet të shfaqësh artikullin e korrigjuar apo origjinal — përfshi vetëm versionin e degraduar brenda fushës `input.teksti_i_artikullit`. Më pas prodho JSON-in përfundimtar duke ndjekur rreptësisht këtë skemë:
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ShembullTrajnimiRedaktuesShqip",
+  "version": "2.0.0",
+  "description": "Skemë kanonike për të gjithë shembujt e trajnimit. Mos modifikoni pa rritur versionin.",
+  "type": "object",
+  "required": ["id", "metadata", "input", "output"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^alb-[a-z]+-[0-9]{4}$",
+      "description": "Identifikues unik për shembullin e trajnimit."
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["regjistri", "shënuesi", "i_pranueshëm_për_rlhf", "version"],
+      "properties": {
+        "regjistri": {
+          "type": "string",
+          "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier"],
+          "description": "Regjistri gjuhësor i artikullit burimor."
+        },
+        "shënuesi": {
+          "type": "string",
+          "enum": ["njeri", "sintetik", "njeri_korrigjoi_sintetik"],
+          "description": "Burimi i shënimeve të trajnimit."
+        },
+        "i_pranueshëm_për_rlhf": {
+          "type": "boolean",
+          "description": "Nëse shembulli plotëson standardet e cilësisë për trajnimin RLHF."
+        },
+        "version": {
+          "type": "string",
+          "description": "Versioni i skemës së përdorur për këtë shembull."
+        },
+        "recensuesi": {
+          "type": "string",
+          "description": "Identifikuesi i personit që rishikoi shembullin."
+        },
+        "rishikuar_më": {
+          "type": "string",
+          "format": "date",
+          "description": "Data kur u rishikua shembulli."
+        }
+      }
+    },
+    "input": {
+      "type": "object",
+      "required": ["teksti_i_artikullit"],
+      "properties": {
+        "udhëzimet_e_markës": {
+          "type": "object",
+          "description": "Dokumenti i zërit të markës së klientit, i injektuar në kohën e konkluzionit. Objekt bosh nëse nuk ka.",
+          "required": ["id_klienti", "emri_i_klientit", "niveli_i_formalitetit"],
+          "properties": {
+            "id_klienti": { "type": "string" },
+            "emri_i_klientit": { "type": "string" },
+            "përshkruesit_e_tonit": { "type": "array", "items": { "type": "string" } },
+            "fraza_të_ndaluara": { "type": "array", "items": { "type": "string" } },
+            "fraza_të_preferuara": { "type": "array", "items": { "type": "string" } },
+            "niveli_i_formalitetit": { "type": "string", "enum": ["formal", "gjysmë-formal", "informal"] },
+            "audienca_e_synuar": { "type": "string" },
+            "preferenca_e_gjatësisë_së_fjalisë": { "type": "string", "enum": ["e_shkurtër", "e_mesme", "e_gjatë", "e_shumëllojshme"] },
+            "kërkohet_veprorja": { "type": "boolean" },
+            "lejohet_veta_e_parë": { "type": "boolean" },
+            "lejohen_pasthirrmat": { "type": "boolean" },
+            "shënime": { "type": "string" }
+          }
+        },
+        "pikat_kryesore": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Pikat kryesore të përmbledhjes origjinale që i janë dhënë shkrimtarit. Varg bosh nëse nuk është dhënë përmbledhje."
+        },
+        "teksti_i_artikullit": {
+          "type": "string",
+          "minLength": 100,
+          "description": "Teksti i plotë i artikullit që do të redaktohet."
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["gramatika", "stili_i_të_shkruarit", "formatimi", "përputhshmëria_e_markës", "përputhshmëria_e_marketingut", "struktura"],
+      "properties": {
+        "gramatika": { "$ref": "#/definitions/detyrëUdhëzuese" },
+        "stili_i_të_shkruarit": { "$ref": "#/definitions/detyrëStili" },
+        "formatimi": { "$ref": "#/definitions/detyrëUdhëzuese" },
+        "përputhshmëria_e_markës": { "$ref": "#/definitions/detyrëMePikë" },
+        "përputhshmëria_e_marketingut": { "$ref": "#/definitions/detyrëMePikë" },
+        "struktura": { "$ref": "#/definitions/detyrëStrukture" }
+      }
+    }
+  },
+  "definitions": {
+    "problem": {
+      "type": "object",
+      "required": ["vendndodhja", "lloji_i_problemit", "udhëzim", "ashpërsia"],
+      "properties": {
+        "vendndodhja": { "type": "string" },
+        "lloji_i_problemit": { "type": "string" },
+        "udhëzim": { "type": "string" },
+        "ashpërsia": { "type": "string", "enum": ["kritike", "madhore", "e_vogël"] }
+      }
+    },
+    "detyrëUdhëzuese": {
+      "type": "object",
+      "required": ["vendimi", "problemet"],
+      "properties": {
+        "vendimi": { "type": "string", "enum": ["kalon", "nuk_kalon", "i_pjesshëm"] },
+        "problemet": { "type": "array", "items": { "$ref": "#/definitions/problem" } }
+      }
+    },
+    "detyrëStili": {
+      "allOf": [
+        { "$ref": "#/definitions/detyrëUdhëzuese" },
+        {
+          "properties": {
+            "regjistri_i_zbuluar": { "type": "string", "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier"] },
+            "regjistri_i_pritshëm": { "type": "string", "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier", "i_paspecifikuar"] }
+          }
+        }
+      ]
+    },
+    "detyrëMePikë": {
+      "type": "object",
+      "required": ["pikët", "vendimi", "problemet"],
+      "properties": {
+        "pikët": { "type": "number", "minimum": 0, "maximum": 100 },
+        "vendimi": { "type": "string", "enum": ["kalon", "nuk_kalon", "i_pjesshëm"] },
+        "problemet": { "type": "array", "items": { "$ref": "#/definitions/problem" } }
+      }
+    },
+    "mbulimiIPikaveKryesore": {
+      "type": "object",
+      "required": ["pika_kryesore", "e_mbuluar", "cilësia_e_përpunimit"],
+      "properties": {
+        "pika_kryesore": { "type": "string" },
+        "e_mbuluar": { "type": "boolean" },
+        "cilësia_e_përpunimit": { "type": "string", "enum": ["e_thelluar", "adekuate", "sipërfaqësore", "mungon"] }
+      }
+    },
+    "detyrëStrukture": {
+      "type": "object",
+      "required": ["vendimi", "mbulimi_i_pikave_kryesore", "lloji_i_strukturës_së_zbuluar", "udhëzim"],
+      "properties": {
+        "vendimi": { "type": "string", "enum": ["kalon", "nuk_kalon", "i_pjesshëm", "nuk_u_dha_përmbledhje"] },
+        "mbulimi_i_pikave_kryesore": { "type": "array", "items": { "$ref": "#/definitions/mbulimiIPikaveKryesore" } },
+        "lloji_i_strukturës_së_zbuluar": { "type": "string", "enum": ["lineare", "eksponenciale", "jo-lineare", "e_paqartë"] },
+        "udhëzim": { "type": "string" }
+      }
+    }
+  }
+}
+```
+
+Sigurohu që të gjitha shënimet e problemeve të jenë specifike, të lokalizuara dhe diagnostikisht të dobishme, që nivelet e ashpërsisë të ndryshojnë në mënyrë realiste, që udhëzimet të mos e rishkruajnë kurrë tekstin por vetëm të drejtojnë vëmendjen te lloji dhe vendndodhja e problemit, dhe që vlerësimi të pasqyrojë artikullin e degraduar dhe jo versionin origjinal cilësor, duke mbetur njëkohësisht në përputhje me udhëzimet e ofruara të markës. Më poshtë gjendet artikulli i artë.
+
+Arti dhe Piktura në "Fultz" Nxënësit nga klubi i pikturës sollën edhe njëherë mes nesh artin tradicional shqiptar, duke dëshmuar se kultura dhe identiteti ynë vazhdojnë të jetojnë përmes brezit të ri. Përmes punimeve të realizuara kryesisht me akrilik, por dhe me vizatim me laps, ata sollën motive dhe figura që pasqyrojnë historinë dhe traditën tonë kombëtare. Në këtë paraqitje artistike spikatën këta tre nxënës: Dea K., Mila P. dhe Erion B., të cilët me talentin dhe përkushtimin e tyre arritën të sjellin punime mbresëlënëse. Klubi i pikturës nuk është vetëm një hapësirë ku krijohet art, por edhe një vend ku nxënësit mblidhen, punojnë së bashku, shkëmbejnë ide dhe frymëzojnë njëri-tjetrin. Shpesh puna vazhdon edhe nga shtëpia, duke treguar pasionin dhe seriozitetin që secili nxënës ka ndaj artit. Një nga punimet ishte portreti i Ismail Qemalit, i njohur si kryeministri i parë i Shqipërisë dhe figura që shpalli Pavarësinë më 28 Nëntor 1912. Ai mbetet një nga figurat më të rëndësishme të historisë sonë kombëtare, simbol i lirisë dhe shtetformimit shqiptar. Përmes këtij portreti u soll në vëmendje jo vetëm figura historike, por edhe rëndësia e ruajtjes së kujtesës kombëtare. Ndërkohë, një punim tjetër ishte ai i një çifti shqiptar të veshur me rroba tradicionale, duke kërcyer valle popullore. Ky punim theksonte harmoninë dhe bukurinë e elementeve tradicionale, duke sjellë emocionin shqiptar në tablo. Punimi i tretë paraqiti një vajzë të veshur me kostum popullor, e frymëzuar po ashtu nga kultura shqiptare dhe veshjet karakteristike që përfaqësojnë krahinat tona. Përmes këtyre punimeve, Klubi i Pikturës tregoi se arti është kthyer tashmë në një mënyrë për të ruajtur traditën, për të shprehur identitetin dhe për të vazhduar një trashëgimi që ka vlerë të madhe për kombin tonë. ... Në kuadër të përkujtimit të 100-vjetorit të Institutit "Harry Fultz" (2022), nxënësit e degës së automekanikës realizuan një punim artistik të veçantë, që tregon se arti dhe teknika mund të ndërthuren në mënyrë të jashtëzakonshme dhe mbresëlënëse. I ndërtuar me mijëra kokrra kafeje, ky mozaik është një vepër e simbol i kreativitetit, durimit dhe përkushtimit të nxënësve. Çdo kokërr, e vendosur me kujdes të jashtëzakonshëm, kontribuon në një tablo më të madhe, që pasqyron bashkëpunimin, harmoninë dhe frymën e fortë të punës në grup, cilësi që karakterizojnë këtë institucion që prej një shekulli. Përmes këtij punimi, nxënësit demonstrojnë talentin dhe pasionin e tyre, duke mbajtur gjallë një traditë 100-vjeçare ku arti, përkushtimi dhe profesionalizmi ecin krah për krah. Vepra nuk është vetëm një testament i aftësive artistike, por edhe një reflektim i angazhimit të vazhdueshëm të komunitetit të shkollës për të frymëzuar gjeneratat e reja të profesionistëve të ardhshëm.

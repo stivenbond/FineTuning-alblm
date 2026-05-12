@@ -1,0 +1,162 @@
+Të është dhënë një artikull cilësor në gjuhën shqipe që respekton *Drejtshkrimin e Gjuhës Shqipe* dhe pasqyron një zë të qëndrueshëm të markës, të përcaktuar në JSON-in e udhëzimeve të markës; detyra jote është që fillimisht ta transformosh në mënyrë të brendshme këtë “artikull të artë” në një version të degraduar në mënyrë delikate duke futur gabime të kontrolluara dhe realiste në disa dimensione, dhe më pas të gjenerosh një JSON të strukturuar vlerësimi që pasqyron këto degradime sipas skemës së ofruar AlbanianEditorTrainingExample. Degradimi duhet të jetë natyral dhe i larmishëm, duke përfshirë, por pa u kufizuar në, gabime drejtshkrimore, mospërputhje gramatikore, keqpërdorim të standardeve leksikore të shqipes si përdorimi i panevojshëm i huazimeve (p.sh., përdorimi i “aktivitet” në vend të “veprimtari”), dobësi strukturore (p.sh., rrjedhë logjike e ndërprerë, kalime të dobëta ose progresion i paqartë), shtjellim të pabarabartë ose të pamjaftueshëm të pikave kryesore, si dhe probleme stili në të shkruar si përdorimi i tepërt i formës pësore, mospërputhje toni ose prania e sarkazmës apo ironisë delikate që bie ndesh me përshkruesit e synuar të tonit në udhëzimet e markës; gjithashtu, fut devijime të rastësishme nga kufizimet e markës si niveli i formalitetit, formulimet e preferuara, pritshmëritë për gjatësinë e fjalive ose zëri narrativ (p.sh., përdorim i paqëllimshëm i vetës së parë nëse nuk lejohet). Artikulli i modifikuar duhet të mbetet koherent dhe i besueshëm, jo i korruptuar artificialisht. Nuk duhet të shfaqësh artikullin e korrigjuar apo origjinal — përfshi vetëm versionin e degraduar brenda fushës `input.teksti_i_artikullit`. Më pas prodho JSON-in përfundimtar duke ndjekur rreptësisht këtë skemë:
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ShembullTrajnimiRedaktuesShqip",
+  "version": "2.0.0",
+  "description": "Skemë kanonike për të gjithë shembujt e trajnimit. Mos modifikoni pa rritur versionin.",
+  "type": "object",
+  "required": ["id", "metadata", "input", "output"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^alb-[a-z]+-[0-9]{4}$",
+      "description": "Identifikues unik për shembullin e trajnimit."
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["regjistri", "shënuesi", "i_pranueshëm_për_rlhf", "version"],
+      "properties": {
+        "regjistri": {
+          "type": "string",
+          "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier"],
+          "description": "Regjistri gjuhësor i artikullit burimor."
+        },
+        "shënuesi": {
+          "type": "string",
+          "enum": ["njeri", "sintetik", "njeri_korrigjoi_sintetik"],
+          "description": "Burimi i shënimeve të trajnimit."
+        },
+        "i_pranueshëm_për_rlhf": {
+          "type": "boolean",
+          "description": "Nëse shembulli plotëson standardet e cilësisë për trajnimin RLHF."
+        },
+        "version": {
+          "type": "string",
+          "description": "Versioni i skemës së përdorur për këtë shembull."
+        },
+        "recensuesi": {
+          "type": "string",
+          "description": "Identifikuesi i personit që rishikoi shembullin."
+        },
+        "rishikuar_më": {
+          "type": "string",
+          "format": "date",
+          "description": "Data kur u rishikua shembulli."
+        }
+      }
+    },
+    "input": {
+      "type": "object",
+      "required": ["teksti_i_artikullit"],
+      "properties": {
+        "udhëzimet_e_markës": {
+          "type": "object",
+          "description": "Dokumenti i zërit të markës së klientit, i injektuar në kohën e konkluzionit. Objekt bosh nëse nuk ka.",
+          "required": ["id_klienti", "emri_i_klientit", "niveli_i_formalitetit"],
+          "properties": {
+            "id_klienti": { "type": "string" },
+            "emri_i_klientit": { "type": "string" },
+            "përshkruesit_e_tonit": { "type": "array", "items": { "type": "string" } },
+            "fraza_të_ndaluara": { "type": "array", "items": { "type": "string" } },
+            "fraza_të_preferuara": { "type": "array", "items": { "type": "string" } },
+            "niveli_i_formalitetit": { "type": "string", "enum": ["formal", "gjysmë-formal", "informal"] },
+            "audienca_e_synuar": { "type": "string" },
+            "preferenca_e_gjatësisë_së_fjalisë": { "type": "string", "enum": ["e_shkurtër", "e_mesme", "e_gjatë", "e_shumëllojshme"] },
+            "kërkohet_veprorja": { "type": "boolean" },
+            "lejohet_veta_e_parë": { "type": "boolean" },
+            "lejohen_pasthirrmat": { "type": "boolean" },
+            "shënime": { "type": "string" }
+          }
+        },
+        "pikat_kryesore": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Pikat kryesore të përmbledhjes origjinale që i janë dhënë shkrimtarit. Varg bosh nëse nuk është dhënë përmbledhje."
+        },
+        "teksti_i_artikullit": {
+          "type": "string",
+          "minLength": 100,
+          "description": "Teksti i plotë i artikullit që do të redaktohet."
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["gramatika", "stili_i_të_shkruarit", "formatimi", "përputhshmëria_e_markës", "përputhshmëria_e_marketingut", "struktura"],
+      "properties": {
+        "gramatika": { "$ref": "#/definitions/detyrëUdhëzuese" },
+        "stili_i_të_shkruarit": { "$ref": "#/definitions/detyrëStili" },
+        "formatimi": { "$ref": "#/definitions/detyrëUdhëzuese" },
+        "përputhshmëria_e_markës": { "$ref": "#/definitions/detyrëMePikë" },
+        "përputhshmëria_e_marketingut": { "$ref": "#/definitions/detyrëMePikë" },
+        "struktura": { "$ref": "#/definitions/detyrëStrukture" }
+      }
+    }
+  },
+  "definitions": {
+    "problem": {
+      "type": "object",
+      "required": ["vendndodhja", "lloji_i_problemit", "udhëzim", "ashpërsia"],
+      "properties": {
+        "vendndodhja": { "type": "string" },
+        "lloji_i_problemit": { "type": "string" },
+        "udhëzim": { "type": "string" },
+        "ashpërsia": { "type": "string", "enum": ["kritike", "madhore", "e_vogël"] }
+      }
+    },
+    "detyrëUdhëzuese": {
+      "type": "object",
+      "required": ["vendimi", "problemet"],
+      "properties": {
+        "vendimi": { "type": "string", "enum": ["kalon", "nuk_kalon", "i_pjesshëm"] },
+        "problemet": { "type": "array", "items": { "$ref": "#/definitions/problem" } }
+      }
+    },
+    "detyrëStili": {
+      "allOf": [
+        { "$ref": "#/definitions/detyrëUdhëzuese" },
+        {
+          "properties": {
+            "regjistri_i_zbuluar": { "type": "string", "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier"] },
+            "regjistri_i_pritshëm": { "type": "string", "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier", "i_paspecifikuar"] }
+          }
+        }
+      ]
+    },
+    "detyrëMePikë": {
+      "type": "object",
+      "required": ["pikët", "vendimi", "problemet"],
+      "properties": {
+        "pikët": { "type": "number", "minimum": 0, "maximum": 100 },
+        "vendimi": { "type": "string", "enum": ["kalon", "nuk_kalon", "i_pjesshëm"] },
+        "problemet": { "type": "array", "items": { "$ref": "#/definitions/problem" } }
+      }
+    },
+    "mbulimiIPikaveKryesore": {
+      "type": "object",
+      "required": ["pika_kryesore", "e_mbuluar", "cilësia_e_përpunimit"],
+      "properties": {
+        "pika_kryesore": { "type": "string" },
+        "e_mbuluar": { "type": "boolean" },
+        "cilësia_e_përpunimit": { "type": "string", "enum": ["e_thelluar", "adekuate", "sipërfaqësore", "mungon"] }
+      }
+    },
+    "detyrëStrukture": {
+      "type": "object",
+      "required": ["vendimi", "mbulimi_i_pikave_kryesore", "lloji_i_strukturës_së_zbuluar", "udhëzim"],
+      "properties": {
+        "vendimi": { "type": "string", "enum": ["kalon", "nuk_kalon", "i_pjesshëm", "nuk_u_dha_përmbledhje"] },
+        "mbulimi_i_pikave_kryesore": { "type": "array", "items": { "$ref": "#/definitions/mbulimiIPikaveKryesore" } },
+        "lloji_i_strukturës_së_zbuluar": { "type": "string", "enum": ["lineare", "eksponenciale", "jo-lineare", "e_paqartë"] },
+        "udhëzim": { "type": "string" }
+      }
+    }
+  }
+}
+```
+
+Sigurohu që të gjitha shënimet e problemeve të jenë specifike, të lokalizuara dhe diagnostikisht të dobishme, që nivelet e ashpërsisë të ndryshojnë në mënyrë realiste, që udhëzimet të mos e rishkruajnë kurrë tekstin por vetëm të drejtojnë vëmendjen te lloji dhe vendndodhja e problemit, dhe që vlerësimi të pasqyrojë artikullin e degraduar dhe jo versionin origjinal cilësor, duke mbetur njëkohësisht në përputhje me udhëzimet e ofruara të markës. Më poshtë gjendet artikulli i artë.
+
+Rruga drejt Inxhinierisë: Si të kalosh nga tekniku i certifikuar te projektuesi i sistemeve. Në një kohë kur teknologjia po transformon çdo aspekt të jetës sonë, roli i profesionistëve teknikë dhe inxhinierëve është bërë më i rëndësishëm se kurrë. Industria moderne kërkon jo vetëm zbatues të aftë, por edhe mendje krijuese që projektojnë, analizojnë dhe ndërtojnë sisteme të reja. Rruga nga tekniku i certifikuar drejt inxhinierit nuk është një hap i menjëhershëm, por një proces i ndërtuar me përkushtim, dije dhe përvojë të vazhdueshme. Formimi profesional në institucione si në Institutin "Harry Fultz" përfaqëson një pikënisje mjaft thelbësore për këtë rrugëtim. Profilet teknike, veçanërisht elektronika dhe automekanika, ofrojnë një bazë të thellë praktike që i afron nxënësit me realitetin industrial që në bankat e shkollës. Laboratorët, pajisjet moderne dhe projektet praktike krijojnë një terren ku nuk mungon ndërthurja me teorinë dhe praktikën. Tekniku i certifikuar është profesionisti që zotëron aftësi konkrete për instalimin, mirëmbajtjen dhe riparimin e sistemeve. Në fushën e elektronikës, ai punon me qarqe, pajisje matëse, "Microcontrollers" dhe sisteme automatizimi. Në automekanikë, tekniku diagnostikon defekte, përdor pajisje elektronike për kontrollin e automjeteve dhe ndërhyn në sistemet mekanike dhe elektrike të tyre. Ky nivel kërkon saktësi, përgjegjësi dhe zotërim të proceseve praktike. Megjithatë, zhvillimi industrial nuk ndalet vetëm te zbatimi. Është inxhinieri ai që projekton sistemin që tekniku do të zbatojë. Ai analizon, kryen llogaritje, përdor programe simulimi dhe harton zgjidhje teknike të reja. Ndryshe nga tekniku që ndjek një skemë të gatshme, inxhinieri krijon vetë skemën. Ai merr vendime strategjike dhe shpesh drejton ekipe pune. Kjo kërkon jo vetëm aftësi teknike, por edhe mendim kritik, kreativitet dhe aftësi të punës në grup. Kalimi nga niveli teknik në atë inxhinierik kërkon disa hapa të rëndësishëm. Së pari, është thelbësor thellimi në shkencat bazë si matematika dhe fizika. Çdo sistem elektronik apo mekanik mbështetet mbi ligje shkencore që duhet të kuptohen në mënyrë të plotë. Së dyti, vazhdimi i studimeve universitare në universitete teknike hap mundësi për specializim dhe avancim profesional. Arsimi universitar i jep studentit aftësinë për të analizuar në thellësi, për të projektuar dhe për të kontribuar në kërkim shkencor. Profilet elektronike dhe automekanike janë veçanërisht të rëndësishme në industrinë moderne, sepse teknologjitë po bëhen gjithnjë e më të integruara. Automjetet moderne përmbajnë sisteme të avancuara elektronike, sensorë dhe programe kontrolli. Fabrikat përdorin automatizim dhe robotikë për të rritur efikasitetin. Energjia e rinovueshme dhe sistemet inteligjente kërkojnë specialistë që kuptojnë si mekanikën ashtu edhe elektronikën. Ksjo do të thotë se nxënësit e këtyre profileve kanë një përparësi të madhe në tregun e punës. Megjithatë, rruga drejt inxhinierisë nuk është pa sfida. Lëndët shkencore kërkojnë përkushtim të vazhdueshëm, ndërsa kalimi nga puna praktike në analizë teorike mund të duket i vështirë në fillim. Po ashtu, konkurrenca në tregun e punës kërkon përditësim të vazhdueshëm të njohurive. Por pikërisht këto sfida formojnë profesionistë të fortë dhe të qëndrueshëm. Përparimi nuk ndodh brenda natës, por ndërtohet gradualisht, me punë, disiplinë dhe vizion të qartë për të ardhmen.

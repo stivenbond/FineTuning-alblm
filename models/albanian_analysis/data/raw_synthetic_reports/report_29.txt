@@ -1,0 +1,162 @@
+Të është dhënë një artikull cilësor në gjuhën shqipe që respekton *Drejtshkrimin e Gjuhës Shqipe* dhe pasqyron një zë të qëndrueshëm të markës, të përcaktuar në JSON-in e udhëzimeve të markës; detyra jote është që fillimisht ta transformosh në mënyrë të brendshme këtë “artikull të artë” në një version të degraduar në mënyrë delikate duke futur gabime të kontrolluara dhe realiste në disa dimensione, dhe më pas të gjenerosh një JSON të strukturuar vlerësimi që pasqyron këto degradime sipas skemës së ofruar AlbanianEditorTrainingExample. Degradimi duhet të jetë natyral dhe i larmishëm, duke përfshirë, por pa u kufizuar në, gabime drejtshkrimore, mospërputhje gramatikore, keqpërdorim të standardeve leksikore të shqipes si përdorimi i panevojshëm i huazimeve (p.sh., përdorimi i “aktivitet” në vend të “veprimtari”), dobësi strukturore (p.sh., rrjedhë logjike e ndërprerë, kalime të dobëta ose progresion i paqartë), shtjellim të pabarabartë ose të pamjaftueshëm të pikave kryesore, si dhe probleme stili në të shkruar si përdorimi i tepërt i formës pësore, mospërputhje toni ose prania e sarkazmës apo ironisë delikate që bie ndesh me përshkruesit e synuar të tonit në udhëzimet e markës; gjithashtu, fut devijime të rastësishme nga kufizimet e markës si niveli i formalitetit, formulimet e preferuara, pritshmëritë për gjatësinë e fjalive ose zëri narrativ (p.sh., përdorim i paqëllimshëm i vetës së parë nëse nuk lejohet). Artikulli i modifikuar duhet të mbetet koherent dhe i besueshëm, jo i korruptuar artificialisht. Nuk duhet të shfaqësh artikullin e korrigjuar apo origjinal — përfshi vetëm versionin e degraduar brenda fushës `input.teksti_i_artikullit`. Më pas prodho JSON-in përfundimtar duke ndjekur rreptësisht këtë skemë:
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ShembullTrajnimiRedaktuesShqip",
+  "version": "2.0.0",
+  "description": "Skemë kanonike për të gjithë shembujt e trajnimit. Mos modifikoni pa rritur versionin.",
+  "type": "object",
+  "required": ["id", "metadata", "input", "output"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^alb-[a-z]+-[0-9]{4}$",
+      "description": "Identifikues unik për shembullin e trajnimit."
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["regjistri", "shënuesi", "i_pranueshëm_për_rlhf", "version"],
+      "properties": {
+        "regjistri": {
+          "type": "string",
+          "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier"],
+          "description": "Regjistri gjuhësor i artikullit burimor."
+        },
+        "shënuesi": {
+          "type": "string",
+          "enum": ["njeri", "sintetik", "njeri_korrigjoi_sintetik"],
+          "description": "Burimi i shënimeve të trajnimit."
+        },
+        "i_pranueshëm_për_rlhf": {
+          "type": "boolean",
+          "description": "Nëse shembulli plotëson standardet e cilësisë për trajnimin RLHF."
+        },
+        "version": {
+          "type": "string",
+          "description": "Versioni i skemës së përdorur për këtë shembull."
+        },
+        "recensuesi": {
+          "type": "string",
+          "description": "Identifikuesi i personit që rishikoi shembullin."
+        },
+        "rishikuar_më": {
+          "type": "string",
+          "format": "date",
+          "description": "Data kur u rishikua shembulli."
+        }
+      }
+    },
+    "input": {
+      "type": "object",
+      "required": ["teksti_i_artikullit"],
+      "properties": {
+        "udhëzimet_e_markës": {
+          "type": "object",
+          "description": "Dokumenti i zërit të markës së klientit, i injektuar në kohën e konkluzionit. Objekt bosh nëse nuk ka.",
+          "required": ["id_klienti", "emri_i_klientit", "niveli_i_formalitetit"],
+          "properties": {
+            "id_klienti": { "type": "string" },
+            "emri_i_klientit": { "type": "string" },
+            "përshkruesit_e_tonit": { "type": "array", "items": { "type": "string" } },
+            "fraza_të_ndaluara": { "type": "array", "items": { "type": "string" } },
+            "fraza_të_preferuara": { "type": "array", "items": { "type": "string" } },
+            "niveli_i_formalitetit": { "type": "string", "enum": ["formal", "gjysmë-formal", "informal"] },
+            "audienca_e_synuar": { "type": "string" },
+            "preferenca_e_gjatësisë_së_fjalisë": { "type": "string", "enum": ["e_shkurtër", "e_mesme", "e_gjatë", "e_shumëllojshme"] },
+            "kërkohet_veprorja": { "type": "boolean" },
+            "lejohet_veta_e_parë": { "type": "boolean" },
+            "lejohen_pasthirrmat": { "type": "boolean" },
+            "shënime": { "type": "string" }
+          }
+        },
+        "pikat_kryesore": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Pikat kryesore të përmbledhjes origjinale që i janë dhënë shkrimtarit. Varg bosh nëse nuk është dhënë përmbledhje."
+        },
+        "teksti_i_artikullit": {
+          "type": "string",
+          "minLength": 100,
+          "description": "Teksti i plotë i artikullit që do të redaktohet."
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["gramatika", "stili_i_të_shkruarit", "formatimi", "përputhshmëria_e_markës", "përputhshmëria_e_marketingut", "struktura"],
+      "properties": {
+        "gramatika": { "$ref": "#/definitions/detyrëUdhëzuese" },
+        "stili_i_të_shkruarit": { "$ref": "#/definitions/detyrëStili" },
+        "formatimi": { "$ref": "#/definitions/detyrëUdhëzuese" },
+        "përputhshmëria_e_markës": { "$ref": "#/definitions/detyrëMePikë" },
+        "përputhshmëria_e_marketingut": { "$ref": "#/definitions/detyrëMePikë" },
+        "struktura": { "$ref": "#/definitions/detyrëStrukture" }
+      }
+    }
+  },
+  "definitions": {
+    "problem": {
+      "type": "object",
+      "required": ["vendndodhja", "lloji_i_problemit", "udhëzim", "ashpërsia"],
+      "properties": {
+        "vendndodhja": { "type": "string" },
+        "lloji_i_problemit": { "type": "string" },
+        "udhëzim": { "type": "string" },
+        "ashpërsia": { "type": "string", "enum": ["kritike", "madhore", "e_vogël"] }
+      }
+    },
+    "detyrëUdhëzuese": {
+      "type": "object",
+      "required": ["vendimi", "problemet"],
+      "properties": {
+        "vendimi": { "type": "string", "enum": ["kalon", "nuk_kalon", "i_pjesshëm"] },
+        "problemet": { "type": "array", "items": { "$ref": "#/definitions/problem" } }
+      }
+    },
+    "detyrëStili": {
+      "allOf": [
+        { "$ref": "#/definitions/detyrëUdhëzuese" },
+        {
+          "properties": {
+            "regjistri_i_zbuluar": { "type": "string", "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier"] },
+            "regjistri_i_pritshëm": { "type": "string", "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier", "i_paspecifikuar"] }
+          }
+        }
+      ]
+    },
+    "detyrëMePikë": {
+      "type": "object",
+      "required": ["pikët", "vendimi", "problemet"],
+      "properties": {
+        "pikët": { "type": "number", "minimum": 0, "maximum": 100 },
+        "vendimi": { "type": "string", "enum": ["kalon", "nuk_kalon", "i_pjesshëm"] },
+        "problemet": { "type": "array", "items": { "$ref": "#/definitions/problem" } }
+      }
+    },
+    "mbulimiIPikaveKryesore": {
+      "type": "object",
+      "required": ["pika_kryesore", "e_mbuluar", "cilësia_e_përpunimit"],
+      "properties": {
+        "pika_kryesore": { "type": "string" },
+        "e_mbuluar": { "type": "boolean" },
+        "cilësia_e_përpunimit": { "type": "string", "enum": ["e_thelluar", "adekuate", "sipërfaqësore", "mungon"] }
+      }
+    },
+    "detyrëStrukture": {
+      "type": "object",
+      "required": ["vendimi", "mbulimi_i_pikave_kryesore", "lloji_i_strukturës_së_zbuluar", "udhëzim"],
+      "properties": {
+        "vendimi": { "type": "string", "enum": ["kalon", "nuk_kalon", "i_pjesshëm", "nuk_u_dha_përmbledhje"] },
+        "mbulimi_i_pikave_kryesore": { "type": "array", "items": { "$ref": "#/definitions/mbulimiIPikaveKryesore" } },
+        "lloji_i_strukturës_së_zbuluar": { "type": "string", "enum": ["lineare", "eksponenciale", "jo-lineare", "e_paqartë"] },
+        "udhëzim": { "type": "string" }
+      }
+    }
+  }
+}
+```
+
+Sigurohu që të gjitha shënimet e problemeve të jenë specifike, të lokalizuara dhe diagnostikisht të dobishme, që nivelet e ashpërsisë të ndryshojnë në mënyrë realiste, që udhëzimet të mos e rishkruajnë kurrë tekstin por vetëm të drejtojnë vëmendjen te lloji dhe vendndodhja e problemit, dhe që vlerësimi të pasqyrojë artikullin e degraduar dhe jo versionin origjinal cilësor, duke mbetur njëkohësisht në përputhje me udhëzimet e ofruara të markës. Më poshtë gjendet artikulli i artë.
+
+Siguria në mjediset e Institutit "Harry Fultz" Në shkollën “Harry Fultz”, sektori i mekanikës është një nga më të rëndësishmit për të rinjtë që duan të bëhen profesionistë të së ardhmes. Kjo fushë jo vetëm që u ofron atyre mundësinë për të zhvilluar aftësi praktike dhe teknike, por gjithashtu i përgatit për një treg pune që kërkon precizion, disiplinë dhe përgjegjësi të lartë. Puna me pajisje dhe makineri kërkon kujdes maksimal, ndaj siguria nuk është thjesht një rregull, por një domosdoshmëri për të shmangur aksidentet dhe për të krijuar një mjedis të sigurt për të gjithë. Mosrespektimi i standardeve të sigurisë mund të ketë pasoja serioze, prandaj çdo individ që punon në këto ambiente duhet të jetë i ndërgjegjshëm për rreziqet dhe të ndjekë me përpikëri të gjitha masat mbrojtëse. Një nga masat kryesore për të siguruar një ambi- ent pune të sigurt është përdorimi i veshjeve dhe pajisjeve mbrojtëse. Çdo nxënës duhet të ketë syze speciale për të mbrojtur sytë nga copëzat metalike, pluhurat ose shkëndijat që mund të dalin gjatë proceseve të prerjes dhe saldimit. Dorezat janë po aq të rëndësishme, pasi ato mbrojnë duart nga lëndimet e mundshme që vi- jnë nga kontakti me sipërfaqe të mprehta apo të nxehta. Rrobat e përshtatshme jo vetëm që sig- urojnë mbrojtje, por gjithashtu ndihmojnë në shmangien e rrezikut të kapjes nga makineritë në lëvizje. Këpucët speciale me bazë kundër rrëshqitjes dhe majë metalike mbrojtëse janë gjithashtu të domosdoshme për të parandaluar dëmtimet që mund të vijnë nga rrëzimet apo rë- nia e objekteve të rënda. Përveç pajisjeve mbrojtëse, po aq i rëndësishëm është edhe përdorimi korrekt i mjeteve të punës. Çdo pajisje duhet të përdoret vetëm nga ata që janë të trajnuar për të, duke ndjekur me kujdes të gjitha udhëzimet për funksionimin e saj. Makineritë dhe veglat e punës duhet të inspekto- hen rregullisht për të siguruar që janë në gjendje të mirë funksionale dhe nuk paraqesin rrezik për përdoruesit. Nëse ndodh një defekt ose një prob- lem teknik, është e nevojshme të ndalohet men- jëherë puna dhe të njoftohet instruktori ose per- soneli përgjegjës, në mënyrë që të shmangen situatat e rrezikshme. Kurrë nuk duhet të ndërhy- het në pajisje pa pasur njohuritë dhe autorizimin e duhur, pasi kjo mund të çojë në dëmtime të pa- jisjes ose, më keq akoma, në aksidente të rënda. Organizimi dhe rregulli janë elementë të tjerë thelbësorë në një ambient pune mekanik. Një mjedis i pastër dhe i sistemuar ndihmon në shmangien e aksidenteve dhe lehtëson procesin e punës. Veglat duhet të vendosen gjithmonë në vendin e tyre pas përdorimit për të shmangur konfuzionin dhe për të parandaluar rreziqet e mundshme. Po ashtu, mbeturinat teknike dhe mbetjet e materialeve duhet të pastrohen men- jëherë për të siguruar që hapësira e punës mbetet e rregullt dhe e sigurt. Kujdes i veçantë duhet t’i kushtohet ndriçimit të mjaftueshëm në ambientin e punës, pasi mungesa e dritës së duhur mund të çojë në gabime dhe aksidente të papritura. Në hapësirat ku punohet me mjete mekanike nuk ka vend për vrapim, lojëra apo shpërqendrim. Çdo veprim i pakontrolluar mund të çojë në aksi- dente serioze që mund të dëmtojnë jo vetëm indi- vidin, por edhe kolegët e tij. Për këtë arsye, disi- plina dhe përqendrimi janë parime themelore që duhet të zbatohen nga të gjithë. Çdo nxënës duhet të jetë i vetëdijshëm për rreziqet që e rrethojnë dhe të veprojë me kujdes të shtuar në çdo mo- ment. Mosrespektimi i rregullave të sigurisë nuk përbën vetëm një shkelje disiplinore, por rrezikon drejtpërdrejt shëndetin dhe mirëqenien e të gjithëve në ambientin e punës. Dëmtimet që mund të ndodhin gjatë punës vari- ojnë nga prerje dhe gërvishtje të lehta deri te lëndime më serioze që mund të kenë pasoja afat- gjata. Për këtë arsye, është thelbësore që çdo per- son të njohë dhe të zbatojë masat e sigurisë me rigorozitet. Në rast të një incidenti, ndihma e parë duhet të jepet menjëherë dhe, nëse është e nevo- jshme, të kërkohet ndihmë mjekësore pa humbur kohë. Prania e një kutie të ndihmës së shpejtë në çdo ambient pune është një masë e domos- doshme që mund të ndihmojë në trajtimin e plagëve të vogla dhe në parandalimin e përke- qësimit të situatave më të rënda. Përveç kësaj, çdo nxënës duhet të ketë njohuri bazë mbi procedurat e ndihmës së parë, në mënyrë që të jetë në gjendje të reagojë me shpejtësi dhe efikasitet në rast emergjence. Në “Harry Fultz”, qëllimi nuk është vetëm mësimi i mekanikës dhe aftësive teknike, por edhe ndër- timi i një kulture të përgjegjësisë dhe kujdesit ndaj sigurisë. Një mekanik i aftë nuk është vetëm ai që njeh teknikat e punës, por edhe ai që respek- ton masat mbrojtëse dhe vepron me ndërgjegje në çdo situatë. Për të arritur këtë, siguria duhet të jetë një praktikë e përditshme, e integruar në çdo aspekt të punës. Vetëm duke e vënë atë në prak- tikë çdo ditë, mund të sigurohemi që puna të jetë jo vetëm efektive, por edhe e mbrojtur nga rrez- iqet, duke garantuar një ambient profesional ku çdo individ ndihet i sigurt dhe i mbrojtur.

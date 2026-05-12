@@ -1,0 +1,287 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ShembullTrajnimiRedaktuesShqip",
+  "version": "2.0.0",
+  "description": "Skemë kanonike për të gjithë shembujt e trajnimit. Mos modifikoni pa rritur versionin.",
+  "type": "object",
+  "required": ["id", "metadata", "input", "output"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^alb-[a-z]+-[0-9]{4}$",
+      "description": "Identifikues unik për shembullin e trajnimit."
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["regjistri", "shënuesi", "i_pranueshëm_për_rlhf", "version"],
+      "properties": {
+        "regjistri": {
+          "type": "string",
+          "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier"],
+          "description": "Regjistri gjuhësor i artikullit burimor."
+        },
+        "shënuesi": {
+          "type": "string",
+          "enum": ["njeri", "sintetik", "njeri_korrigjoi_sintetik"],
+          "description": "Burimi i shënimeve të trajnimit."
+        },
+        "i_pranueshëm_për_rlhf": {
+          "type": "boolean",
+          "description": "Nëse shembulli plotëson standardet e cilësisë për trajnimin RLHF."
+        },
+        "version": {
+          "type": "string",
+          "description": "Versioni i skemës së përdorur për këtë shembull."
+        },
+        "recensuesi": {
+          "type": "string",
+          "description": "Identifikuesi i personit që rishikoi shembullin."
+        },
+        "rishikuar_më": {
+          "type": "string",
+          "format": "date",
+          "description": "Data kur u rishikua shembulli."
+        }
+      }
+    },
+    "input": {
+      "type": "object",
+      "required": ["teksti_i_artikullit"],
+      "properties": {
+        "udhëzimet_e_markës": {
+          "type": "object",
+          "description": "Dokumenti i zërit të markës së klientit, i injektuar në kohën e konkluzionit. Objekt bosh nëse nuk ka.",
+          "required": ["id_klienti", "emri_i_klientit", "niveli_i_formalitetit"],
+          "properties": {
+            "id_klienti": {
+              "type": "string",
+              "description": "Slug identifikues i klientit."
+            },
+            "emri_i_klientit": {
+              "type": "string",
+              "description": "Emri i plotë i klientit."
+            },
+            "përshkruesit_e_tonit": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Lista e mbiemrave që përshkruajnë tonin e dëshiruar të zërit."
+            },
+            "fraza_të_ndaluara": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Listë frazash që nuk duhet të përdoren asnjëherë."
+            },
+            "fraza_të_preferuara": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Listë frazash që inkurajohen të përdoren."
+            },
+            "niveli_i_formalitetit": {
+              "type": "string",
+              "enum": ["formal", "gjysmë-formal", "informal"],
+              "description": "Niveli i dëshiruar i formalitetit."
+            },
+            "audienca_e_synuar": {
+              "type": "string",
+              "description": "Përshkrim i audiencës së synuar."
+            },
+            "preferenca_e_gjatësisë_së_fjalisë": {
+              "type": "string",
+              "enum": ["e_shkurtër", "e_mesme", "e_gjatë", "e_shumëllojshme"],
+              "description": "Gjatësia e preferuar e fjalive."
+            },
+            "kërkohet_veprorja": {
+              "type": "boolean",
+              "description": "Nëse duhet përdorur domosdoshmërisht forma veprore e foljeve."
+            },
+            "lejohet_veta_e_parë": {
+              "type": "boolean",
+              "description": "Nëse lejohet përdorimi i vetës së parë (unë, ne)."
+            },
+            "lejohen_pasthirrmat": {
+              "type": "boolean",
+              "description": "Nëse lejohet përdorimi i pikëpasthirrmave (!)."
+            },
+            "shënime": {
+              "type": "string",
+              "description": "Çdo udhëzim shtesë specifik për markën."
+            }
+          }
+        },
+        "pikat_kryesore": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Pikat kryesore të përmbledhjes origjinale që i janë dhënë shkrimtarit. Varg bosh nëse nuk është dhënë përmbledhje."
+        },
+        "teksti_i_artikullit": {
+          "type": "string",
+          "minLength": 100,
+          "description": "Teksti i plotë i artikullit që do të redaktohet."
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": [
+        "gramatika",
+        "stili_i_të_shkruarit",
+        "formatimi",
+        "përputhshmëria_e_markës",
+        "përputhshmëria_e_marketingut",
+        "struktura"
+      ],
+      "properties": {
+        "gramatika": {
+          "$ref": "#/definitions/detyrëUdhëzuese",
+          "description": "Vlerësim i saktësisë gramatikore."
+        },
+        "stili_i_të_shkruarit": {
+          "$ref": "#/definitions/detyrëStili",
+          "description": "Vlerësim i stilit, tonit dhe regjistrit."
+        },
+        "formatimi": {
+          "$ref": "#/definitions/detyrëUdhëzuese",
+          "description": "Vlerësim i elementeve vizuale si titujt, paragrafët, listat."
+        },
+        "përputhshmëria_e_markës": {
+          "$ref": "#/definitions/detyrëMePikë",
+          "description": "Vlerësim i përputhshmërisë me udhëzimet e markës."
+        },
+        "përputhshmëria_e_marketingut": {
+          "$ref": "#/definitions/detyrëMePikë",
+          "description": "Vlerësim i efektivitetit të përmbajtjes për qëllime marketingu."
+        },
+        "struktura": {
+          "$ref": "#/definitions/detyrëStrukture",
+          "description": "Vlerësim i strukturës dhe mbulimit të pikave kryesore."
+        }
+      }
+    }
+  },
+  "definitions": {
+    "problem": {
+      "type": "object",
+      "required": ["vendndodhja", "lloji_i_problemit", "udhëzim", "ashpërsia"],
+      "properties": {
+        "vendndodhja": {
+          "type": "string",
+          "description": "Citim i shkurtër ose përshkrim i vendit në tekst ku ndodhet problemi."
+        },
+        "lloji_i_problemit": {
+          "type": "string",
+          "description": "Kategoria e problemit (p.sh., 'përemër', 'fjala e përsëritur', 'gabim drejtshkrimor')."
+        },
+        "udhëzim": {
+          "type": "string",
+          "description": "DUHET të jetë vetëm udhëzues — asnjëherë mos e rishkruani tekstin, thjesht tregoni shkrimtarit se çfarë lloj problemi ekziston dhe ku të shikojë."
+        },
+        "ashpërsia": {
+          "type": "string",
+          "enum": ["kritike", "madhore", "e_vogël"],
+          "description": "Niveli i ashpërsisë së problemit."
+        }
+      }
+    },
+    "detyrëUdhëzuese": {
+      "type": "object",
+      "required": ["vendimi", "problemet"],
+      "properties": {
+        "vendimi": {
+          "type": "string",
+          "enum": ["kalon", "nuk_kalon", "i_pjesshëm"],
+          "description": "Vendimi i përgjithshëm për këtë kategori."
+        },
+        "problemet": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/problem" },
+          "description": "Lista e problemeve të identifikuara."
+        }
+      }
+    },
+    "detyrëStili": {
+      "allOf": [
+        { "$ref": "#/definitions/detyrëUdhëzuese" },
+        {
+          "properties": {
+            "regjistri_i_zbuluar": {
+              "type": "string",
+              "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier"],
+              "description": "Regjistri gjuhësor që modeli zbuloi në tekst."
+            },
+            "regjistri_i_pritshëm": {
+              "type": "string",
+              "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier", "i_paspecifikuar"],
+              "description": "Regjistri gjuhësor që pritej të përdorej."
+            }
+          }
+        }
+      ]
+    },
+    "detyrëMePikë": {
+      "type": "object",
+      "required": ["pikët", "vendimi", "problemet"],
+      "properties": {
+        "pikët": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Vlerësim numerik nga 0 në 100."
+        },
+        "vendimi": {
+          "type": "string",
+          "enum": ["kalon", "nuk_kalon", "i_pjesshëm"],
+          "description": "Vendimi i përgjithshëm bazuar në pragje të paracaktuara."
+        },
+        "problemet": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/problem" },
+          "description": "Lista e problemeve që justifikojnë pikët."
+        }
+      }
+    },
+    "mbulimiIPikaveKryesore": {
+      "type": "object",
+      "required": ["pika_kryesore", "e_mbuluar", "cilësia_e_përpunimit"],
+      "properties": {
+        "pika_kryesore": {
+          "type": "string",
+          "description": "Teksti i pikës kryesore nga përmbledhja."
+        },
+        "e_mbuluar": {
+          "type": "boolean",
+          "description": "Nëse kjo pikë mbulohet në tekst."
+        },
+        "cilësia_e_përpunimit": {
+          "type": "string",
+          "enum": ["e_thelluar", "adekuate", "sipërfaqësore", "mungon"],
+          "description": "Sa thellësisht është trajtuar kjo pikë."
+        }
+      }
+    },
+    "detyrëStrukture": {
+      "type": "object",
+      "required": ["vendimi", "mbulimi_i_pikave_kryesore", "lloji_i_strukturës_së_zbuluar", "udhëzim"],
+      "properties": {
+        "vendimi": {
+          "type": "string",
+          "enum": ["kalon", "nuk_kalon", "i_pjesshëm", "nuk_u_dha_përmbledhje"],
+          "description": "Vendimi për strukturën. 'nuk_u_dha_përmbledhje' përdoret kur nuk kishte përmbledhje fillestare."
+        },
+        "mbulimi_i_pikave_kryesore": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/mbulimiIPikaveKryesore" },
+          "description": "Vlerësimi për secilën pikë kryesore të përmbledhjes."
+        },
+        "lloji_i_strukturës_së_zbuluar": {
+          "type": "string",
+          "enum": ["lineare", "eksponenciale", "jo-lineare", "e_paqartë"],
+          "description": "Lloji i strukturës narrative ose informative të zbuluar."
+        },
+        "udhëzim": {
+          "type": "string",
+          "description": "Udhëzime të përgjithshme se si të përmirësohet struktura."
+        }
+      }
+    }
+  }
+}

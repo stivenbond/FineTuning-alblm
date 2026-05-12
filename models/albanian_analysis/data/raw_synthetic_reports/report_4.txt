@@ -1,0 +1,193 @@
+{
+  "id": "alb-fiktiv-0001",
+  "metadata": {
+    "regjistri": "marketingu",
+    "shënuesi": "sintetik",
+    "i_pranueshëm_për_rlhf": true,
+    "version": "2.0.0",
+    "recensuesi": "trajnimi_ai_v1",
+    "rishikuar_më": "2026-05-12"
+  },
+  "input": {
+    "udhëzimet_e_markës": {
+      "id_klienti": "edu_inc_123",
+      "emri_i_klientit": "Shkolla e Mesme Harry Fultz",
+      "përshkruesit_e_tonit": ["profesional", "frymëzues", "gjithëpërfshirës"],
+      "fraza_të_ndaluara": ["porosit tani", "më e mira absolute", "garantohet"],
+      "fraza_të_preferuara": ["përsosmëria si standard", "angazhim i vazhdueshëm", "komuniteti ynë shkollor"],
+      "niveli_i_formalitetit": "gjysmë-formal",
+      "audienca_e_synuar": "nxënës dhe prindër",
+      "preferenca_e_gjatësisë_së_fjalisë": "e_shumëllojshme",
+      "kërkohet_veprorja": true,
+      "lejohet_veta_e_parë": false,
+      "lejohen_pasthirrmat": false,
+      "shënime": "Shmangni huazimet e panevojshme; preferoni fjalë shqipe si 'veprimtari' në vend të 'aktivitet'."
+    },
+    "pikat_kryesore": [
+      "Prezantimi i iniciativës 'Nxënësit e Muajit'",
+      "Rea Hylli – lidership dhe organizimi i MUN",
+      "Emanuel Dervishi – sukses në siguri kibernetike",
+      "Filip Pojani – përsosmëri në ekonomi dhe biznes",
+      "Petro Proko – aftësi praktike në automekanikë"
+    ],
+    "teksti_i_artikullit": "Nxënësit e Muajit\n\nNë shkollën tonë, përsosmëria nuk është thjesht një qëllim — por një standard që ne e lartësojmë çdo ditë (dhe kjo është shumë e rëndësishme!). Me dëshirën për të vlerësuar jo vetëm arritjet akademike, por edhe integritetin, lidershipin dhe përkushtimin profesional, unë kam kënaqësinë të prezantoj iniciativën më të re: 'Nxënësit e Muajit'.\n\nKy vlerësim vjen si një mirënjohje për ata të rinj që shkojnë përtej detyrimeve shkollore, duke u shndërruar në model frymëzimi për bashkëmoshatarët e tyre. Përzgjedhja e këtij muaji reflekton diversitetin e profileve tona studimore, duke dëshmuar se suksesi në 'Harry Fultz' ka shumë forma.\n\nRea Hylli\nRea Hylli është një nxënëse e vitit të dytë në Shkollën e Mesme të Përgjithshme, e cila shquhet për rezultate të shkëlqyera. Ajo demonstron performancë të jashtëzakonshme në lëndët shkencore, ku mendimi analitik dhe kurioziteti i saj dallohen. Përveç akademikes, Rea është një debatuese e sigurt. Një nga arritjet e saj më të rëndësishme është sjellja për herë të parë e konferencës Model United Nations (MUN) në shkollën tonë, të cilën ajo e organizoi. Rea ka lënë një ndikim.\n\nEmanuel Dervishi\nEmanuel Dervishi, ai është në vitin e tretë për Elektronikë-IT dhe njihet gjerësisht si një programues i talentuar. Pasioni i tij për programimin reflektohet te rezultatet e mira mësimore dhe në aftësitë teknike. Emanueli fitoi vendin e tretë në Maratonën Kombëtare të Sigurisë Kibernetike, një aktivitet mjaft konkurrues. Ai është shembull frymëzues për nxënësit e interesuar në IT.\n\nFilip Pojani\nFilip Pojani vazhdimisht demonstron përsosmëri në ekonomi, financë dhe kontabilitet (edhe pse disa thonë se kontabiliteti është i mërzitshëm — por jo për Filipin!). Ai tregon kuptim të koncepteve teorike dhe zbatimeve praktike. Filipi merr pjesë aktive në projekte shkollore. Mendësia e tij e organizuar e bën atë të vlefshëm në çdo grup. Filipi përfaqëson cilësitë e një profesionisti të ardhshëm.\n\nPetro Proko\nPetro Proko ka treguar aftësi të forta në lëndët teknike. Ai dallohet për aftësitë praktike dhe qasjen konkrete. Petro punon me përkushtim gjatë praktikës profesionale, duke treguar përgjegjësi. Ai njihet si një nxënës bashkëpunues. Petro pasqyron vlerat e mjeshtërisë."
+  },
+  "output": {
+    "gramatika": {
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "Paragrafi 1, pas 'qëllim'",
+          "lloji_i_problemit": "pikësim i gabuar",
+          "udhëzim": "Zëvendëso çuditësen me presje ose ndaj fjalinë. Forma '— por' nuk është standarde në shqipen e shkruar.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 1, kllapat",
+          "lloji_i_problemit": "ton joprofesional",
+          "udhëzim": "Hiq shprehjen '(dhe kjo është shumë e rëndësishme!)' sepse thyen formalitetin gjysmë-formal.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 2, fjalia e parë",
+          "lloji_i_problemit": "përdorim i paautorizuar i vetës së parë",
+          "udhëzim": "Zëvendëso 'unë kam kënaqësinë' me 'kemi kënaqësinë' për të ruajtur zërin institucional.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Rubrika 'Rea Hylli', fundi",
+          "lloji_i_problemit": "fjali e paplotë / e cunguar",
+          "udhëzim": "Plotëso fjalinë 'Rea ka lënë një ndikim' duke shtuar objektin (p.sh., 'të qëndrueshëm në komunitet').",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "Rubrika 'Emanuel Dervishi', fillimi",
+          "lloji_i_problemit": "përsëritje e tepërt e përemrit",
+          "udhëzim": "Hiq 'ai' pas presjes: 'Emanuel Dervishi, është në vitin...' ose riformulo.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "stili_i_të_shkruarit": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "Rubrika 'Filip Pojani'",
+          "lloji_i_problemit": "sarkazëm/ironi e papërshtatshme",
+          "udhëzim": "Hiq komentin në kllapa '(edhe pse disa thonë se kontabiliteti është i mërzitshëm — por jo për Filipin!)' pasi bie ndesh me tonin frymëzues dhe profesional.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "Paragrafi 1",
+          "lloji_i_problemit": "përdorim i panevojshëm i huazimit",
+          "udhëzim": "Zëvendëso 'aktivitet' në rubrikën Emanuel me 'veprimtari' sipas udhëzimeve të markës.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Rubrika 'Rea Hylli'",
+          "lloji_i_problemit": "shtjellim i pabarabartë",
+          "udhëzim": "Zgjero pjesën për ndikimin e Reas; versioni aktual e lë atë të paartikuar në krahasim me detajet e tjera.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Rubrika 'Petro Proko'",
+          "lloji_i_problemit": "përsëritje dhe mungesë thellimi",
+          "udhëzim": "Shto shembuj konkretë të aftësive praktike ose të projekteve ku Petro ka punuar.",
+          "ashpërsia": "madhore"
+        }
+      ],
+      "regjistri_i_zbuluar": "i_përzier",
+      "regjistri_i_pritshëm": "marketingu"
+    },
+    "formatimi": {
+      "vendimi": "kalon",
+      "problemet": []
+    },
+    "përputhshmëria_e_markës": {
+      "pikët": 68,
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "Gjithë artikulli",
+          "lloji_i_problemit": "mospërputhje e nivelit të formalitetit",
+          "udhëzim": "Hiq pasthirrmat dhe tonet e rastësishme ('dhe kjo është shumë e rëndësishme!', komenti për kontabilitetin) për të rivendosur tonin gjysmë-formal.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "Paragrafi 1",
+          "lloji_i_problemit": "shkelje e 'lejohet_veta_e_parë' = false",
+          "udhëzim": "Zëvendëso të gjitha format e vetës së parë ('unë kam', nënkuptuar) me 'ne' ose forma jopersonale.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Rubrika 'Emanuel Dervishi'",
+          "lloji_i_problemit": "përdorim i fjalës 'aktivitet' në vend të 'veprimtari'",
+          "udhëzim": "Përdor 'veprimtari' për t'u lidhur me preferencat leksikore të markës.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "përputhshmëria_e_marketingut": {
+      "pikët": 55,
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "Rubrika 'Rea Hylli'",
+          "lloji_i_problemit": "përfundim i dobët i profilit",
+          "udhëzim": "Shto një fjali përmbyllëse frymëzuese për Reën, siç bëhet për të tjerët.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Rubrika 'Filip Pojani'",
+          "lloji_i_problemit": "elementë joseriozë që dëmtojnë besueshmërinë",
+          "udhëzim": "Hiq komentin subjektiv për kontabilitetin. Përforco mesazhin e përkushtimit profesional.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "Fundi i rubrikës 'Petro Proko'",
+          "lloji_i_problemit": "përfundim i cunguar",
+          "udhëzim": "Rivend fjalinë që lidh vlerat e Petro-s me misionin e shkollës (si në origjinal).",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Hyrja",
+          "lloji_i_problemit": "mungon fraza e preferuar e markës",
+          "udhëzim": "Përfshi 'përsosmëria si standard' ose 'angazhim i vazhdueshëm' në paragrafin e parë.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "struktura": {
+      "vendimi": "i_pjesshëm",
+      "mbulimi_i_pikave_kryesore": [
+        {
+          "pika_kryesore": "Prezantimi i iniciativës 'Nxënësit e Muajit'",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Rea Hylli – lidership dhe organizimi i MUN",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Emanuel Dervishi – sukses në siguri kibernetike",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Filip Pojani – përsosmëri në ekonomi dhe biznes",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Petro Proko – aftësi praktike në automekanikë",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        }
+      ],
+      "lloji_i_strukturës_së_zbuluar": "lineare",
+      "udhëzim": "Secili profil ka nevojë për trajtim më të thelluar dhe përfundime më të plota. Progresioni midis paragrafëve është logjik, por mungon tranzicioni midis hyrjes dhe listës së nxënësve. Rigjallëro përmbylljet e profileve për të ruajtur ekuilibrin."
+    }
+  }
+}

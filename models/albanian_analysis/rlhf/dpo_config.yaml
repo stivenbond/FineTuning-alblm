@@ -1,0 +1,12 @@
+# DPO Configuration
+# Run only after collecting >= 150 preference pairs
+
+model_name_or_path: "training/final"    # start from the supervised fine-tuned model
+beta: 0.1                               # KL penalty — lower = more aggressive preference learning
+learning_rate: 5.0e-5                   # lower than SFT — DPO is sensitive
+num_train_epochs: 1                     # 1 epoch is usually enough for DPO
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+max_length: 4096
+max_prompt_length: 2048
+output_dir: "training/dpo_checkpoints"

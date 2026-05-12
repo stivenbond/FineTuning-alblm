@@ -1,0 +1,147 @@
+{
+  "id": "alb-debate-0001",
+  "metadata": {
+    "regjistri": "editorial",
+    "shënuesi": "sintetik",
+    "i_pranueshëm_për_rlhf": true,
+    "version": "2.0.0",
+    "recensuesi": "recensues_001",
+    "rishikuar_më": "2026-05-07"
+  },
+  "input": {
+    "udhëzimet_e_markës": {
+      "id_klienti": "inst_harry_fultz",
+      "emri_i_klientit": "Instituti Harry Fultz",
+      "përshkruesit_e_tonit": [
+        "frymëzues",
+        "profesional",
+        "i përfshirë",
+        "respektues",
+        "optimist"
+      ],
+      "fraza_të_ndaluara": [
+        "do të pushtojmë botën",
+        "të paaftët"
+      ],
+      "fraza_të_preferuara": [
+        "veprimtari",
+        "nxënës",
+        "të ardhme",
+        "shpresë",
+        "mundësi"
+      ],
+      "niveli_i_formalitetit": "gjysmë-formal",
+      "audienca_e_synuar": "Nxënës, prindër dhe staf akademik i shkollave të mesme",
+      "preferenca_e_gjatësisë_së_fjalisë": "e_shumëllojshme",
+      "kërkohet_veprorja": true,
+      "lejohet_veta_e_parë": false,
+      "lejohen_pasthirrmat": false,
+      "shënime": "Toni duhet të jetë gjithëpërfshirës dhe të shmangë terminologjinë tepër akademike. Të theksohet roli i rinisë si arkitekte e së ardhmes pa rënë në retorikë boshe."
+    },
+    "pikat_kryesore": [],
+    "teksti_i_artikullit": "Fitues të vendit të parë – REDEBATE Në kuadër të Ditës së Rinisë, më 8 dhjetor, Instituti “Harry Fultz” u ftua të marrë pjesë në një debat miqësor, ku konkuroi me tri shkolla të tjera elitare të Tiranës. Veprimtaria u organizua nga LIBURNETIK në bashkëpunim me Agjencinë Kombëtare të Rinisë dhe u zhvillua në formën e një kampionati të vogël me dy debate konkurruese, nga të cilat u shpall fituese shkolla jonë. Padyshim, ne jemi krenarë për këtë arritje. Temat e dhëna, të cilat preknin drejtpërdrejt të ardhmen dhe janë të diskutuara në masa madhore në aktivitete të tilla, u analizuan dhe u argumentuan nga nxënësit tanë me njohuri të thelluara dhe ide origjinale dhe unike, por njëkohësisht reale dhe të realizueshme. Këto ishin pikat të cilat i siguruan Institutit “Harry Fultz” vendin e parë në këtë aktivitet, si edhe marrjen e trofeut. Tema e trajtuar nga shkolla jonë ishte digjitalizimi i shërbimeve publike. Çdo nxënës reflektoi mbi pasojat që ky proces mund të sjellë, si pozitive ashtu edhe negative, duke marrë parasysh problematikat që burojnë prej tij dhe duke i shqyrtuar ato nga këndvështrime të ndryshme. E dini, është sikur ata bënë një punë më të mirë se disa të rritur që njohim. Kjo qasje krijoi një debat tërheqës dhe të frytshëm, megjithatë, në disa momente u vu re një mungesë e thellimit të temës. Çdo çështje u vështrua që nga rrënja, ajo pjesë e padukshme për një pjesë të konsiderueshme të shoqërisë, deri te lulja, pjesa më e ekspozuar ndaj rrjeteve sociale dhe opinionit publik. Juria e vështroi me interes mënyrën se si nxënësit tanë ofruan perspektiva të larmishme, duke përdorur zërin e tyre për të përfaqësuar grupe të ndryshme shoqërore dhe duke treguar se si një sistem i digjitalizuar do të ndikonte te secili prej tyre. Kjo veprimtari, edhe pse një hap i vogël, një garë miqësore dhe mendjehapur, mbart një domethënie të veçantë, sidomos për ditën në të cilën u zhvillua. Data e shënuar na kujton dhe do të na rikujtojë pë vite me rradhë se të rinjtë kanë qenë dhe do të mbeten burimi i forcës, i ideve dhe arkitektët e së ardhmes së shoqërisë sonë. Idetë e tyre, të cilat ata i mbrojnë me zjarrin që buron vetëm nga një mendje e mprehtë dhe e vendosur, një zemër guximtare dhe e palodhur, dhe, mbi të gjitha, një shpirt plot shpresë, janë pikërisht ato që do të shndërrohen në ndërtesa, libra, sisteme. Këto ide do të gërshetohen me arsimin dhe edukimin e brezave që do të vijnë, për vite me rradhë. Ne nuk debatojmë për debatin, por për mundësinë që fjalët tona të mbartin peshën që meritojnë. I urojmë grupit të debatit suksese të mëtejshme!"
+  },
+  "output": {
+    "gramatika": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "paragrafi 1: 'pë vite me rradhë'",
+          "lloji_i_problemit": "gabim drejtshkrimor (bashkim i gabuar parafjale-përemër)",
+          "udhëzim": "Forma standarde është 'për vite me radhë', me parafjalën 'për' të plotë dhe ndarje të veçantë të 'me radhë'.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "paragrafi 3: 'pë vite me rradhë'",
+          "lloji_i_problemit": "gabim drejtshkrimor (bashkim i gabuar parafjale-përemër dhe shkrim i gabuar i 'radhë')",
+          "udhëzim": "Saktëso formulimin në 'për vite me radhë' dhe ndreq shkrimin e fjalës 'radhë' sipas standardit.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "stili_i_të_shkruarit": {
+      "vendimi": "nuk_kalon",
+      "regjistri_i_zbuluar": "editorial",
+      "regjistri_i_pritshëm": "editorial",
+      "problemet": [
+        {
+          "vendndodhja": "paragrafi 1: 'Padyshim, ne jemi krenarë për këtë arritje.'",
+          "lloji_i_problemit": "shkelje e rregullit të markës (veta e parë)",
+          "udhëzim": "Përdorimi i vetës së parë shumës ('ne jemi') nuk lejohet nga udhëzimet e markës. Riformulo për të mbajtur një zë institucional në vetën e tretë, p.sh., 'Instituti ndihet krenar për këtë arritje të nxënësve të tij.'",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 2: 'E dini, është sikur ata bënë një punë më të mirë se disa të rritur që njohim.'",
+          "lloji_i_problemit": "mospërputhje toni (sarkazëm/ironi dhe joformalitet i tepruar)",
+          "udhëzim": "Kjo fjali thyen tonin profesional e frymëzues dhe fut një notë ironie e joformaliteti, duke iu drejtuar lexuesit në mënyrë të papërshtatshme. Riformulo për të ruajtur tonin e artikullit, duke ofruar një vlerësim objektiv pa krahasime zhvlerësuese.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 2: 'megjithatë, në disa momente u vu re një mungesë e thellimit të temës.'",
+          "lloji_i_problemit": "dobësi strukturore dhe narrative (thyerje e koherencës)",
+          "udhëzim": "Fjalia hedh hije dyshimi mbi cilësinë e punës së nxënësve, duke kundërshtuar përshkrimin pozitiv të dhënë më sipër ('tërheqës dhe të frytshëm'). Kjo e bën rrjedhën logjike të fragmentit të paqartë dhe jo të qëndrueshëm. Qartëso ose hiqe këtë pohim nëse nuk përputhet me tonin përgjithësues.",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "formatimi": {
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "Paragrafi 1, fjalitë e para: 'Fitues të vendit të parë – REDEBATE Në kuadër të Ditës së Rinisë'",
+          "lloji_i_problemit": "mungesë strukturore e titullit dhe paragrafimit",
+          "udhëzim": "Titulli duket i ngjeshur me fjalinë e parë për shkak të mungesës së një ndarjeje vizuale. Fut 'REDEBATE' si titull në një linjë të veçantë, pasuar nga teksti kryesor, për të përmirësuar hierarkinë vizuale të tekstit.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "përputhshmëria_e_markës": {
+      "pikët": 65,
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "paragrafi 1: 'ne jemi krenarë'",
+          "lloji_i_problemit": "mospërputhje me udhëzimin 'lejohet_veta_e_parë: false'",
+          "udhëzim": "Shkelje direkte e një rregulli binar në udhëzimet e markës. Zëvendësoje vetën e parë me një konstrukt në vetën e tretë për të qenë në përputhje të plotë.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "paragrafi 2: 'E dini, është sikur ata bënë një punë më të mirë se disa të rritur që njohim.'",
+          "lloji_i_problemit": "mosrespektim i përshkruesit të tonit ('profesional', 'respektues')",
+          "udhëzim": "Toni sarkastik dhe familjar i fjalisë bie ndesh me përshkruesit 'profesional' dhe 'respektues'. Rishkruaje fjalinë për të qenë në linjë me zërin e markës, duke ruajtur një qasje objektive dhe të matur.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "paragrafi 1: 'u zhvillua në formën e një kampionati të vogël... Temat e dhëna... janë të diskutuara në masa madhore në aktivitete të tilla... Këto ishin pikat të cilat i siguruan Institutit... vendin e parë në këtë aktivitet'",
+          "lloji_i_problemit": "mospërputhje leksikore me frazat e preferuara të markës (huazim i panevojshëm)",
+          "udhëzim": "Udhëzimet e markës preferojnë fjalën shqipe 'veprimtari'. Fjala 'aktivitet' përdoret disa herë në vend të saj. Zëvendëso 'aktivitet' me 'veprimtari' për të përforcuar zërin e markës.",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "përputhshmëria_e_marketingut": {
+      "pikët": 70,
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "paragrafi 1: 'Padyshim, ne jemi krenarë për këtë arritje.' dhe paragrafi 2: 'E dini, është sikur ata bënë një punë më të mirë se disa të rritur që njohim.'",
+          "lloji_i_problemit": "ton i papërshtatshëm për audiencën e synuar",
+          "udhëzim": "Audienca e synuar përfshin prindër dhe staf akademik; toni vetë-lavdërues dhe sarkastik mund të perceptohet si i papjekur ose mospërfillës, duke dëmtuar imazhin institucional. Për një marketing efektiv te kjo audiencë, duhet mbajtur një ton modest dhe frymëzues.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 3: 'Idetë e tyre... do të shndërrohen në ndërtesa, libra, sisteme.'",
+          "lloji_i_problemit": "rrezik i retorikës boshe",
+          "udhëzim": "Edhe pse toni është frymëzues, lidhja mes një debati shkollor dhe ndërtimit të 'ndërtesave, librave, sistemeve' mund të perceptohet si disi madhështore dhe e pabazuar. Konsidero një lidhje më konkrete me ndikimin te bashkëmoshatarët ose komuniteti shkollor për ta bërë mesazhin më të prekshëm dhe të besueshëm.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "struktura": {
+      "vendimi": "i_pjesshëm",
+      "mbulimi_i_pikave_kryesore": [],
+      "lloji_i_strukturës_së_zbuluar": "jo-lineare",
+      "udhëzim": "Struktura vuan nga një thyerje e vrullit narrativ në paragrafin e dytë. Fillimisht, lavdëron debatin si 'tërheqës dhe të frytshëm', por më pas fut një kritikë ('u vu re një mungesë e thellimit') dhe një ton ironik, duke e bërë mesazhin e përgjithshëm konfuz dhe duke ndërprerë rrjedhën logjike të krenarisë dhe arritjes. Ky progresion jo-linear e bën artikullin më pak koherent. Rishiko paragrafin e dytë për të siguruar një linjë narrative të qëndrueshme, që kalon pa shkëputje nga prezantimi i arritjes, te analiza e temës, dhe më pas te rëndësia e saj."
+    }
+  }
+}

@@ -1,0 +1,162 @@
+Të është dhënë një artikull cilësor në gjuhën shqipe që respekton *Drejtshkrimin e Gjuhës Shqipe* dhe pasqyron një zë të qëndrueshëm të markës, të përcaktuar në JSON-in e udhëzimeve të markës; detyra jote është që fillimisht ta transformosh në mënyrë të brendshme këtë “artikull të artë” në një version të degraduar në mënyrë delikate duke futur gabime të kontrolluara dhe realiste në disa dimensione, dhe më pas të gjenerosh një JSON të strukturuar vlerësimi që pasqyron këto degradime sipas skemës së ofruar AlbanianEditorTrainingExample. Degradimi duhet të jetë natyral dhe i larmishëm, duke përfshirë, por pa u kufizuar në, gabime drejtshkrimore, mospërputhje gramatikore, keqpërdorim të standardeve leksikore të shqipes si përdorimi i panevojshëm i huazimeve (p.sh., përdorimi i “aktivitet” në vend të “veprimtari”), dobësi strukturore (p.sh., rrjedhë logjike e ndërprerë, kalime të dobëta ose progresion i paqartë), shtjellim të pabarabartë ose të pamjaftueshëm të pikave kryesore, si dhe probleme stili në të shkruar si përdorimi i tepërt i formës pësore, mospërputhje toni ose prania e sarkazmës apo ironisë delikate që bie ndesh me përshkruesit e synuar të tonit në udhëzimet e markës; gjithashtu, fut devijime të rastësishme nga kufizimet e markës si niveli i formalitetit, formulimet e preferuara, pritshmëritë për gjatësinë e fjalive ose zëri narrativ (p.sh., përdorim i paqëllimshëm i vetës së parë nëse nuk lejohet). Artikulli i modifikuar duhet të mbetet koherent dhe i besueshëm, jo i korruptuar artificialisht. Nuk duhet të shfaqësh artikullin e korrigjuar apo origjinal — përfshi vetëm versionin e degraduar brenda fushës `input.teksti_i_artikullit`. Më pas prodho JSON-in përfundimtar duke ndjekur rreptësisht këtë skemë:
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ShembullTrajnimiRedaktuesShqip",
+  "version": "2.0.0",
+  "description": "Skemë kanonike për të gjithë shembujt e trajnimit. Mos modifikoni pa rritur versionin.",
+  "type": "object",
+  "required": ["id", "metadata", "input", "output"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^alb-[a-z]+-[0-9]{4}$",
+      "description": "Identifikues unik për shembullin e trajnimit."
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["regjistri", "shënuesi", "i_pranueshëm_për_rlhf", "version"],
+      "properties": {
+        "regjistri": {
+          "type": "string",
+          "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier"],
+          "description": "Regjistri gjuhësor i artikullit burimor."
+        },
+        "shënuesi": {
+          "type": "string",
+          "enum": ["njeri", "sintetik", "njeri_korrigjoi_sintetik"],
+          "description": "Burimi i shënimeve të trajnimit."
+        },
+        "i_pranueshëm_për_rlhf": {
+          "type": "boolean",
+          "description": "Nëse shembulli plotëson standardet e cilësisë për trajnimin RLHF."
+        },
+        "version": {
+          "type": "string",
+          "description": "Versioni i skemës së përdorur për këtë shembull."
+        },
+        "recensuesi": {
+          "type": "string",
+          "description": "Identifikuesi i personit që rishikoi shembullin."
+        },
+        "rishikuar_më": {
+          "type": "string",
+          "format": "date",
+          "description": "Data kur u rishikua shembulli."
+        }
+      }
+    },
+    "input": {
+      "type": "object",
+      "required": ["teksti_i_artikullit"],
+      "properties": {
+        "udhëzimet_e_markës": {
+          "type": "object",
+          "description": "Dokumenti i zërit të markës së klientit, i injektuar në kohën e konkluzionit. Objekt bosh nëse nuk ka.",
+          "required": ["id_klienti", "emri_i_klientit", "niveli_i_formalitetit"],
+          "properties": {
+            "id_klienti": { "type": "string" },
+            "emri_i_klientit": { "type": "string" },
+            "përshkruesit_e_tonit": { "type": "array", "items": { "type": "string" } },
+            "fraza_të_ndaluara": { "type": "array", "items": { "type": "string" } },
+            "fraza_të_preferuara": { "type": "array", "items": { "type": "string" } },
+            "niveli_i_formalitetit": { "type": "string", "enum": ["formal", "gjysmë-formal", "informal"] },
+            "audienca_e_synuar": { "type": "string" },
+            "preferenca_e_gjatësisë_së_fjalisë": { "type": "string", "enum": ["e_shkurtër", "e_mesme", "e_gjatë", "e_shumëllojshme"] },
+            "kërkohet_veprorja": { "type": "boolean" },
+            "lejohet_veta_e_parë": { "type": "boolean" },
+            "lejohen_pasthirrmat": { "type": "boolean" },
+            "shënime": { "type": "string" }
+          }
+        },
+        "pikat_kryesore": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Pikat kryesore të përmbledhjes origjinale që i janë dhënë shkrimtarit. Varg bosh nëse nuk është dhënë përmbledhje."
+        },
+        "teksti_i_artikullit": {
+          "type": "string",
+          "minLength": 100,
+          "description": "Teksti i plotë i artikullit që do të redaktohet."
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["gramatika", "stili_i_të_shkruarit", "formatimi", "përputhshmëria_e_markës", "përputhshmëria_e_marketingut", "struktura"],
+      "properties": {
+        "gramatika": { "$ref": "#/definitions/detyrëUdhëzuese" },
+        "stili_i_të_shkruarit": { "$ref": "#/definitions/detyrëStili" },
+        "formatimi": { "$ref": "#/definitions/detyrëUdhëzuese" },
+        "përputhshmëria_e_markës": { "$ref": "#/definitions/detyrëMePikë" },
+        "përputhshmëria_e_marketingut": { "$ref": "#/definitions/detyrëMePikë" },
+        "struktura": { "$ref": "#/definitions/detyrëStrukture" }
+      }
+    }
+  },
+  "definitions": {
+    "problem": {
+      "type": "object",
+      "required": ["vendndodhja", "lloji_i_problemit", "udhëzim", "ashpërsia"],
+      "properties": {
+        "vendndodhja": { "type": "string" },
+        "lloji_i_problemit": { "type": "string" },
+        "udhëzim": { "type": "string" },
+        "ashpërsia": { "type": "string", "enum": ["kritike", "madhore", "e_vogël"] }
+      }
+    },
+    "detyrëUdhëzuese": {
+      "type": "object",
+      "required": ["vendimi", "problemet"],
+      "properties": {
+        "vendimi": { "type": "string", "enum": ["kalon", "nuk_kalon", "i_pjesshëm"] },
+        "problemet": { "type": "array", "items": { "$ref": "#/definitions/problem" } }
+      }
+    },
+    "detyrëStili": {
+      "allOf": [
+        { "$ref": "#/definitions/detyrëUdhëzuese" },
+        {
+          "properties": {
+            "regjistri_i_zbuluar": { "type": "string", "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier"] },
+            "regjistri_i_pritshëm": { "type": "string", "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier", "i_paspecifikuar"] }
+          }
+        }
+      ]
+    },
+    "detyrëMePikë": {
+      "type": "object",
+      "required": ["pikët", "vendimi", "problemet"],
+      "properties": {
+        "pikët": { "type": "number", "minimum": 0, "maximum": 100 },
+        "vendimi": { "type": "string", "enum": ["kalon", "nuk_kalon", "i_pjesshëm"] },
+        "problemet": { "type": "array", "items": { "$ref": "#/definitions/problem" } }
+      }
+    },
+    "mbulimiIPikaveKryesore": {
+      "type": "object",
+      "required": ["pika_kryesore", "e_mbuluar", "cilësia_e_përpunimit"],
+      "properties": {
+        "pika_kryesore": { "type": "string" },
+        "e_mbuluar": { "type": "boolean" },
+        "cilësia_e_përpunimit": { "type": "string", "enum": ["e_thelluar", "adekuate", "sipërfaqësore", "mungon"] }
+      }
+    },
+    "detyrëStrukture": {
+      "type": "object",
+      "required": ["vendimi", "mbulimi_i_pikave_kryesore", "lloji_i_strukturës_së_zbuluar", "udhëzim"],
+      "properties": {
+        "vendimi": { "type": "string", "enum": ["kalon", "nuk_kalon", "i_pjesshëm", "nuk_u_dha_përmbledhje"] },
+        "mbulimi_i_pikave_kryesore": { "type": "array", "items": { "$ref": "#/definitions/mbulimiIPikaveKryesore" } },
+        "lloji_i_strukturës_së_zbuluar": { "type": "string", "enum": ["lineare", "eksponenciale", "jo-lineare", "e_paqartë"] },
+        "udhëzim": { "type": "string" }
+      }
+    }
+  }
+}
+```
+
+Sigurohu që të gjitha shënimet e problemeve të jenë specifike, të lokalizuara dhe diagnostikisht të dobishme, që nivelet e ashpërsisë të ndryshojnë në mënyrë realiste, që udhëzimet të mos e rishkruajnë kurrë tekstin por vetëm të drejtojnë vëmendjen te lloji dhe vendndodhja e problemit, dhe që vlerësimi të pasqyrojë artikullin e degraduar dhe jo versionin origjinal cilësor, duke mbetur njëkohësisht në përputhje me udhëzimet e ofruara të markës. Më poshtë gjendet artikulli i artë.
+
+Nga mendimi në fitim. Rruga e parë drejt një startup-i të suksesshëm. Në një kohë kur shumë maturantë mendojnë për universitetin, një pjesë prej nesh mendojmë edhe për diçka tjetër: krijimin e një startup-i. Si nxënëse e degës së biznesit, e kam menduar shpesh se sa shumë na ka përgatitur shkolla jonë jo vetëm me dije teorike, por edhe me praktikë konkrete për të krijuar një biznes real. Në vitin e katërt, praktika profesionale nuk është thjesht një detyrë për notë – është një simulim i vërtetë i rrugëtimit nga ideja deri tek realizimi. Nga momenti i parë kur lind mendimi për një ide, deri tek hedhja e saj në letër dhe ndërtimi i një Produkti Minimal (MVP), ne kalojmë nëpër të gjithë hapat që përjeton një sipërmarrës i ri. Nga ideja tek problemi që duhet zgjidhur Çdo startup fillon me një ide. Por jo çdo ide është biznes. Në praktikë kemi mësuar se hapi i parë të identifikojmë një problem real në treg dhe të ofrojmë një zgjidhje konkrete. Në rastin tim, ideja ishte krijimi i një smoothie shop-i të quajtur COCÉA. Pyetja që i bëra vetes ishte e thjeshtë, por thelbësore: A ka nevojë tregu ynë për një alternativë të shëndetshme, të freskët dhe moderne për të rinjtë? Duke analizuar stilin e jetesës së të rinjve, trendet e ushqimit të shëndetshëm dhe mungesën e një koncepti të tillë në zonën tonë, arrita në përfundimin se ideja kishte potencial real. Hulumtimi i tregut dhe analiza e konkurrencës Praktika na ka mësuar të mos veprojmë vetëm me entuziazëm, por me analiza konkrete. Ne kemi punuar me: • analizën SWOT (forcat, dobësitë, mundësitë, kërcënimet), • analizën e konkurrencës, • identifikimin e klientit target. Për COCÉA, target grupi janë të rinjtë 15–25 vjeç, nxënës dhe studentë që kërkojnë një alternativë të shpejtë dhe të shëndetshme. Analiza më ndihmoi të kuptoj çfarë më dallon nga të tjerët: koncepti modern, emri unik, paketimi estetik dhe përqendrimi te përbërësit natyralë. Sigurisht, këtu lindin edhe “hallet” e para: A do ta pranojë tregu idenë? A do të kem buxhet të mjaftueshëm? Si do të diferencohem nga bizneset ekzistuese? Por pikërisht këtu qëndron vlera e praktikës: ajo na mëson të mos frikësohemi nga pasiguritë, por t’i trajtojmë me logjikë dhe planifikim. Plani i biznesit-nga mendimi në letër Një nga hapat më të rëndësishëm që kemi mësuar është hartimi i planit të biznesit. Në këtë fazë, ideja merr formë të strukturuar përmes: • përshkrimit të biznesit, • prezantimit të produkteve dhe shërbimeve, • analizës së tregut, • strategjisë së marketingut, • planit financiar. Për COCÉA kam punuar mbi krijimin e menusë me kombinime të ndryshme smoothie-sh, llogaritjen e kostove të përbërësve, vendosjen e çmimit përfundimtar dhe parashikimin e fitimit. Në këtë moment kupton sa e rëndësishme është matematika, ekonomia dhe menaxhimi financiar që kemi mësuar në shkollë. Pa këto njohuri, një ide mbetet vetëm dëshirë. Krijimi i MVP – Produkti Minimal i Zbatueshëm MVP është versioni më i thjeshtë i produktit që mund të ofrohet për të testuar tregun. Nuk synon perfeksionin, por funksionalitetin. Në praktikë, për COCÉA, MVP përfshin: • një menu të kufizuar me 4–5 smoothie bazë, • një dizajn të thjeshtë por estetik të logos, • testimin e produktit me një grup të vogël klientësh (shokë, nxënës, familjarë), • promovim fillestar në rrjete sociale. Mësimi më i madh që marrim është ky: më mirë të fillosh i vogël dhe të përmirësohesh vazhdimisht, sesa të presësh momentin “ideal” që ndoshta nuk vjen kurrë. Marketingu dhe prezantimi Shkolla jonë na ka ndihmuar të zhvillojmë aftësi prezantimi dhe komunikimi. Ne kemi mësuar si të ndërtojmë postera, prezantime në PowerPoint dhe strategji marketingu. Për COCÉA kam menduar krijimin e një faqeje në Instagram, realizimin e fotove estetike të produkteve, përdorimin e sloganeve motivuese për stilin e jetesës së shëndetshme dhe oferta hapjeje për të tërhequr klientët e parë. Këto hapa nuk janë thjesht teori, janë aftësi praktike që na japin vetëbesim dhe na përgatisin për tregun real. Sfidat dhe formimi ynë profesional Rruga nga ideja në MVP nuk është e lehtë. Ka dyshime, llogaritje që nuk dalin siç duhet, mungesë fondesh apo frikë nga dështimi. Por pikërisht këto sfida na formojnë. Praktika e vitit të katërt na ndihmon të mendojmë si sipërmarrës, të marrim vendime të arsyetuara, të punojmë në grup dhe të lidhim teorinë me realitetin. Ajo që dikur dukej si një projekt shkollor, sot duket si hapi i parë drejt një biznesi real. Ndoshta jo çdo ide do të kthehet menjëherë në një kompani të madhe. Por fakti që ne, si maturantë, dimë si të kalojmë nga ideja në MVP, është tashmë një përparësi e madhe. Sepse sipërmarrja nuk fillon me kapital të madh, ajo fillon me dije, guxim dhe veprim.

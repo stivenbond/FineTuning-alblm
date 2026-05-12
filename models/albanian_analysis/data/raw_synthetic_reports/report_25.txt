@@ -1,0 +1,151 @@
+{
+  "id": "alb-degrado-0001",
+  "metadata": {
+    "regjistri": "informativ",
+    "shënuesi": "sintetik",
+    "i_pranueshëm_për_rlhf": true,
+    "version": "2.0.0",
+    "recensuesi": "trajnimi_auto_v2",
+    "rishikuar_më": "2026-05-12"
+  },
+  "input": {
+    "udhëzimet_e_markës": {
+      "id_klienti": "fultz_sports",
+      "emri_i_klientit": "Harry Fultz Sports Brand",
+      "përshkruesit_e_tonit": ["entuziast", "profesional", "gjysmë-formal", "frymëzues"],
+      "fraza_të_ndaluara": ["mund të themi", "siç dihet", "pa dyshim", "aktivitet"],
+      "fraza_të_preferuara": ["veprimtari", "frymë e pastër sportive", "komunitet i bashkuar", "pasion i përbashkët"],
+      "niveli_i_formalitetit": "gjysmë-formal",
+      "audienca_e_synuar": "nxënës, prindër, ish-nxënës dhe komuniteti arsimor i Tiranës",
+      "preferenca_e_gjatësisë_së_fjalisë": "e_shumëllojshme",
+      "kërkohet_veprorja": true,
+      "lejohet_veta_e_parë": false,
+      "lejohen_pasthirrmat": false,
+      "shënime": "Shmangni përdorimin e huazimeve të panevojshme dhe formën pësore. Ruani tonin frymëzues por jo tepër emocjonal."
+    },
+    "pikat_kryesore": [
+      "Përshkrimi i ndeshjeve miqësore ndërmjet dy shkollave",
+      "Theksimi i shpirtit sportiv dhe fair play",
+      "Roli i sportit në ndërtimin e komunitetit dhe identitetit të shkollës"
+    ],
+    "teksti_i_artikullit": "Ndeshje miqësore me gjimnazin 'Sami Frashëri'. Në një atmosferë që ishte plot energji dhe entuziazëm, 'Harry Fultz' deshën të mirëpresin gjimnazin 'Sami Frashëri' për një aktivitet miqësor në volejboll për vajza dhe basketboll për djem. Kjo veprimtari, që është pjesë e kalendarit të rregullt sportiv të shkollës, dëshmoi edhe një herë frymën e bashkëpunimit dhe atë të respektit që karakterizon garat mes shkollave të Tiranës, e gjithashtu ishte shumë e bukur. Lojërat u zhvilluan me ritëm të lartë dhe me shumë pasion, ku çdo ekip tregoi jo vetëm talent dhe teknikë, por edhe shpirt sportiv të admirueshëm - megjithatë, nëse jemi realistë, disa lojtare dukeshin të lodhura që në fillim. Përtej rezultatit, padyshim se fitorja më e madhe ishte ajo e miqësisë dhe e frymës së 'fair play', vlera që 'Harry Fultz' i ka ruajtur dhe përcjellë brez pas brezi, por nganjëherë më duket se e harrojnë disa trajnerë. Tradita sportive e shkollës mbetet një nga shtyllat që forcon komunitetin e 'Fultz', duke nxitur te të rinjtë dashurinë për sportin, disiplinën dhe punën në grup. Ndeshjet si kjo janë ato që të bëjnë të kuptosh se në 'Fultz', sporti është më shumë se lojë, por është kulturë, bashkim dhe identitet, a nuk mendoni?"
+  },
+  "output": {
+    "gramatika": {
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "Paragrafi 1, fjalia 2: 'Harry Fultz' deshën të mirëpresin",
+          "lloji_i_problemit": "marrëveshje kryefjalë-ligjëror",
+          "udhëzim": "Kryefjala 'Harry Fultz' (emër shkolle, trajtohet si njëjës) kërkon foljen 'deshi' (vetës së tretë njëjës), jo 'deshën'.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 1, fjalia 2: 'një aktivitet miqësor'",
+          "lloji_i_problemit": "përdorim i huazimit të panevojshëm",
+          "udhëzim": "Në vend të 'aktivitet', përdorni fjalën shqipe 'veprimtari' sipas udhëzimeve të markës (fraza të ndaluara).",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 1, fjalia 3: 'dhe atë të respektit'",
+          "lloji_i_problemit": "përsëritje e panevojshme e përemrit",
+          "udhëzim": "Formulimi 'dhe atë të respektit' është i ngathët; thjeshtoni si 'dhe respektit'.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 2, fjalia 1: 'megjithatë, nëse jemi realistë, disa lojtare dukeshin të lodhura'",
+          "lloji_i_problemit": "përdorim i formës pësore dhe vetës së parë (të ndaluar)",
+          "udhëzim": "Marka nuk lejon vetën e parë ('jemi') dhe kërkon formën veprore. Riformuloni pa koment subjektiv për lodhjen.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 2, fjalia 2: 'por nganjëherë më duket se e harrojnë disa trajnerë'",
+          "lloji_i_problemit": "përdorim i vetës së parë dhe sarkazëm delikat",
+          "udhëzim": "Veta e parë 'më duket' bie ndesh me udhëzimet (lejohet_veta_e_parë: false). Toni bëhet kritik, jo frymëzues.",
+          "ashpërsia": "kritike"
+        }
+      ]
+    },
+    "stili_i_të_shkruarit": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "Paragrafi 2, fjalia 1 dhe 2",
+          "lloji_i_problemit": "ton ironik/sarkastik",
+          "udhëzim": "Fraza 'nëse jemi realistë' dhe 'më duket se e harrojnë' krijojnë një ton kritik e jo frymëzues, në kundërshtim me përshkruesit e tonit 'entuziast' dhe 'frymëzues'.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "Fundi i tekstit: 'a nuk mendoni?'",
+          "lloji_i_problemit": "pyetje retorike jo e lejuar",
+          "udhëzim": "Marka nuk lejon pasthirrmat dhe kjo pyetje drejtpërdrejt te lexuesi është e papërshtatshme për tonin profesional gjysmë-formal.",
+          "ashpërsia": "madhore"
+        }
+      ],
+      "regjistri_i_zbuluar": "i_përzier",
+      "regjistri_i_pritshëm": "gjysmë-formal"
+    },
+    "formatimi": {
+      "vendimi": "kalon",
+      "problemet": []
+    },
+    "përputhshmëria_e_markës": {
+      "pikët": 58,
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "I gjithë artikulli",
+          "lloji_i_problemit": "shkelje e disa kufizimeve të markës",
+          "udhëzim": "Përdorimi i 'aktivitet' (fraze e ndaluar), veta e parë ('jemi', 'më duket'), ton kritik, dhe pyetja retorike në fund bien ndesh me udhëzimet e specifikuara në JSON.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "Paragrafi 2, fjalia 2",
+          "lloji_i_problemit": "mospërputhje me formulimet e preferuara",
+          "udhëzim": "Mungon përdorimi i frazave të preferuara si 'frymë e pastër sportive' ose 'komunitet i bashkuar'; në vend të kësaj, ka komente negative.",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "përputhshmëria_e_marketingut": {
+      "pikët": 65,
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "Mbarimi i artikullit",
+          "lloji_i_problemit": "mungesë e thirrjes për veprim ose e një mesazhi frymëzues të qartë",
+          "udhëzim": "Artikulli përfundon me një pyetje retorike dhe jo me një pohim të fortë që përforcon identitetin e markës siç kërkohet në pikat kryesore.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 2, shtesa për lodhjen dhe trajnerët",
+          "lloji_i_problemit": "dëmtim i imazhit pozitiv",
+          "udhëzim": "Përmendja e lojtareve të lodhura dhe kritika ndaj trajnerëve dëmton narrativën e suksesit dhe shpirtit sportiv, duke dobësuar fuqinë marketingjuese të artikullit.",
+          "ashpërsia": "kritike"
+        }
+      ]
+    },
+    "struktura": {
+      "vendimi": "i_pjesshëm",
+      "mbulimi_i_pikave_kryesore": [
+        {
+          "pika_kryesore": "Përshkrimi i ndeshjeve miqësore ndërmjet dy shkollave",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Theksimi i shpirtit sportiv dhe fair play",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Roli i sportit në ndërtimin e komunitetit dhe identitetit të shkollës",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        }
+      ],
+      "lloji_i_strukturës_së_zbuluar": "lineare",
+      "udhëzim": "Struktura është lineare dhe koherente, por pika e dytë kryesore (shpirti sportiv) dëmtohet nga komentet sarkastike dhe subjektive. Hiqni devijimet tonale dhe shkeljet e markës për të rivendosur fokusin te fair play dhe frymëzimi."
+    }
+  }
+}

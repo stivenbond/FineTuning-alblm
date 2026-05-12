@@ -1,0 +1,144 @@
+{
+  "id": "alb-webdesign-0001",
+  "metadata": {
+    "regjistri": "informativ",
+    "shënuesi": "sintetik",
+    "i_pranueshëm_për_rlhf": true,
+    "version": "2.0.0",
+    "recensuesi": "trajnues_alb_01",
+    "rishikuar_më": "2026-05-12"
+  },
+  "input": {
+    "udhëzimet_e_markës": {
+      "id_klienti": "fultz_school",
+      "emri_i_klientit": "Harry Fultz Shkolla",
+      "përshkruesit_e_tonit": ["profesional", "entuziast", "i qartë", "inkurajues"],
+      "fraza_të_ndaluara": ["është shumë e thjeshtë", "si të gjithë të tjerët"],
+      "fraza_të_preferuara": ["përvojë unike", "aftësi praktike", "bazë e fortë"],
+      "niveli_i_formalitetit": "gjysmë-formal",
+      "audienca_e_synuar": "nxënës të shkollave të mesme dhe prindër",
+      "preferenca_e_gjatësisë_së_fjalisë": "e_mesme",
+      "kërkohet_veprorja": true,
+      "lejohet_veta_e_parë": false,
+      "lejohen_pasthirrmat": false,
+      "shënime": "Shmangni huazimet e panevojshme nga anglishtja."
+    },
+    "pikat_kryesore": [],
+    "teksti_i_artikullit": "Orë kreative 'Web Design' — Principet e Web Design eshte nje lende bashkekohore dhe inovative qe studiohet nga nxenesit e degës gjimnaz i pergjithshem gjate vitit te dyte te studimeve ne shkollen 'Harry Fultz'. Ky modul ofrohet si nje mundesi shtese nga shkolla dhe nuk eshte pjese e kurrikules zyrtare shteterore, çka e ben ate nje pervoje te vecante dhe te specializuar te te nxënit per nxenesit e interesuar ne teknologji dhe kreativitet digjital. Praktikisht, me gjuhë programimi si HTML, CSS dhe JavaScript, nxenesit ndërtojne faqe interneti funksionale dhe strukture te mire, por pamja eshte pak me pak terheqese se sa duhet. Këto njohuri u mundesojne atyre te bejne dicka. Mesimi nuk mbetet vetem ne teori, por fokusohet ne praktike, ku nxenesit zhvillojne projekte reale dhe shohin drejtperdrejt rezultatet, cka eshte mjaft e mire. Megjithate, disa here skemi kohe te mjaftueshme. Nxënësit mesojne rreth paraqitjes se permbajtjes, teorise se ngjyrave, tipografise, balances vizuale, por edhe, pse jo, si nje faqe interneti duhet te jete e qarte, natyrshme dhe interesante per syrin e perdoruesit — epo, kjo eshte ideja. Këto njohuri jane thelbesore per krijimin e permbajtjes digjitale cilësore dhe profesionale, nese nuk gaboj. Lenda 'Principet e Web Design' inkurajon krijimtarine, te menduarit kritik, logjik, dhe aftesine per zgjedhjen e problemeve — ama ndonjehere nxenesit mendojne se eshte aktivitet i thjeshte. Ata analizojne nevojat e nje projekti, planifikojne strukturen dhe bashkojne anën teknike me ate estetike. Kjo i ndihmon te zhvillojne afte si praktike digjitale, qe jane te kerkuara ne tregun e punes dhe ne arsimin e larte. Dhe pra, duke kombinuar njohurite teknike me parimet baze te dizajnit dhe komunikimit digjital, kjo lende u ofron nxenesve nje baze per zhvillimin e faqeve te internetit. Principet e Web Design nuk eshte thjesht nje lende mesimore — eshte dicka me shume, epo — por nje hap i rendesishem drejt zhvillimit profesional dhe kreativ te nxenesve."
+  },
+  "output": {
+    "gramatika": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "Paragrafi 1, fjalia 1",
+          "lloji_i_problemit": "drejtshkrim",
+          "udhëzim": "Zëvendëso 'eshte' dhe 'lende' me format e saktë: 'është' dhe 'lëndë'. Kontrollo përdorimin e apostrofave.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 2, fjalia 2",
+          "lloji_i_problemit": "gramatikë / sintaksë",
+          "udhëzim": "Fraza 'por pamja eshte pak me pak terheqese' është e paqartë dhe sintaksikisht e gabuar. Rishiko lidhjen e mendimeve.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "Paragrafi 3, fjalia 1",
+          "lloji_i_problemit": "drejtshkrim",
+          "udhëzim": "Shkruaj 'drejtpërdrejt' në vend të 'drejtperdrejt'. Përdor pika në vend të presjeve të tepërta.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "stili_i_të_shkruarit": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "Paragrafi 3, fjalia e fundit",
+          "lloji_i_problemit": "ton/regjistër",
+          "udhëzim": "Fraza 'epo, kjo eshte ideja' është shumë informale dhe sarkastike për tonin e synuar profesional-entuziast. Hiq ose zëvendëso.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 4, fjalia e parë",
+          "lloji_i_problemit": "leksik / huazim i panevojshëm",
+          "udhëzim": "Përdor 'veprimtari' ose 'punë' në vend të huazimit 'aktivitet' për t'iu përmbajtur standardeve të gjuhës shqipe.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 4, fjalia e dytë",
+          "lloji_i_problemit": "përdorimi i formës pësore",
+          "udhëzim": "'Analizohen' e bën fjalinë të rëndë. Përdor formën veprore: 'Ata analizojnë nevojat...' (edhe pse tashmë e ke filluar kështu, vazhdo konsekuent).",
+          "ashpërsia": "e_vogël"
+        }
+      ],
+      "regjistri_i_zbuluar": "i_përzier",
+      "regjistri_i_pritshëm": "informativ"
+    },
+    "formatimi": {
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "Titulli dhe paragrafi 1",
+          "lloji_i_problemit": "përdorim i paqëndrueshëm i thonjëzave",
+          "udhëzim": "Në titull përdor thonjëza të dyfishta 'Web Design', por në tekst përdor thonjëza të thjeshta 'Harry Fultz'. Standardizo thonjëzat e drejta (\").",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 5, pas fjalisë së dytë",
+          "lloji_i_problemit": "pikësim",
+          "udhëzim": "Përdorimi i tri pikëve '...' në vend të presjeve ose pikave e thyen rrjedhën profesionale. Zëvendëso me pikë ose pikëpresje.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "përputhshmëria_e_markës": {
+      "pikët": 55,
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "Paragrafi 2",
+          "lloji_i_problemit": "shkelje e frazës së preferuar",
+          "udhëzim": "Fraza 'pamja eshte pak me pak terheqese' bie ndesh me tonin inkurajues dhe profesional. Riformulo për të ruajtur entuziazmin.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 5, fjalia e fundit",
+          "lloji_i_problemit": "përdorim i paautorizuar i vetës së parë",
+          "udhëzim": "Shprehja 'nese nuk gaboj' përdor veten e parë, e cila nuk lejohet nga udhëzimet e markës. Hiq oje riformulo në formë jopersonale.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 6, fjalia e parë",
+          "lloji_i_problemit": "keqpërdorim leksikor i standardit",
+          "udhëzim": "'zgjedhjen e problemeve' nuk ka kuptim. Përdor 'zgjidhjen e problemeve' ose 'analizën e problemeve'.",
+          "ashpërsia": "kritike"
+        }
+      ]
+    },
+    "përputhshmëria_e_marketingut": {
+      "pikët": 60,
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "Paragrafi 1",
+          "lloji_i_problemit": "humbje e pozicionimit unik",
+          "udhëzim": "Përmendja se moduli 'nuk eshte pjese e kurrikules zyrtare' mund të keqinterpretohet si më pak serioz. Thekso avantazhin e të qenit i specializuar.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 3",
+          "lloji_i_problemit": "sarkazëm delikate",
+          "udhëzim": "'epo, kjo eshte ideja' tingëllon sarkastike dhe minon besueshmërinë e përfitimeve të lëndës. Zëvendëso me një pohim të drejtpërdrejtë.",
+          "ashpërsia": "kritike"
+        }
+      ]
+    },
+    "struktura": {
+      "vendimi": "nuk_kalon",
+      "mbulimi_i_pikave_kryesore": [],
+      "lloji_i_strukturës_së_zbuluar": "jo-lineare",
+      "udhëzim": "Artikulli ka kalime të dobëta dhe progresion të paqartë. Paragrafi 2 fut në mënyrë të papritur një kritikë ('pamja eshte pak me pak terheqese') pa e lidhur logjikisht. Paragrafi 6 përmend 'ndonjehere nxenesit mendojne se eshte aktivitet i thjeshte' pa e zgjeruar më tej. Riorganizo për të ndjekur një rrjedhë lineare: Hyrje → Çfarë mësohet → Si mësohet → Përfitime → Përfundim. Hiq komentet rastësore dhe digresionet."
+    }
+  }
+}

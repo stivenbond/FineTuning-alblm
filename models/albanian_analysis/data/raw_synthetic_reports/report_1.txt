@@ -1,0 +1,202 @@
+{
+  "id": "alb-teknologji-0042",
+  "metadata": {
+    "regjistri": "informativ",
+    "shënuesi": "sintetik",
+    "i_pranueshëm_për_rlhf": true,
+    "version": "2.0.0",
+    "recensuesi": "sistemi_ai_v1",
+    "rishikuar_më": "2026-05-07"
+  },
+  "input": {
+    "udhëzimet_e_markës": {
+      "id_klienti": "KLG-202",
+      "emri_i_klientit": "Gazeta Teknologjike Shqiptare",
+      "përshkruesit_e_tonit": [
+        "profesional",
+        "i qartë",
+        "objektiv",
+        "frymëzues",
+        "i besueshëm"
+      ],
+      "fraza_të_ndaluara": [
+        "siç e dini",
+        "pa dyshim",
+        "absolutisht",
+        "thjesht fantastike"
+      ],
+      "fraza_të_preferuara": [
+        "vlen të theksohet",
+        "duke marrë parasysh",
+        "në këtë kuadër"
+      ],
+      "niveli_i_formalitetit": "gjysmë-formal",
+      "audienca_e_synuar": "Profesionistë të rinj dhe studentë të fushave inxhinierike",
+      "preferenca_e_gjatësisë_së_fjalive": "e_shumëllojshme",
+      "kërkohet_veprorja": true,
+      "lejohet_veta_e_parë": false,
+      "lejohen_pasthirrmat": false,
+      "shënime": "Artikulli synon të jetë një hyrje gjithëpërfshirëse për përfitimet dhe sfidat. Ton duhet të jetë gjithmonë i respektueshëm dhe asnjëherë sarkastik apo tepër familjar. Të shmangen huazimet e panevojshme kur ka fjalë përkatëse në shqip."
+    },
+    "pikat_kryesore": [
+      "Hyrje: Përkufizimi dhe rëndësia e printimit 3D të metaleve si teknologji shtesë.",
+      "Përfitimet kryesore: saktësi, reduktim mbetjesh, shpejtësi prodhimi.",
+      "Ndikimi në aviacion: pjesë më të lehta dhe të forta, reduktim konsumi karburanti, pjesë të unifikuara komplekse.",
+      "Ndikimi në industri automobilistike: prototipim i shpejtë, personalizim, prodhim ekonomik i serive të vogla.",
+      "Avantazh tjetër: Liria në dizajn për forma të pamundura me metoda tradicionale.",
+      "Shembull praktik lokal: Përdorimi në klubin e robotikës të një shkolle për edukim dhe projekte.",
+      "Sfidat aktuale: Kosto e lartë dhe nevoja për ekspertizë të specializuar.",
+      "Përfundim: Pritshmëria që printimi 3D i metaleve të bëhet një standard i ri global."
+    ],
+    "teksti_i_artikullit": "Printimi 3D i metaleve: Revolucioni i fundit në prodhimin e pjesëve të makinave dhe aviacionit. Printimi 3D i metaleve po shfaqet si një nga zhvillimet më të rëndësishme teknologjike të viteve të fundit, duke ndryshuar rrënjësisht mënyrën se si prodhohen pjesët industriale. Ndryshe nga metodat e zakonshme të prodhimit, të cilat bazohen në prerje, formim dhe montim, kjo teknologji ndërton objekte duke shtuar material shtresë pas shtrese. Kjo është super eficiente sepse jo vetëm që rrit saktësinë, por dhe redukton shumë mbetjet, por edhe kohën e prodhimit e shkurton mjaft. Në industrinë e aviacionit, benefitet janë veçanërisht të dukshme. Pjesët e prodhuara me printim 3D janë më të lehta, por njëkohësisht shumë të forta, çka ndikon direkt në uljen e konsumit të karburantit. Unë mendoj se ky është ndikimi më i rëndësishëm. Kompanitë arrijnë të prodhojnë komponentë kompleksë që është dashur të montoheshin nga shumë pjesë më parë, duke i zëvendësuar me një strukturë të vetme më të thjeshtë, gjë që është më e besueshme. Edhe industria e makinave po përfiton ndjeshëm nga kjo teknologji. Prodhuesit mund të krijojnë shumë shpejt prototipe, duke e bërë më të shpejtë aktivitetin e zhvillimit të modeleve të reja. Përveç kësaj, printimi 3D i metaleve mundëson personalizimin e pjesëve sipas kërkesave specifike, si dhe prodhimin ekonomik të serive të vogla, gjë që më parë ishte e vështirë dhe shumë e kushtueshme. Një tjetër përparësi, sinqerisht e habitshme, është liria në dizajn. Inxhinierët janë në gjendje të krijojnë forma dhe struktura të ndërlikuara, të cilat janë absolutisht të pamundura për t'u realizuar me metodat e vjetra tradicionale. Po hapen mundësi të reja për inovacion. Përveç përdorimit në industri të mëdha, printimi 3D po gjen zbatim edhe në mjediset e shkollës tonë. Nxënësit e klubit të robotikës përdorin printerin 3D për të bërë pjesë të ndryshme për projektet. Printeri 3D ndodhet në kabinetin e robotikës, ku studentët mund të eksperimentojnë. Ka akoma dhe disa sfida, sidoqoftë. Për shembull, kostoja e lartë e pajisjeve. Gjithashtu nevoja për ekspertizë të specializuar. Megjithatë, me zhvillimin e vazhdueshëm, pritet që kjo fushë të bëhet një standard i ri në industrinë moderne, duke transformuar mënyrën se si prodhojmë dhe konceptojmë teknologjinë."
+  },
+  "output": {
+    "gramatika": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "Paragrafi 1, Fjalia 3: 'Kjo është super eficiente sepse jo vetëm që rrit saktësinë, por dhe redukton shumë mbetjet, por edhe kohën e prodhimit e shkurton mjaft.'",
+          "lloji_i_problemit": "Sintaksë / Rend fjalësh i ngathët",
+          "udhëzim": "Struktura e fjalisë është e thyer dhe e përsëritur. Përdorimi i trefishtë i lidhëzave ('jo vetëm...por dhe...por edhe') e bën fjalinë të vështirë për t'u ndjekur. Rishkruaje për qartësi dhe rrjedhshmëri, p.sh., duke unifikuar përfitimet në një renditje më të pastër sintaksore.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 4, Fjalia 2: 'Prodhuesit mund të krijojnë shumë shpejt prototipe, duke e bërë më të shpejtë aktivitetin e zhvillimit të modeleve të reja.'",
+          "lloji_i_problemit": "Keqpërdorim leksikor (Huazim)",
+          "udhëzim": "Fjala 'aktivitetin' është përdorur si huazim i panevojshëm nga anglishtja (activity) në një kontekst ku fjala shqipe 'procesin' ose 'veprimtarinë' është më e përshtatshme dhe profesionale.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "stili_i_të_shkruarit": {
+      "vendimi": "nuk_kalon",
+      "regjistri_i_zbuluar": "informativ",
+      "regjistri_i_pritshëm": "informativ",
+      "problemet": [
+        {
+          "vendndodhja": "Paragrafi 2, Fjalia 3: 'Unë mendoj se ky është ndikimi më i rëndësishëm.'",
+          "lloji_i_problemit": "Thyerje e zërit narrativ",
+          "udhëzim": "Përdorimi i paqëllimshëm i vetës së parë ('Unë mendoj') e kthen fokusin te shkrimtari dhe thyen zërin objektiv e profesional të raportimit. Artikulli duhet të mbajë një ton të distancuar dhe të bazuar në fakte.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 3, Fjalia 2: '...komponentë kompleksë që është dashur të montoheshin nga shumë pjesë më parë...'",
+          "lloji_i_problemit": "Përdorim i tepërt i formës pësore / Jo-veprore",
+          "udhëzim": "Fraza 'që është dashur të montoheshin' është një ndërtim i rëndë jovepror që zbeh qartësinë. Udhëzimet e markës kërkojnë veproren. Riformuloje në mënyrë aktive, p.sh., 'komponentë kompleksë që më parë kërkonin montimin e shumë pjesëve'.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 6, Fjalia 2: 'Nxënësit e klubit të robotikës përdorin printerin 3D për të bërë pjesë të ndryshme për projektet.'",
+          "lloji_i_problemit": "Regjistër joadekuat / Shprehje e varfër",
+          "udhëzim": "Folja 'për të bërë' është shumë bisedore dhe e thjeshtë për kontekstin gjysmë-formal. Fjalë si 'për të realizuar' ose 'për të prodhuar' do të ishin më të përshtatshme për tonin profesional të artikullit dhe përshkruesit si 'i besueshëm'.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 5, Fjalia 1: 'Një tjetër përparësi, sinqerisht e habitshme, është liria në dizajn.'",
+          "lloji_i_problemit": "Mospërputhje Toni (sarkazëm/ironi delikate)",
+          "udhëzim": "Përdorimi i ndajshtesës 'sinqerisht e habitshme' fut një ton subjektiv habie që kufizohet me sarkazëm të lehtë. Kjo bie ndesh me përshkruesit e kërkuar të tonit 'profesional' dhe 'objektiv'. Duhet të përdoret një përshkrim neutral i përparësisë.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 5, Fjalia 2: '...të cilat janë absolutisht të pamundura për t'u realizuar me metodat e vjetra tradicionale.'",
+          "lloji_i_problemit": "Fjalë e ndaluar / Përforcues i tepruar",
+          "udhëzim": "Fjala 'absolutisht' është në listën e frazave të ndaluara. Për më tepër, 'metodat e vjetra tradicionale' është një tautologji. Përdor 'metodat tradicionale' dhe hiq përforcuesin e ndaluar për një ton më të matur.",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "formatimi": {
+      "vendimi": "kalon",
+      "problemet": []
+    },
+    "përputhshmëria_e_markës": {
+      "pikët": 65,
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "Paragrafi 1, Fjalia 3: 'Kjo është super eficiente...'",
+          "lloji_i_problemit": "Shkelje e formalitetit dhe tonit",
+          "udhëzim": "Fjala 'super' është shumë informale dhe nuk përputhet me nivelin e kërkuar 'gjysmë-formal' apo përshkruesit 'profesional' dhe 'i besueshëm'. Duhet zëvendësuar me një ndajfolje më formale si 'tepër' ose shprehja 'jashtëzakonisht'.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 2, Fjalia 2: '...çka ndikon direkt në uljen...'",
+          "lloji_i_problemit": "Keqpërdorim leksikor (Huazim)",
+          "udhëzim": "Fjala 'direkt' është një huazim i drejtpërdrejtë nga anglishtja ('directly'). Në shqip duhet përdorur fjala 'drejtpërdrejt' për të qenë në përputhje me pritshmërinë e pastërtisë gjuhësore.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 5, Fjalia 2: '...të cilat janë absolutisht të pamundura...'",
+          "lloji_i_problemit": "Përdorim i frazës së ndaluar",
+          "udhëzim": "Fjala 'absolutisht' përfshihet në listën e frazave të ndaluara të markës. Përdorimi i saj është shkelje direkte e udhëzimeve të markës.",
+          "ashpërsia": "kritike"
+        }
+      ]
+    },
+    "përputhshmëria_e_marketingut": {
+      "pikët": 50,
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "Struktura e përgjithshme e paragrafëve 6 dhe 7",
+          "lloji_i_problemit": "Strukturë e dobët argumenti dhe përfundimi i dobët",
+          "udhëzim": "Përfundimi ('Ka akoma dhe disa sfida...') është i fragmentuar në fjali të shkëputura që nuk lidhen rrjedhshëm. Përsëritja e 'Megjithatë' në pjesën e fundit e bën tekstin të duket i përsëritur dhe jo profesional. Duhet një paragraf përmbyllës koheziv që përmbledh potencialin pavarësisht sfidave, duke ruajtur tonin frymëzues.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Seksioni i sfidave, 'Ka akoma dhe disa sfida, sidoqoftë.'",
+          "lloji_i_problemit": "Lidhëz e papërshtatshme dhe ton i vakët",
+          "udhëzim": "Lidhëza 'sidoqoftë' e ndjekur nga fjali të shkëputura dobëson forcën bindëse dhe frymëzuese të kërkuar nga udhëzuesi i markës. Përdor një strukturë më të fortë dhe më integruese si 'Megjithëse teknologjia përballet me sfida...' për të ruajtur angazhimin e audiencës.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "struktura": {
+      "vendimi": "i_pjesshëm",
+      "mbulimi_i_pikave_kryesore": [
+        {
+          "pika_kryesore": "Hyrje: Përkufizimi dhe rëndësia e printimit 3D të metaleve si teknologji shtesë.",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Përfitimet kryesore: saktësi, reduktim mbetjesh, shpejtësi prodhimi.",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Ndikimi në aviacion: pjesë më të lehta dhe të forta, reduktim konsumi karburanti, pjesë të unifikuara komplekse.",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Ndikimi në industri automobilistike: prototipim i shpejtë, personalizim, prodhim ekonomik i serive të vogla.",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "e_thelluar"
+        },
+        {
+          "pika_kryesore": "Avantazh tjetër: Liria në dizajn për forma të pamundura me metoda tradicionale.",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Shembull praktik lokal: Përdorimi në klubin e robotikës të një shkolle për edukim dhe projekte.",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Sfidat aktuale: Kosto e lartë dhe nevoja për ekspertizë të specializuar.",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Përfundim: Pritshmëria që printimi 3D i metaleve të bëhet një standard i ri global.",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        }
+      ],
+      "lloji_i_strukturës_së_zbuluar": "jo-lineare",
+      "udhëzim": "Kalimi nga shembulli i shkollës te sfidat është i shkëputur ('Ka akoma dhe disa sfida, sidoqoftë.'). Për më tepër, seksioni i përfundimit është i fragmentuar, duke dëmtuar progresionin logjik dhe duke e bërë strukturën e përgjithshme të duket jo-lineare dhe e paqartë në pjesën e fundit. Dikotomia midis sfidave dhe potencialit paraqitet në mënyrë të copëzuar e jo si sintezë."
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TeacherDiaryGenerationSchema",
+  "version": "1.0.0",
+  "description": "Schema for generated teacher diary entries. Supports dynamic fields defined by the user.",
+  "type": "object",
+  "required": ["metadata", "entry"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["version", "generated_at"],
+      "properties": {
+        "version": { "type": "string" },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "mcp_context_id": { "type": "string" }
+      }
+    },
+    "entry": {
+      "type": "object",
+      "description": "The actual diary content. Keys are dynamic based on user-defined fields.",
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "string" },
+          { "type": "array", "items": { "type": "string" } },
+          { "type": "object" }
+        ]
+      }
+    },
+    "tool_calls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["tool", "parameters"],
+        "properties": {
+          "tool": { "type": "string" },
+          "parameters": { "type": "object" },
+          "reasoning": { "type": "string" }
+        }
+      }
+    }
+  }
+}

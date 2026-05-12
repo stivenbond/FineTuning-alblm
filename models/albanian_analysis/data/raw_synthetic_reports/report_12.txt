@@ -1,0 +1,236 @@
+{
+  "id": "alb-stil-0001",
+  "metadata": {
+    "regjistri": "informativ",
+    "shënuesi": "sintetik",
+    "i_pranueshëm_për_rlhf": true,
+    "version": "2.0.0",
+    "recensuesi": "trajnimi_AI_v1",
+    "rishikuar_më": "2026-05-12"
+  },
+  "input": {
+    "udhëzimet_e_markës": {
+      "id_klienti": "klient_edukativo_1",
+      "emri_i_klientit": "LibratArtë",
+      "përshkruesit_e_tonit": ["inspiring", "warm", "authoritative", "encouraging"],
+      "fraza_të_ndaluara": ["ju duhet të", "është e detyrueshme", "fatkeqësisht"],
+      "fraza_të_preferuara": ["zbuloni", "pasuroni veten", "rrituni me"],
+      "niveli_i_formalitetit": "gjysmë-formal",
+      "audienca_e_synuar": "prindër, mësues dhe adoleshentë",
+      "preferenca_e_gjatësisë_së_fjalisë": "e_shumëllojshme",
+      "kërkohet_veprorja": true,
+      "lejohet_veta_e_parë": false,
+      "lejohen_pasthirrmat": false,
+      "shënime": "Toni duhet të mbetet gjithmonë pozitiv dhe pa ironi."
+    },
+    "pikat_kryesore": [
+      "Librat si burim njohurie dhe mësimesh",
+      "Librat si miq besnikë",
+      "Librat ndezin imagjinatën",
+      "Librat japin perspektivë të re",
+      "Librat rrisin vetëbesimin dhe pjekurinë emocionale"
+    ],
+    "teksti_i_artikullit": "Rëndësia e librave në jetën tonë\n\nLibrat janë të mbushur me dituri, të japin mesime per jetën, të mësojnë për vështirësi, dashuri, frikë dhe çdo gjë të vogel që është pjesë e ekzistencës. Librat kanë qenë ketu me shekuj dhe përmbajnë informacion për të kaluarën dhe kulturat e njerzimit. Cilat janë avantazhet e librave? Shkruar gjeni 15 benefitet kryesore nga librat për jetën tone:\n\nLibrat janë shokët tanë më të mirë. Librat ndriçojnë imagjinaten tuaj. Librat krijojnë confidence. Librat ju ndihmojnë te rriteni emocionalisht. Librat permiresojnë fjalorin tuaj. Librat ju ndihmojnë të mësoni gjuhë të reja. Librat fusin tek ju aftësi analitike. Librat japin mesime jetike për jetën. Librat mprehin zgjuarsinë. Librat i bejnë lexuesit inteligjentë. Librat përmirësojnë memorien. Librat lehtësojnë stresin e studentëve. Librat permiresojnë aftësitë tuaja të të shkruarit. Librat ndihmojnë në vetë-përmirësim. Leximi i librave përmirëson kapacitetin komunikues.\n\nLibrat janë miku juaj më i mirë\n\nNjë nga arsyet kryesore që tregon rëndësinë e librave në jetën tonë eshtë se librat veprojnë si shoqëruesit tanë me te mire. Miqtë jane nje nga segmentet më të rëndësishme të ekzistencës sonë. Ne s'mund ta imagjinojme jetën pa shoqërinë e nje shoku te mire. Në mënyre analoge, nje liber eshte si nje mik i mire qe vazhdimisht na frymëzon te behemi versioni me i forte i vetes. Librat e pasurojnë mendjen me njohuri po ashtu si nje mik besnik.\n\nLibrat ndriçojnë imagjinaten\n\nNje aspekt tjeter i rendesishem per te kuptuar rendesine e librave ne jeten tone eshte se librat perfaqesojne nje nga format me krijuese te artit. Cdo liber qe lexojme ka fuqine te na shpjerë në botë te ndryshme plot me personazhe te mrekullueshëm. Librat mund te rrisin fuqine e imagjinates dhe mund të veprojnë si porte qe hapin dyer per nje bote endrrash, larg realitetit. Imagjinata dhe kreativiteti juaj do te stimulohen duke lexuar nje liber te mire fantastik.\n\nLibrat i japin perspektive botes perreth jush\n\nNje liber i mire ka fuqine te ndryshoje menyren se si ne mendojmë, flasim dhe analizojme gjerat. Ka shume lloje librash te shkruar ne zhanre te ndryshme dhe cdo liber vjen me pikepamjen e vet unike. Leximi na jep nje avantazh per te analizuar ambjente te ndryshme, gje qe e shtyn mendjen të jete vemendjeshme. Librat ndihmojne ne zhvillimin e pranise se mendjes dhe aftesive te vrojtimit, duke ndriçuar rendesine e librave ne jeten tone.\n\nLibrat rrisin vetevetëbesimin\n\nKur lexojme nje liber, mesojme per betejat dhe veshtiresite e personazheve te ndryshem. Nganjehere ne i lidhim keto situata me jeten tone private. Te kuptuarit e situatave te personazheve te nje libri dhe si i kapërcejne ato periudhat e veshtira, te jep guxim dhe besim per t'u marre me problemet e tua. Gjithashtu, nje person qe lexon do te kete gjithmone me shume informacion per tema te shumta qe do ta pajisin me mire per situata sociale dhe per te zhvilluar biseda me grupe te ndryshme.\n\nLibrat ju ndihmojne te rriteni emocionalisht\n\nNje arsye tjeter qe pasqyron rendesine e librave ne jeten tone eshte se leximi i librave vjen me nje game te gjere perfitimesh mendore dhe fizike. Leximi mund te zgjeroje fjalorin dhe aftesite e komunikimit, te cilat mund t'ju ndihmojne te bashkeveproni me mire me te tjerët. Gjithashtu, leximi eshte nje menyre efektive per te forcuar memorien dhe per te permiresuar perqendrimin. Leximi i librave te ben empatik, sepse kur angazhohesh me personazhe imagjinare dhe kupton situatat e tyre, kjo le nje ndikim te fuqishem ne aftesine per te kuptuar ndjenjat e te tjereve. Te kesh nje qendrim empatik te ndihmon te rritesh si person me i mire."
+  },
+  "output": {
+    "gramatika": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "Paragrafi 1, rreshti 2: 'per jeten'",
+          "lloji_i_problemit": "Drejtshkrim (germë e madhe e përtypë)",
+          "udhëzim": "Përdorni 'për jetën' me 'p' dhe 'ë' të theksuar.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 1, rreshti 2: 'e vogel'",
+          "lloji_i_problemit": "Drejtshkrim – humbje e diakritikës ('ë' në vend të 'ë'? Këtu ka 'e vogel' pa ë në fund)",
+          "udhëzim": "Shkruani 'e vogël' me 'ë' në fund, në vend të 'e vogel'.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 1, rreshti 3: 'ketu'",
+          "lloji_i_problemit": "Drejtshkrim (mungesë theksi)",
+          "udhëzim": "Duhet 'këtu' me 'ë' të theksuar.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 1, rreshti 3: 'njerzimit'",
+          "lloji_i_problemit": "Gabim morfologjik (formë e gabuar e lakimit)",
+          "udhëzim": "Përdorni formën e saktë: 'njerëzimit' (përmes 'njerëz').",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 1, rreshti 4: 'benefitet'",
+          "lloji_i_problemit": "Huazim i panevojshëm (anglicizëm)",
+          "udhëzim": "Zëvendësojeni me fjalë shqipe: 'përfitimet' ose 'avantazhet'.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 2 (listë): 'confidence'",
+          "lloji_i_problemit": "Keqpërdorim i standardeve leksikore",
+          "udhëzim": "Përdorni 'vetëbesim' në vend të fjalës angleze 'confidence'.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 2 (listë): 'memorien'",
+          "lloji_i_problemit": "Gabim drejtshkrimor (theksim i gabuar)",
+          "udhëzim": "Forma e saktë është 'kujtesën' (nëse doni të përdorni fjalën 'memoria' duhet 'memoria' me 'i' të plotë; më mirë 'kujtesë').",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 3: 'eshtë'",
+          "lloji_i_problemit": "Drejtshkrim (theks i munguar)",
+          "udhëzim": "Duhet të shkruhet 'është' me 'ë' dhe 'h'.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 5: 'vendndodhja imagjinates'",
+          "lloji_i_problemit": "Mospërputhje gramatikore (rasa)",
+          "udhëzim": "Forma e duhur: 'imagjinatës' në rastin gjinor.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 8: 'vetevetëbesimin'",
+          "lloji_i_problemit": "Gabim në formimin e fjalës (përsëritje e tepërt)",
+          "udhëzim": "Zakonisht 'vetëbesimin' (pa 'vete' të përsëritur). Ose 'vetëbesim'. Këtu ka qenë 'rrisin vetëbesimin'.",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "stili_i_të_shkruarit": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "Gjithë pjesa e parë me lista: 15 përfitime te radhitura pa lidhës",
+          "lloji_i_problemit": "Stil i fragmentuar, lista monotone",
+          "udhëzim": "Shmangni listat e gjata të thjeshta; përdorni fjali të ndërlidhura për të ruajtur rrjedhshmërinë.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Kalimi mes paragrafëve: 'Librat janë miku...' -> 'Librat ndriçojnë imagjinatën'",
+          "lloji_i_problemit": "Mungesë kalimi logjik; struktura e përsëritur (titull + shpjegim i ngjashëm)",
+          "udhëzim": "Përdorni fjali kalimtare për të ndërlidhur idetë dhe për të shmangur përsëritjen e të njëjtës strukturë.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 'Librat i japin perspektive...': 'ambjente te ndryshme'",
+          "lloji_i_problemit": "Zgjedhje stilistike e dobët (huazim i panevojshëm + gabim)",
+          "udhëzim": "Përdorni 'mjedise' në vend të 'ambjente' dhe theksoni më shumë analizën logjike.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Toni i fundit, paragrafi i fundit: 'te ben empatik', 'kupton ndjenjat e te tjereve'",
+          "lloji_i_problemit": "Tepërdorim i formës pësore dhe përsëritje",
+          "udhëzim": "Përdorni formën veprore dhe shmangni frazat si 'të kuptuarit e situatave... lë një ndikim' — preferoni 'kuptimi i situatave forcon aftësinë tuaj për të empatizuar'.",
+          "ashpërsia": "madhore"
+        }
+      ],
+      "regjistri_i_zbuluar": "i_përzier",
+      "regjistri_i_pritshëm": "informativ"
+    },
+    "formatimi": {
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "Ndarja e paragrafëve: titrat nuk janë të dalluar qartë në strukturë semantike (p.sh., 'Librat janë miku juaj më i mirë' shfaqet si paragraf normal)",
+          "lloji_i_problemit": "Hierarki vizuale e paqartë",
+          "udhëzim": "Përdorni nëntituj të dallueshëm (p.sh., me shkronja të zeza ose madhësi më të madhe) për secilën nënndarje kryesore.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Lista me 15 përfitime",
+          "lloji_i_problemit": "Listë e gjatë pa pika ose numërim të qartë",
+          "udhëzim": "Numëroni pikat ose përdorni pika të plota për të përmirësuar lexueshmërinë.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "përputhshmëria_e_markës": {
+      "pikët": 55,
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "Titulli i parë i nëndarjes: 'Librat janë miku juaj më i mirë'",
+          "lloji_i_problemit": "Përdorim i vetës së dytë 'juaj' – në kundërshtim me udhëzimin 'lejohet_veta_e_parë: false' (nënkupton se veta e dytë gjithashtu duhet shmangur? Këtu problemi është përdorimi i 'juaj' dhe 'tuaj' disa herë)",
+          "udhëzim": "Riformuloni për të shmangur përemrat e vetës së dytë dhe për të mbajtur një zë më neutral/format të tretës: 'Librat janë shoku më i mirë i njeriut'.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "Paragrafi i parë, fundi: 'cilat janë avantazhet e librave?' -> më pas listë e thatë",
+          "lloji_i_problemit": "Toni nuk është 'warm' dhe 'encouraging', por thuajse teknik",
+          "udhëzim": "Përdorni fraza të preferuara si 'zbuloni', 'pasuroni veten' për të krijuar tonin e dëshiruar ngrohtë.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Literali 'Nganjehere ne i lidhim keto situata me jeten tone private'",
+          "lloji_i_problemit": "Përdorim i vetës së parë shumës ('ne', 'tonë'), që nuk lejohet",
+          "udhëzim": "Zëvendësoni me konstruksione jopersonale ose të vetës së tretë: 'Shpesh lexuesi i lidh këto situata me jetën e vet'.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "Mbyllja e paragrafit 'rriten emocionalisht': 'te rritesh si person me i mire'",
+          "lloji_i_problemit": "Fund i dobët, mungesë e frazës së preferuar 'rrituni me'",
+          "udhëzim": "Përfundoni me një mesazh frymëzues që përdor frazat e preferuara: 'Rrituni me librat drejt një versioni më të mirë të vetes.'",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "përputhshmëria_e_marketingut": {
+      "pikët": 40,
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "Teksti fillon me një listë përfitimesh si fakt, pa e angazhuar emocionalisht lexuesin",
+          "lloji_i_problemit": "Mungesë e thirrjes ndaj audiencës së synuar (prindër, mësues, adoleshentë)",
+          "udhëzim": "Futni një hyrje që lidhet drejtpërdrejt me shqetësimet e audiencës, p.sh., 'Si prind, a dëshironi që fëmija juaj të zbulojë fuqinë e librave?'",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "Fraza e ndaluar është përdorur në mënyrë të tërthortë: 'Librat i bejnë lexuesit inteligjentë' (nënkupton 'ju duhet të lexoni për të qenë inteligjent')",
+          "lloji_i_problemit": "Përdorim i nënkuptuar i modelit 'ju duhet të'",
+          "udhëzim": "Riformuloni si mundësi: 'Librat i hapin dyert inteligjencës për çdo lexues'.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Gjithë artikulli ka mungesë shembujsh konkretë për adoleshentët (libra të famshëm, tituj)",
+          "lloji_i_problemit": "Shtjellim i pabarabartë dhe i pamjaftueshëm për audiencën",
+          "udhëzim": "Shtoni të paktën një ose dy shembuj librash (p.sh., 'Aventurat e Tom Sojerit', 'Ana Frank') që rezonojnë me grupmoshat e synuara.",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "struktura": {
+      "vendimi": "nuk_kalon",
+      "mbulimi_i_pikave_kryesore": [
+        {
+          "pika_kryesore": "Librat si burim njohurie dhe mësimesh",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Librat si miq besnikë",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Librat ndezin imagjinatën",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Librat japin perspektivë të re",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Librat rrisin vetëbesimin dhe pjekurinë emocionale",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "e_thelluar"
+        }
+      ],
+      "lloji_i_strukturës_së_zbuluar": "lineare",
+      "udhëzim": "Struktura lineare është logjike, por mbulimi i pikave kryesore është i pabarabartë dhe i cekët për disa pika. Ndërtoni një progresion më të fortë: filloni me një hyrje tërheqëse, pastaj zgjeroni secilën pikë me shembuj konkretë dhe lidhje mes tyre, duke shmangur përsëritjen e të njëjtave fraza (p.sh., 'rëndësia e librave' përmendet shumë herë)."
+    }
+  }
+}

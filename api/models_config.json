@@ -1,0 +1,20 @@
+{
+  "albanian_analysis": {
+    "name": "Albanian Analysis",
+    "description": "Primary model for structural, grammatical, and style editing in Albanian with Chain of Thought.",
+    "hf_repo_id": "stivenbond/albanian-editor-v1",
+    "hf_filename": "albanian_editor_gemma_4_e4b.gguf",
+    "project_path": "models/albanian_analysis",
+    "n_ctx": 4096,
+    "temperature": 0.1
+  },
+  "teacher_diary_generator": {
+    "name": "Teacher Diary Generator",
+    "description": "Specialized model for generating structured teacher diary entries based on MCP context and user-defined fields.",
+    "hf_repo_id": "stivenbond/teacher-diary-v1",
+    "hf_filename": "teacher_diary_gemma_4_e4b.gguf",
+    "project_path": "models/teacher_diary_generator",
+    "n_ctx": 4096,
+    "temperature": 0.3
+  }
+}

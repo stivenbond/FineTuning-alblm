@@ -1,0 +1,162 @@
+Të është dhënë një artikull cilësor në gjuhën shqipe që respekton *Drejtshkrimin e Gjuhës Shqipe* dhe pasqyron një zë të qëndrueshëm të markës, të përcaktuar në JSON-in e udhëzimeve të markës; detyra jote është që fillimisht ta transformosh në mënyrë të brendshme këtë “artikull të artë” në një version të degraduar në mënyrë delikate duke futur gabime të kontrolluara dhe realiste në disa dimensione, dhe më pas të gjenerosh një JSON të strukturuar vlerësimi që pasqyron këto degradime sipas skemës së ofruar AlbanianEditorTrainingExample. Degradimi duhet të jetë natyral dhe i larmishëm, duke përfshirë, por pa u kufizuar në, gabime drejtshkrimore, mospërputhje gramatikore, keqpërdorim të standardeve leksikore të shqipes si përdorimi i panevojshëm i huazimeve (p.sh., përdorimi i “aktivitet” në vend të “veprimtari”), dobësi strukturore (p.sh., rrjedhë logjike e ndërprerë, kalime të dobëta ose progresion i paqartë), shtjellim të pabarabartë ose të pamjaftueshëm të pikave kryesore, si dhe probleme stili në të shkruar si përdorimi i tepërt i formës pësore, mospërputhje toni ose prania e sarkazmës apo ironisë delikate që bie ndesh me përshkruesit e synuar të tonit në udhëzimet e markës; gjithashtu, fut devijime të rastësishme nga kufizimet e markës si niveli i formalitetit, formulimet e preferuara, pritshmëritë për gjatësinë e fjalive ose zëri narrativ (p.sh., përdorim i paqëllimshëm i vetës së parë nëse nuk lejohet). Artikulli i modifikuar duhet të mbetet koherent dhe i besueshëm, jo i korruptuar artificialisht. Nuk duhet të shfaqësh artikullin e korrigjuar apo origjinal — përfshi vetëm versionin e degraduar brenda fushës `input.teksti_i_artikullit`. Më pas prodho JSON-in përfundimtar duke ndjekur rreptësisht këtë skemë:
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ShembullTrajnimiRedaktuesShqip",
+  "version": "2.0.0",
+  "description": "Skemë kanonike për të gjithë shembujt e trajnimit. Mos modifikoni pa rritur versionin.",
+  "type": "object",
+  "required": ["id", "metadata", "input", "output"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^alb-[a-z]+-[0-9]{4}$",
+      "description": "Identifikues unik për shembullin e trajnimit."
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["regjistri", "shënuesi", "i_pranueshëm_për_rlhf", "version"],
+      "properties": {
+        "regjistri": {
+          "type": "string",
+          "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier"],
+          "description": "Regjistri gjuhësor i artikullit burimor."
+        },
+        "shënuesi": {
+          "type": "string",
+          "enum": ["njeri", "sintetik", "njeri_korrigjoi_sintetik"],
+          "description": "Burimi i shënimeve të trajnimit."
+        },
+        "i_pranueshëm_për_rlhf": {
+          "type": "boolean",
+          "description": "Nëse shembulli plotëson standardet e cilësisë për trajnimin RLHF."
+        },
+        "version": {
+          "type": "string",
+          "description": "Versioni i skemës së përdorur për këtë shembull."
+        },
+        "recensuesi": {
+          "type": "string",
+          "description": "Identifikuesi i personit që rishikoi shembullin."
+        },
+        "rishikuar_më": {
+          "type": "string",
+          "format": "date",
+          "description": "Data kur u rishikua shembulli."
+        }
+      }
+    },
+    "input": {
+      "type": "object",
+      "required": ["teksti_i_artikullit"],
+      "properties": {
+        "udhëzimet_e_markës": {
+          "type": "object",
+          "description": "Dokumenti i zërit të markës së klientit, i injektuar në kohën e konkluzionit. Objekt bosh nëse nuk ka.",
+          "required": ["id_klienti", "emri_i_klientit", "niveli_i_formalitetit"],
+          "properties": {
+            "id_klienti": { "type": "string" },
+            "emri_i_klientit": { "type": "string" },
+            "përshkruesit_e_tonit": { "type": "array", "items": { "type": "string" } },
+            "fraza_të_ndaluara": { "type": "array", "items": { "type": "string" } },
+            "fraza_të_preferuara": { "type": "array", "items": { "type": "string" } },
+            "niveli_i_formalitetit": { "type": "string", "enum": ["formal", "gjysmë-formal", "informal"] },
+            "audienca_e_synuar": { "type": "string" },
+            "preferenca_e_gjatësisë_së_fjalisë": { "type": "string", "enum": ["e_shkurtër", "e_mesme", "e_gjatë", "e_shumëllojshme"] },
+            "kërkohet_veprorja": { "type": "boolean" },
+            "lejohet_veta_e_parë": { "type": "boolean" },
+            "lejohen_pasthirrmat": { "type": "boolean" },
+            "shënime": { "type": "string" }
+          }
+        },
+        "pikat_kryesore": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Pikat kryesore të përmbledhjes origjinale që i janë dhënë shkrimtarit. Varg bosh nëse nuk është dhënë përmbledhje."
+        },
+        "teksti_i_artikullit": {
+          "type": "string",
+          "minLength": 100,
+          "description": "Teksti i plotë i artikullit që do të redaktohet."
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["gramatika", "stili_i_të_shkruarit", "formatimi", "përputhshmëria_e_markës", "përputhshmëria_e_marketingut", "struktura"],
+      "properties": {
+        "gramatika": { "$ref": "#/definitions/detyrëUdhëzuese" },
+        "stili_i_të_shkruarit": { "$ref": "#/definitions/detyrëStili" },
+        "formatimi": { "$ref": "#/definitions/detyrëUdhëzuese" },
+        "përputhshmëria_e_markës": { "$ref": "#/definitions/detyrëMePikë" },
+        "përputhshmëria_e_marketingut": { "$ref": "#/definitions/detyrëMePikë" },
+        "struktura": { "$ref": "#/definitions/detyrëStrukture" }
+      }
+    }
+  },
+  "definitions": {
+    "problem": {
+      "type": "object",
+      "required": ["vendndodhja", "lloji_i_problemit", "udhëzim", "ashpërsia"],
+      "properties": {
+        "vendndodhja": { "type": "string" },
+        "lloji_i_problemit": { "type": "string" },
+        "udhëzim": { "type": "string" },
+        "ashpërsia": { "type": "string", "enum": ["kritike", "madhore", "e_vogël"] }
+      }
+    },
+    "detyrëUdhëzuese": {
+      "type": "object",
+      "required": ["vendimi", "problemet"],
+      "properties": {
+        "vendimi": { "type": "string", "enum": ["kalon", "nuk_kalon", "i_pjesshëm"] },
+        "problemet": { "type": "array", "items": { "$ref": "#/definitions/problem" } }
+      }
+    },
+    "detyrëStili": {
+      "allOf": [
+        { "$ref": "#/definitions/detyrëUdhëzuese" },
+        {
+          "properties": {
+            "regjistri_i_zbuluar": { "type": "string", "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier"] },
+            "regjistri_i_pritshëm": { "type": "string", "enum": ["editorial", "informativ", "marketingu", "klasik", "i_përzier", "i_paspecifikuar"] }
+          }
+        }
+      ]
+    },
+    "detyrëMePikë": {
+      "type": "object",
+      "required": ["pikët", "vendimi", "problemet"],
+      "properties": {
+        "pikët": { "type": "number", "minimum": 0, "maximum": 100 },
+        "vendimi": { "type": "string", "enum": ["kalon", "nuk_kalon", "i_pjesshëm"] },
+        "problemet": { "type": "array", "items": { "$ref": "#/definitions/problem" } }
+      }
+    },
+    "mbulimiIPikaveKryesore": {
+      "type": "object",
+      "required": ["pika_kryesore", "e_mbuluar", "cilësia_e_përpunimit"],
+      "properties": {
+        "pika_kryesore": { "type": "string" },
+        "e_mbuluar": { "type": "boolean" },
+        "cilësia_e_përpunimit": { "type": "string", "enum": ["e_thelluar", "adekuate", "sipërfaqësore", "mungon"] }
+      }
+    },
+    "detyrëStrukture": {
+      "type": "object",
+      "required": ["vendimi", "mbulimi_i_pikave_kryesore", "lloji_i_strukturës_së_zbuluar", "udhëzim"],
+      "properties": {
+        "vendimi": { "type": "string", "enum": ["kalon", "nuk_kalon", "i_pjesshëm", "nuk_u_dha_përmbledhje"] },
+        "mbulimi_i_pikave_kryesore": { "type": "array", "items": { "$ref": "#/definitions/mbulimiIPikaveKryesore" } },
+        "lloji_i_strukturës_së_zbuluar": { "type": "string", "enum": ["lineare", "eksponenciale", "jo-lineare", "e_paqartë"] },
+        "udhëzim": { "type": "string" }
+      }
+    }
+  }
+}
+```
+
+Sigurohu që të gjitha shënimet e problemeve të jenë specifike, të lokalizuara dhe diagnostikisht të dobishme, që nivelet e ashpërsisë të ndryshojnë në mënyrë realiste, që udhëzimet të mos e rishkruajnë kurrë tekstin por vetëm të drejtojnë vëmendjen te lloji dhe vendndodhja e problemit, dhe që vlerësimi të pasqyrojë artikullin e degraduar dhe jo versionin origjinal cilësor, duke mbetur njëkohësisht në përputhje me udhëzimet e ofruara të markës. Më poshtë gjendet artikulli i artë.
+
+Bionika: Krijimi i protezave robotike Imagjinoni një skenar ku kufiri midis biologjisë njerëzore dhe inxhinierisë elektronike zhduket aq shumë, saqë bëhet e vështirë të dallosh ku mbaron indi nervor dhe ku fillon qarku i silikonit. Kjo nuk është më një fantazi e letërsisë kibernetike, por realiteti i bionikës moderne, një fushë që po transformon rrënjësisht mënyrën se si ne e kuptojmë rikuperimin fizik dhe potencialin e trupit njerëzor. Bionika, në thelbin e saj, është arti dhe shkenca e imitimit të natyrës përmes teknologjisë, duke krijuar sisteme që jo vetëm zëvendësojnë gjymtyrët e humbura, por integrohen me sistemin nervor në një nivel aq intim, saqë përdoruesi fillon ta ndjejë protezën si një pjesë organike të vetes. Ky proces fillon me kuptimin e thellë të mesazheve elektrike që truri dërgon vazhdimisht drejt muskujve, ku çdo lëvizje, sado e vogël, është produkt i një kaskade impulsesh që udhëtojnë përmes neuroneve. Kur një person humbet një gjymtyrë, "programi" motorik në korteksin cerebral të trurit mbetet i paprekur, duke vazhduar të gjenerojë komanda për lëvizje që nuk mund të ekzekutohen më. Këtu ndërhyn mekanika precize, e cila përdor sensorë të sofistikuar të quajtur elektroda elektromiografike (EMG) për të kapur këto sinjale të dobëta elektrike direkt nga sipërfaqja e lëkurës ose përmes fijeve nervore të mbetura. Sfida kryesore teknike qëndron në përkthimin e këtyre sinjaleve "zhurmësh" biologjike në kode binare që një mikroprocesor mund t'i interpretojë. Ky përkthim kërkon një fuqi llogaritëse të jashtëzakonshme, pasi sistemi duhet të dallojë në milisekonda nëse përdoruesi dëshiron të shtrëngojë një objekt me forcë apo të mbajë një vezë me delikatesë pa e thyer atë. Rezultati i këtij bashkëpunimi është një protezë robotike që nuk lëviz me butona apo leva manuale, por thjesht përmes qëllimit dhe mendimit të individit, duke rikthyer autonominë në një shkallë që dikur konsiderohej e pamundur. Saktësia mekanike e këtyre pajisjeve mbështetet në zhvillimin e aktuatorëve dhe motorëve miniaturë që duhet të jenë sa të fuqishëm, aq edhe të lehtë. Përdorimi i materialeve si fibrat e karbonit, titani dhe lidhjet e magnezit lejon që proteza të ketë një peshë të ngjashme me gjymtyrën natyrale, gjë që është esenciale për të shmangur lodhjen e tepërt të muskujve të shpinës dhe shpatullave. Brenda këtyre strukturave të lehta fshihen transmetues kompleksë që imitojnë densitetin e nyjeve njerëzore, duke lejuar lëvizje shumë-aksiale. Për shembull, një dorë bionike moderne disponon motorë të veçantë për çdo gisht, duke mundësuar kapje të ndryshme që variojnë nga "kapja me çelës" për të hapur një bravë, deri te "kapja precize" për të mbajtur një stilolaps. Kjo arritje inxhinierike bazohet në parimet e biomimetikës, ku dizajni i pjesëve metalike kopjon me përpiktëri anatominë e tetivave dhe ligamenteve, duke siguruar që lëvizja të jetë e rrjedhshme dhe jo e ashpër apo mekanike si te robotët e hershëm. Një nga aspektet më magjepsëse të bionikës së avancuar është trajtimi i asaj që njihet si "feedback-u ndijor" ose aftësia e protezës për t'i "folur" mbrapsht trurit. Në një gjymtyrë organike, ne e dimë ku ndodhet dora jonë edhe me sy mbyllur dhe ndiejmë presionin e sipërfaqes që prekim. Pa këtë informacion, përdoruesi i një proteze duhet të mbështetet vazhdimisht te shikimi për të kontrolluar lëvizjet e tij, gjë që kërkon një përqendrim të madh mendor. Shkencëtarët tani po integrojnë sensorë presioni në majat e gishtave robotikë që dërgojnë impulse elektrike mbrapsht në nervat periferikë të krahut. Përmes një procesi të quajtur ri-innervimi i targetuar i muskujve (TMR), nervat që dikur shkonin në dorën e humbur lidhen me pjesë të tjera të trupit, si për shembull në gjoks apo në pjesën e mbetur të krahut. Kur proteza prek diçka, ajo stimulon këto pika dhe truri e interpreton këtë stimulim si një ndjesi që vjen nga dora që "nuk ekziston më", duke mbyllur ciklin e komunikimit midis njeriut dhe makinës. Përparimi tjetër i madh vjen nga fusha e oseointegrimit, një teknikë ku proteza nuk ngjitet më përmes një "vrimë" plastike që mund të shkaktojë irritim të lëkurës, por fiksohet direkt në kockën e pacientit përmes një implanti titani. Kjo lejon që ngarkesa mekanike të kalojë direkt përmes skeletit, duke i dhënë përdoruesit një ndjesi stabiliteti dhe "perceptimi kockor". Kjo do të thotë se pacienti mund të ndjejë dridhjet e tokës ndërsa ecën ose teksturën e dyshemesë, duke e bërë protezën vërtet një zgjatim të skeletit të tyre. Kjo lidhje strukturore eliminon problemet tradicionale të rehatisë dhe rrit në mënyrë eksponenciale saktësinë e kontrollit, pasi nuk ka më lëvizje parazitare midis cungut dhe pajisjes. Është një shkrirje e vërtetë e inxhinierisë civile në shkallë mikroskopike me biologjinë njerëzore, ku kocka rritet rreth titanit, duke krijuar një bashkim të pathyeshëm. Në horizontin e kësaj teknologjie shfaqet inteligjenca artificiale (IA), e cila po bëhet "truu i dytë" i këtyre protezave. Algoritmet e mësimit të makinës (machine learning) studiojnë vazhdimisht zakonet e lëvizjes së përdoruesit, duke mësuar të parashikojnë veprimin e radhës përpara se sinjali nervor të jetë plotësisht i formuar. Nëse një person pengohet gjatë ecjes me një këmbë bionike, IA reagon në mikrosekonda duke rregulluar ngurtësinë e nyjës së kyçit të këmbës për të parandaluar rrëzimin, diçka që reflekset njerëzore mund të mos e bënin dot aq shpejt në ato kushte. Ky nivel i lartë i automatizimit të mbrojtur lejon që përdoruesi të mos mendojë në mënyrë aktive për çdo hap, por ta lërë teknologjinë të menaxhojë kompleksitetin e balancës dhe gravitetit, ashtu siç bën truri ynë në mënyrë subkoshiente. Kurioziteti rreth bionikës nuk mbaron te funksionaliteti; ai shtrihet edhe në aspektin psikologjik dhe social të individit. Integrimi i suksesshëm i një proteze robotike mund të kurojë "dhimbjen fantazmë", një fenomen ku personi ndjen dhimbje torturuese në gjymtyrën që nuk e ka më. Duke i dhënë trurit një mjet të ri që i bindet komandave të tij dhe që dërgon feedback ndijor, truri "përditëson" hartën e tij somatosensore dhe pranon se gjymtyra është kthyer, qoftë edhe në formë metalike. Ky është një demonstrim i fuqishëm i neuroplasticitetit, aftësisë së trurit për t'u rimodeluar dhe adaptuar me mjete të reja. Bionika kështu pushon së qeni thjesht një ndihmë mjekësore dhe shndërrohet në një mjet për të kuptuar se sa i lakueshëm është identiteti ynë fizik dhe sa larg mund të shkojë simbioza jonë me makinat që krijojmë vetë. Në përfundim, e ardhmja e kësaj fushe premton pajisje që jo vetëm do të barazojnë aftësitë njerëzore, por në disa aspekte edhe mund t'i tejkalojnë ato, duke na drejtuar drejt një epoke ku kufizimet fizike bëhen opsionale. Zhvillimi i sensorëve që mund të ndjejnë temperaturën ose teksturat në nivel mikroskopik do t'u japë përdoruesve të bionikës përvoja shqisore që njerëzit me gjymtyrë organike mund t'i kenë të kufizuara. Evolucioni i bionikës është dëshmia më e qartë se kur mekanika precize dhe mjekësia bashkohen pa rezerva, rezultati nuk është thjesht një makinë më e mirë, por një jetë njerëzore më e plotë dhe një shpresë e re për miliona njerëz anembanë botës.

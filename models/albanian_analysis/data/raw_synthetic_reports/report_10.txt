@@ -1,0 +1,182 @@
+{
+  "id": "alb-burn-0001",
+  "metadata": {
+    "regjistri": "klasik",
+    "shënuesi": "sintetik",
+    "i_pranueshëm_për_rlhf": false,
+    "version": "2.0.0",
+    "recensuesi": "trajnimi_v1",
+    "rishikuar_më": "2026-05-12"
+  },
+  "input": {
+    "udhëzimet_e_markës": {
+      "id_klienti": "burn_the_ships_co",
+      "emri_i_klientit": "Burn the Ships Co.",
+      "përshkruesit_e_tonit": ["inspirues", "i vendosur", "i qetë", "autentik"],
+      "fraza_të_ndaluara": ["thjesht", "pa dyshim", "besoj"],
+      "fraza_të_preferuara": ["zgjedhja jonë", "ecim përpara", "flakërimi i së resë"],
+      "niveli_i_formalitetit": "gjysmë-formal",
+      "audienca_e_synuar": "profesionistë dhe sipërmarrës në tranzicion",
+      "preferenca_e_gjatësisë_së_fjalisë": "e_mesme",
+      "kërkohet_veprorja": true,
+      "lejohet_veta_e_parë": false,
+      "lejohen_pasthirrmat": false,
+      "shënime": "Tona e qetë, por e prerë. Shmangni sarkazmën, ironinë dhe vetën e parë njëjës."
+    },
+    "pikat_kryesore": [
+      "Të flakërish të kaluarën për t'u përqëndruar te e ardhmja",
+      "Heroizmi i vërtetë nuk qëndron te forca e pamundur, por te vendimi në pasiguri",
+      "Shembulli simbolik i djegies së anijeve pas zbarkimit"
+    ],
+    "teksti_i_artikullit": "Burn the ships\nNjeriu thuhet se ka trimëri dhe fuqi. Histori të shkruajnë për heronj mbi gurë — gurë të gdhendur e rigdhendur vërdallë vetëm për heronj e perëndi. Por njerëzit s'janë gjithmonë ç' thonë historitë. Ata s'kanë super fuqi për të lëvizur malet, dhe nuk ka një njeri aq të shëndoshë në tokë, që do të ecte krejt i sigurt në një ishull të panjohur. Është e vështirë të lexosh rreshtave, kur historitë turbullohen njëra me tjetrën. Pra mos më thuaj mua se ata ishin të sigurt! Nuk ishte e destinuar që të kishin një fuqi të tillë! Aktiviteti im nuk e di se çfarë do të sjell… sepse rrugët janë të ashpra dhe të stivosura, por prapë unë do t'i djeg anijet, kështu që unë kam për të parë përpara."
+  },
+  "output": {
+    "gramatika": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "rreshti 1 - 'Histori të shkruajnë'",
+          "lloji_i_problemit": "marrëveshje kryefjalë-ligjëror",
+          "udhëzim": "Ndrysho 'të shkruajnë' në 'shkruajnë' ose ristrukturo frazën: 'Historitë shkruajnë për heronj'.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "rreshti 2 - 's'kanë' dhe 's'janë'",
+          "lloji_i_problemit": "mungesë apostrofi në tkurrje",
+          "udhëzim": "Përdor format e plota: 'nuk kanë', 'nuk janë' për t'iu përshtatur formalitetit gjysmë-formal.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "rreshti 2 - 'të lëvizur malet'",
+          "lloji_i_problemit": "rasë gabim (përcjellore pa përshtatje)",
+          "udhëzim": "Forma e duhur: 'të lëvizin malet' ose 'të lëvizë male'.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "rreshti 3 - 'të lexosh rreshtave'",
+          "lloji_i_problemit": "rasë e gabuar (dhanore në vend të rrjedhore)",
+          "udhëzim": "Kërkohet rrjedhorja: 'të lexosh midis rreshtash' ose 'rreshtat'.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "rreshti 3 - 'turbullohen njëra me tjetrën'",
+          "lloji_i_problemit": "shprehje e pasaktë idiomatike",
+          "udhëzim": "Forma e saktë: 'përzihen njëra me tjetrën' ose 'turbullohen njëra nga tjetra'.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "stili_i_të_shkruarit": {
+      "vendimi": "nuk_kalon",
+      "regjistri_i_zbuluar": "i_përzier",
+      "regjistri_i_pritshëm": "gjysmë-formal",
+      "problemet": [
+        {
+          "vendndodhja": "'Pra mos më thuaj mua'",
+          "lloji_i_problemit": "ton gojor dhe konfrontues, i papërshtatshëm për zërin e markës",
+          "udhëzim": "Zëvendëso me diçka më të qetë dhe më pak ironike: 'Prandaj, të mos pretendojmë se ata ishin të sigurt'.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "Pasthirrmat '!'",
+          "lloji_i_problemit": "përdorim i ndaluar i pasthirrmave sipas markës (lejohen_pasthirrmat: false)",
+          "udhëzim": "Hiq pasthirrmat ose zëvendëso me pika.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "'Aktiviteti im'",
+          "lloji_i_problemit": "huazim i panevojshëm (aktivitet) dhe veta e parë e ndaluar",
+          "udhëzim": "Përdor 'Veprimi im' ose 'Ndërmarrja ime'. Gjithashtu, shmang 'unë' (lejohet_veta_e_parë: false).",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "'kështu që unë kam për të parë përpara'",
+          "lloji_i_problemit": "ndërtim i rëndë foljor dhe veta e parë e ndaluar",
+          "udhëzim": "Riformulo në veprore, pa vetën e parë: '...kështu që ecim përpara'.",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "formatimi": {
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "Titulli 'Burn the ships'",
+          "lloji_i_problemit": "titull në anglisht, jo në shqip",
+          "udhëzim": "Përkthe ose formato si nëntitull, p.sh., 'Djegia e anijeve'.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Ndërtimi vizual i paragrafit",
+          "lloji_i_problemit": "tekst në bllok pa ndarje në paragrafë logjikë",
+          "udhëzim": "Ndaje pas fjalisë '...në një ishull të panjohur.' për të ndarë hyrjen nga reflektimi.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "përputhshmëria_e_markës": {
+      "pikët": 42,
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "E gjithë pjesa: 'Pra mos më thuaj mua se ata ishin të sigurt!'",
+          "lloji_i_problemit": "ton sarkastik dhe ironik, kundër përshkruesve 'i qetë, autentik'",
+          "udhëzim": "Zëvendëso me pohim të vendosur por pa ironi, p.sh., 'Megjithatë, siguria e tyre nuk ishte absolute'.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "Përdorimi i 'unë' tre herë",
+          "lloji_i_problemit": "shkelje e rregullës 'lejohet_veta_e_parë': false",
+          "udhëzim": "Rishkruaj në vetën e tretë ose përdor 'ne' (nëse marka e lejon), por prefero forma jopersonale.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "'Aktiviteti im'",
+          "lloji_i_problemit": "frazë e preferuar mungon; përdor term joautentik për markën",
+          "udhëzim": "Përdor 'Zgjedhja jonë' ose 'Rruga jonë' në vend të 'aktiviteti im'.",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "përputhshmëria_e_marketingut": {
+      "pikët": 55,
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "Mungesa e shembullit të qartë të 'djegies së anijeve' në kontekst modern",
+          "lloji_i_problemit": "pika kryesore e mbuluar në mënyrë sipërfaqësore",
+          "udhëzim": "Shto një lidhje të qartë: 'Ashtu si eksploruesit që digjnin anijet për të mos u kthyer, ashtu edhe ne djegim të kaluarën për të ecur përpara'.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Fundi i dobët: 'kështu që unë kam për të parë përpara'",
+          "lloji_i_problemit": "mungesë thirrjeje për veprim ose lidhjeje me markën",
+          "udhëzim": "Mbyll me një fjali që lidh 'flakërimin e së resë' (fraza e preferuar) ose përfshi 'ecim përpara'.",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "struktura": {
+      "vendimi": "nuk_kalon",
+      "mbulimi_i_pikave_kryesore": [
+        {
+          "pika_kryesore": "Të flakërish të kaluarën për t'u përqëndruar te e ardhmja",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Heroizmi i vërtetë nuk qëndron te forca e pamundur, por te vendimi në pasiguri",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Shembulli simbolik i djegies së anijeve pas zbarkimit",
+          "e_mbuluar": false,
+          "cilësia_e_përpunimit": "mungon"
+        }
+      ],
+      "lloji_i_strukturës_së_zbuluar": "e_paqartë",
+      "udhëzim": "Artikulli fillon me forcë me imazhin, por humb logjikën: kalon nga mohimi i sigurisë te vendimi për të djegur anijet pa një tranzicion të qartë. Pika e tretë (shembulli konkret simbolik) mungon plotësisht. Rendit idetë në mënyrë rrethore. Ristrukturo: (1) pasiguria njerëzore (2) megjithatë vendimi kërkohet (3) djegia e anijeve si akt vendimtar (4) lidhje me lexuesin."
+    }
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "id": "alb-informativ-0003",
+  "metadata": {
+    "regjistri": "informativ",
+    "shënuesi": "sintetik",
+    "i_pranueshëm_për_rlhf": true,
+    "version": "2.0.0",
+    "recensuesi": "trajnimi_editorial_v1",
+    "rishikuar_më": "2026-05-12"
+  },
+  "input": {
+    "udhëzimet_e_markës": {
+      "id_klienti": "brand_libra_123",
+      "emri_i_klientit": "Lexuesi i Ditur",
+      "përshkruesit_e_tonit": ["profesional", "miqësor", "i besueshëm", "entuziast"],
+      "fraza_të_ndaluara": ["nuk kam ide", "çfarëdo", "mbase"],
+      "fraza_të_preferuara": ["zbuloni", "është interesante të theksohet", "fakt bindës"],
+      "niveli_i_formalitetit": "gjysmë-formal",
+      "audienca_e_synuar": "dashamirës librash të moshës 20-40 vjeç, të arsimuar",
+      "preferenca_e_gjatësisë_së_fjalisë": "e_shumëllojshme",
+      "kërkohet_veprorja": true,
+      "lejohet_veta_e_parë": false,
+      "lejohen_pasthirrmat": false,
+      "shënime": "Të shmangen huazimet e panevojshme nga anglishtja; të preferohen fjalë shqipe si 'veprimtari' në vend të 'aktivitet'."
+    },
+    "pikat_kryesore": [
+      "Numri i madh i librave në botë",
+      "Libri më i shtrenjtë i shitur ndonjëherë",
+      "Koncepti i bibliosmiasë (kënaqësia nga aroma e librave të vjetër)",
+      "Tradita e mosshkrimit të emrit të autorit në kapak",
+      "Statistikat e analfabetizmit tek të rriturit"
+    ],
+    "teksti_i_artikullit": "5 Fakte per librat dhe leximin. 1. Ne bote ka me shume se 129 milion libra. Sipas Google-it, deri ne vitin 2010, jane botuar 129 milione e 864 mije e 880 libra dhe kuptohet qe tani ky numer eshte shume me i larte. Prandaj kujdes kur thoni: 'S'gjej nje liber te hairit per te lexuar', se del qe nuk keni kerkuar si duhet. 2. Libri me i shtrenjte ka kushtuar 30.8 million dollare. Behet fjale per Codex Leicester te Leonardo Da Vinçit, te cilin e bleu Bill Gejtsi. Por ato para i nxori serish pa kaluar ora. Kjo pjese duket pak e çuditshme, por e leme ashtu. 3. Kenaqesia qe perjetojme, kur ndjejme aromen e librave te vjeter, perkufizohet me nje fjale. Kush e pelqen aromen e librave te vjeter, plot me pluhur e histori mes fleteve? A e dini se kjo kenaqesi pershkruhet me fjalen 'Bibliosmia'. 4. Emrat e autoreve nuk shkruheshin ne kapaket e librave.Njehere e nje kohe, kapaket e librave konsideroheshin vepra arti. Ata mbusheshin me vizatime, visheshin me lekure, me punime artizanale, madje edhe me flori, ndaj skishte vend per emrin e autorit. Dhe, te them te drejten, ky ishte nje aktivitet shume i bukur. 5. Analfabetizmi mbetet ende problem i madh ne bote. Nje ne pese te rritur ne bote nuk di te lexoje ose te shkruaje. Eshte tronditese por jo befasuese per ata qe nuk e kane idene."
+  },
+  "output": {
+    "gramatika": {
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "Paragrafi 1 ('per librat')",
+          "lloji_i_problemit": "gabim drejtshkrimor",
+          "udhëzim": "Zëvendëso 'per' me 'për' për të respektuar rregullat e shqipes standarde.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 1 ('milione', 'mije')",
+          "lloji_i_problemit": "mungesë e theksit dhe gabim numerik",
+          "udhëzim": "Shkruaj '129 milionë e 864 mijë' (jo 'milione e mije') dhe shto pikat e duhura në numër.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 1 ('te hairit')",
+          "lloji_i_problemit": "gabim leksiko-gramatikor",
+          "udhëzim": "Forma e saktë është 'të hairit' (për librin e hairit). Kontrollo përdorimin e nyjës.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 2 ('million', 'dollare', 'serish')",
+          "lloji_i_problemit": "gabime drejtshkrimore dhe huazime të pazhvilluara",
+          "udhëzim": "Shkruaj '30.8 milionë dollarë', dhe 'sërish' në vend të 'serish'. Përdor formën standarde shqipe.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 3 ('perjetojme', 'vjeter', 'fleteve', 'Bibliosmia')",
+          "lloji_i_problemit": "mungesë e thekseve dhe gabime drejtshkrimore",
+          "udhëzim": "Kërkohet 'përjetojmë', 'të vjetër', 'fletëve', dhe 'bibliosmi' (sipas normës shqipe të fjalës së përvetësuar).",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Fundi i paragrafit 4 ('skishte', 'aktivitet')",
+          "lloji_i_problemit": "bashkim i gabuar dhe huazim i panevojshëm",
+          "udhëzim": "Shkruaj 's' kishte' veçmas; zëvendëso 'aktivitet' me 'veprimtari' sipas udhëzimeve të markës.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 5 ('te lexoje', 'e kane idene')",
+          "lloji_i_problemit": "mungesë e thekseve dhe shprehje tepër e folur",
+          "udhëzim": "Shkruaj 'të lexojë' dhe zëvendëso 'nuk e kanë idenë' me një shprehje më formale si 'nuk janë të informuar' ose hiqe për të ruajtur tonin.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "stili_i_të_shkruarit": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "Paragrafi 2: 'Por ato para i nxori sërish pa kaluar ora.'",
+          "lloji_i_problemit": "sarkazëm dhe ton joprofesional",
+          "udhëzim": "Largo komentin ironik për Bill Gejtsin. Zëri i markës kërkon entuziazëm të besueshëm, jo tallje.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 2: 'Kjo pjese duket pak e çuditshme, por e leme ashtu.'",
+          "lloji_i_problemit": "metakoment i panevojshëm dhe dobësim i besueshmërisë",
+          "udhëzim": "Hiq këtë fjali. Redaktorët nuk duhet të komentojnë mbi tekstin e tyre brenda tekstit. Dëmton besueshmërinë.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "Paragrafi 3: 'Kush e pelqen aromen e librave te vjeter, plot me pluhur e histori mes fleteve?'",
+          "lloji_i_problemit": "ton i papërshtatshëm (retorik/interaktiv) dhe përdorim i pyetjes retorike në vend të deklarimit të qartë",
+          "udhëzim": "Riformulo si deklaratë: 'Aroma e librave të vjetër, me pluhur dhe histori, është e dashur për shumë njerëz' përpara se të prezantosh termin.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Paragrafi 4: 'Dhe, te them te drejten, ky ishte nje aktivitet shume i bukur.'",
+          "lloji_i_problemit": "përdorim i vetës së parë (të them të drejtën) i ndaluar nga udhëzimet e markës, plus stil bisedor",
+          "udhëzim": "Hiq 'të them të drejtën' dhe zëvendëso 'aktivitet' me 'veprimtari'. Riformulo: 'Kjo ishte një veprimtari artistike shumë e bukur.'",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 5: 'Eshte tronditese por jo befasuese per ata qe nuk e kane idene.'",
+          "lloji_i_problemit": "ton joprofesional, shprehje bisedore ('nuk e kanë idenë') dhe gjykim ndaj audiencës",
+          "udhëzim": "Zëvendëso me një përfundim neutral: 'Kjo mbetet një sfidë globale që kërkon vëmendje të vazhdueshme.'",
+          "ashpërsia": "madhore"
+        }
+      ],
+      "regjistri_i_zbuluar": "i_përzier",
+      "regjistri_i_pritshëm": "informativ"
+    },
+    "formatimi": {
+      "vendimi": "kalon",
+      "problemet": [
+        {
+          "vendndodhja": "Paragrafi 4: 'Emrat e autoreve nuk shkruheshin ne kapaket e librave.Njehere'",
+          "lloji_i_problemit": "mungesë hapësire pas pikës",
+          "udhëzim": "Shto një hapësirë pas pikës që ndan fjalitë.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "përputhshmëria_e_markës": {
+      "pikët": 55,
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "E gjithë pjesa (veçanërisht pikat 2, 3, 4, 5)",
+          "lloji_i_problemit": "mospërputhje me tonin e kërkuar (profesional, miqësor, entuziast)",
+          "udhëzim": "Tonet sarkastike ('i nxori paratë sërish pa kaluar ora'), metakomentet ('e lëmë ashtu'), pyetjet retorike të drejtpërdrejta dhe përdorimi i vetës së parë bien ndesh me përshkruesit e markës.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "Paragrafi 5: 'per ata qe nuk e kane idene'",
+          "lloji_i_problemit": "përdorim i frazës së ndaluar (në mënyrë të tërthortë) dhe nivel formaliteti i papërshtatshëm",
+          "udhëzim": "Zëvendëso shprehjen bisedore me një formulim neutral dhe profesional.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "Paragrafi 4: 'aktivitet'",
+          "lloji_i_problemit": "huazim i panevojshëm që shkel shënimin e markës",
+          "udhëzim": "Përdor 'veprimtari' sipas preferencës së klientit për të shmangur anglicizmat.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "përputhshmëria_e_marketingut": {
+      "pikët": 70,
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "Prezantimi i faktit 3 (bibliosmia)",
+          "lloji_i_problemit": "shtjellim i dobët dhe jo bindës",
+          "udhëzim": "Forco lidhjen me lexuesin: 'Nëse e doni atë aromë të veçantë të letrës së vjetër, tani e dini se quhet bibliosmi.'",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "Mungon një përfundim frymëzues",
+          "lloji_i_problemit": "mbarim i papritur dhe jo motivues",
+          "udhëzim": "Shto një fjali mbyllëse që inkurajon leximin, p.sh., 'Secili nga këto fakte na kujton se sa i pasur dhe i gjallë është universi i librave.'",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "struktura": {
+      "vendimi": "i_pjesshëm",
+      "mbulimi_i_pikave_kryesore": [
+        {
+          "pika_kryesore": "Numri i madh i librave në botë",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Libri më i shtrenjtë i shitur ndonjëherë",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Koncepti i bibliosmiasë (kënaqësia nga aroma e librave të vjetër)",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Tradita e mosshkrimit të emrit të autorit në kapak",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Statistikat e analfabetizmit tek të rriturit",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        }
+      ],
+      "lloji_i_strukturës_së_zbuluar": "lineare",
+      "udhëzim": "Struktura listare është e qartë, por mbulimi i pikave është i pabarabartë. Pikat 2, 3 dhe 5 janë trajtuar në mënyrë sipërfaqësore ose janë 'gjymtuar' nga komentet joprofesionale. Hiq komentet josubstantive dhe shtjello çdo fakt me 2-3 fjali informative pa metakoment."
+    }
+  }
+}

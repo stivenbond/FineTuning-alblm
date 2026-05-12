@@ -1,0 +1,102 @@
+{
+  "id": "alb-news-0001",
+  "metadata": {
+    "regjistri": "informativ",
+    "shënuesi": "njeri",
+    "i_pranueshëm_për_rlhf": true,
+    "version": "2.0.0",
+    "recensuesi": "lena.z",
+    "rishikuar_më": "2025-03-15"
+  },
+  "input": {
+    "udhëzimet_e_markës": {
+      "id_klienti": "teknologji-2025",
+      "emri_i_klientit": "TechVision Albania",
+      "përshkruesit_e_tonit": ["profesional", "i qartë", "futurist"],
+      "fraza_të_ndaluara": ["revolucionar", "më i miri", "garanci absolute"],
+      "fraza_të_preferuara": ["inovativ", "i besueshëm", "i certifikuar"],
+      "niveli_i_formalitetit": "gjysmë-formal",
+      "audienca_e_synuar": "Profesionistë IT dhe menaxherë të nivelit të mesëm",
+      "preferenca_e_gjatësisë_së_fjalisë": "e_mesme",
+      "kërkohet_veprorja": true,
+      "lejohet_veta_e_parë": false,
+      "lejohen_pasthirrmat": false,
+      "shënime": "Shmangni zhargonin shumë teknik; fokus te përfitimet praktike."
+    },
+    "pikat_kryesore": [
+      "Rritja e përdorimit të AI në Shqipëri pritet të jetë 35% deri në 2026",
+      "Kompanitë vendase po investojnë më shumë në trajnime digjitale",
+      "Qeveria nisi platformën për certifikime profesionale online"
+    ],
+    "teksti_i_artikullit": "Sipas raportit të fundit të Ministrisë së Infrastrukturës dhe Energjisë, përdorimi i inteligjencës artificiale në sektorin privat shqiptar ka pësuar një rritje prej 22% gjatë vitit të kaluar. Ky trend pritet të përshpejtohet më tej, duke arritur në 35% deri në fund të vitit 2026. Ndërkohë, kompani si 'DigitALB' dhe 'Solutions Lab' kanë njoftuar se do të dyfishojnë buxhetin për trajnime në teknologji digjitale. Nga ana tjetër, qeveria shqiptare ka lançuar platformën 'AlbaniaCert' e cila ofron mbi 50 lëndë për certifikime profesionale online, duke synuar mbi 10,000 përdorues brenda dy viteve të para. Megjithatë, disa zëra kritikë nga industria theksojnë se infrastruktura aktuale nuk është ende plotësisht e përgatitur për adoptim masiv, sidomos në raport me sigurinë kibernetike."
+  },
+  "output": {
+    "gramatika": {
+      "vendimi": "kalon",
+      "problemet": []
+    },
+    "stili_i_të_shkruarit": {
+      "vendimi": "kalon",
+      "problemet": [],
+      "regjistri_i_zbuluar": "informativ",
+      "regjistri_i_pritshëm": "informativ"
+    },
+    "formatimi": {
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "në paragrafin e dytë, rreth rreshtit 4",
+          "lloji_i_problemit": "mungesë e ndarjes në paragrafë",
+          "udhëzim": "Ndani tekstin në të paktën 3 paragrafë logjikë (hyrje, zhvillim, shembuj).",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "përputhshmëria_e_markës": {
+      "pikët": 88,
+      "vendimi": "kalon",
+      "problemet": [
+        {
+          "vendndodhja": "në fjalinë 'Ky trend pritet të përshpejtohet më tej'",
+          "lloji_i_problemit": "përdorim i formës joveprore",
+          "udhëzim": "Zëvendësojeni me formë veprore, p.sh. 'Kompanitë presin që ky trend të përshpejtohet më tej'.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "përputhshmëria_e_marketingut": {
+      "pikët": 75,
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "fundi i tekstit ('sidomos në raport me sigurinë kibernetike')",
+          "lloji_i_problemit": "përfundim negativ pa propozim zgjidhjeje",
+          "udhëzim": "Shtoni një fjali që ofron një hap konkret për të adresuar sigurinë kibernetike.",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "struktura": {
+      "vendimi": "kalon",
+      "mbulimi_i_pikave_kryesore": [
+        {
+          "pika_kryesore": "Rritja e përdorimit të AI në Shqipëri pritet të jetë 35% deri në 2026",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Kompanitë vendase po investojnë më shumë në trajnime digjitale",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "e_thelluar"
+        },
+        {
+          "pika_kryesore": "Qeveria nisi platformën për certifikime profesionale online",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        }
+      ],
+      "lloji_i_strukturës_së_zbuluar": "lineare",
+      "udhëzim": "Struktura është logjike. Vazhdoni kështu."
+    }
+  }
+}
