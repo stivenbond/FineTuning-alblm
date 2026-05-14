@@ -1,0 +1,205 @@
+{
+  "id": "alb-editorial-0001",
+  "metadata": {
+    "regjistri": "editorial",
+    "shënuesi": "sintetik",
+    "i_pranueshëm_për_rlhf": true,
+    "version": "2.0.0",
+    "recensuesi": "sintetik-ai-v1",
+    "rishikuar_më": "2026-05-12"
+  },
+  "input": {
+    "udhëzimet_e_markës": {
+      "id_klienti": "fiktiv-001",
+      "emri_i_klientit": "Shembull Klient",
+      "përshkruesit_e_tonit": ["profesional", "i qartë", "i drejtpërdrejtë", "mbështetës"],
+      "fraza_të_ndaluara": ["më në fund", "për habinë e të gjithëve", "jo vetëm", "por edhe"],
+      "fraza_të_preferuara": ["theksojmë", "vihet re", "është i rëndësishëm", "sjell vlerë"],
+      "niveli_i_formalitetit": "gjysmë-formal",
+      "audienca_e_synuar": "profesionistë, edukatorë, të rinj",
+      "preferenca_e_gjatësisë_së_fjalisë": "e_mesme",
+      "kërkohet_veprorja": true,
+      "lejohet_veta_e_parë": false,
+      "lejohen_pasthirrmat": false,
+      "shënime": "Toni duhet të jetë gjithëpërfshirës, por jo tepër emocional. Shmangni sarkazmën."
+    },
+    "pikat_kryesore": [
+      "COD hap hapësirë për dialog",
+      "Takimi ProfesiON në COD",
+      "Roli i shkollës Harry Fultz",
+      "Bashkëpunimi me bizneset",
+      "Arsimi profesional si urë për punësim"
+    ],
+    "teksti_i_artikullit": "ProfesION - \"Harry Fultz\": Qendra për Hapje dhe Dialog vjen kjo si rezultat i iniciativës së vetë Kryeministrit Edi Rama. Synimi ishte i thjeshtë: të transformohej nje pjesë e selisë së Këshillit të Ministrave në nji hapësire në shërbim të qytetarëve, që të përçonte mesazhin e hapjes, transparencës dhe transformimit. Më 7 tetor, te Qendra per Hapje dhe Dialog (COD), u zhvillua takimi i radhës i ciklit 'ProfesION' - një nismë që synon te promovoje dhe të vlerësoje arsimin profesional në vendin tone. Ky cikel aktivitetesh ka patur për qellim te sjell ne vemendje rendesine e formimit profesional per te rinjte dhe ndikimin që ai ka në tregun e punës. Në këtë takim, ne qender te vemendjes ishte shkolla jone, e cila numëron mbi nji shekull eksperience në edukimin teknik dhe profesional. Ne panel moren pjese profesorë nga shkolla, si Petraq Llambushi, profesor i automekanikes dhe Jurgen Metalla, profesor i elektronikes. Ata ndane me pjesemarresit pervojat e tyre ne mesimdhenie dhe theksuan rendesine që ka lidhja e ngushte mes shkollës dhe industrise ne pergaditjen e nxenesve per tregun e punës. Ky takim u pasurua gjithashtu me pranine e perfaqesuesve te bizneseve partnere, si znj. Ina Goci, drejtuese e 'Electric Cars Albania', znj. Drilona Jaho, drejtoreshë e burimeve njerëzore ne 'Swes Cabind Albania' (pardon, gabim shtypi: ndoshta donin te thonin 'Swiss Cabin') dhe znj. Alba Llupi, drejtuese teknike në të njejten kompani. Gjithë ato theksuan rolin e rendesishem qe ka bashkepunimi midis shkollave profesionale dhe sektorit privat, duke ofruar mundesi konkrete punesimi per te rinjte qe perfundojne studimet ne 'Harry Fultz'. Biseda u perqendrua ne pergaditjen e plote që ofron shkolla, ne programet e saj bashkekohore, dhe ne aftesite praktike qe studentet fitojne gjate formimit. Perfaqesuesit e kompanive, cudi, edhe prezantuan oferta te reja punesimi dhe nisma te perbashketa per zhvillimin e praktikave profesionale. Takimi ishte nje shembull i qarte se si arsimi profesional mund te sherbeje si ure lidhese mes dijes dhe punës, duke krijuar mundesi reale per te rinjte shqiptare. Por mos harroni se ende kemi shume pune per te bere - por kjo eshte nje tjeter histori. Pra, permes bashkepunimeve te tilla, nisma 'ProfesION' dhe shkolla 'Harry Fultz' po deshmojne se arsimi profesional eshte celesi i nje te ardhmeje me te qendrueshme dhe te suksesshme, apo jo?"
+  },
+  "output": {
+    "gramatika": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "paragrafi 1: 'vjen kjo si rezultat'",
+          "lloji_i_problemit": "përemri i tepërt",
+          "udhëzim": "Hiq përemrin 'kjo' për të shmangur përsëritjen dhe gabimin sintaksor.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "paragrafi 1: 'nje pjesë', 'nji hapësire'",
+          "lloji_i_problemit": "gabim drejtshkrimor (theksimi dhe rasa)",
+          "udhëzim": "Korrigjo në 'një pjesë', 'një hapësirë' (rasa emërore, jo gjinore).",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 2: 'te Qendra per Hapje', 'te promovoje', 'te vleresoje', 'vendit tone'",
+          "lloji_i_problemit": "gabime drejtshkrimore (shkronja ë/ e, theksimi)",
+          "udhëzim": "Korrigjo në 'në Qendrën për Hapje', 'të promovojë', 'të vlerësojë', 'vendit tonë'.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 3: 'ne qender te vemendjes', 'nji shekull eksperience', 'ne pergaditjen'",
+          "lloji_i_problemit": "gabime drejtshkrimore",
+          "udhëzim": "Korrigjo: 'në qendër të vëmendjes', 'një shekull përvojë', 'në përgatitjen'.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 4: 'Swes Cabind Albania (pardon, gabim shtypi...)'",
+          "lloji_i_problemit": "ndërhyrje metatekstuale e paautorizuar",
+          "udhëzim": "Hiq komentin në kllapa. Nëse emri është i pasaktë, korrigjo ose lëre pa koment.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "paragrafi 5: 'cudi, edhe prezantuan'",
+          "lloji_i_problemit": "fjalë e papërshtatshme dhe ndërprerje e rrjedhës",
+          "udhëzim": "Hiq 'cudi' ose zëvendëso me 'gjithashtu' për të ruajtur koherencën.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "paragrafi 6: 'Por mos harroni... - por kjo eshte nje tjeter histori.'",
+          "lloji_i_problemit": "ton joprofesional, veta e dytë, thyerje e zërit",
+          "udhëzim": "Riformulo në mënyrë objektive pa iu drejtuar drejtpërdrejt lexuesit dhe pa fraza bisedore.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "paragrafi 6: 'apo jo?'",
+          "lloji_i_problemit": "pyetje retorike e papërshtatshme",
+          "udhëzim": "Hiq 'apo jo?' pasi bie ndesh me tonin profesional dhe gjysmë-formal.",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "stili_i_të_shkruarit": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "paragrafi 6: 'Por mos harroni se ende kemi shume pune per te bere'",
+          "lloji_i_problemit": "përdorim i veta së parë shumës dhe i tonit bisedor duke thirrur lexuesin",
+          "udhëzim": "Zëvendëso me formë jopersonale: 'Mbetet ende punë për t'u bërë'.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "paragrafi 4: 'gabim shtypi'",
+          "lloji_i_problemit": "çrregullim metagjuhësor",
+          "udhëzim": "Hiq komentin dhe korrigjo emrin e kompanisë nëse dihet, ose lëre pa shënim.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 6: 'apo jo?'",
+          "lloji_i_problemit": "pyetje retorike e panevojshme",
+          "udhëzim": "Hiq pjesën 'apo jo?' për të ruajtur tonin e qëndrueshëm gjysmë-formal.",
+          "ashpërsia": "e_vogël"
+        }
+      ],
+      "regjistri_i_zbuluar": "i_përzier",
+      "regjistri_i_pritshëm": "gjysmë-formal"
+    },
+    "formatimi": {
+      "vendimi": "kalon",
+      "problemet": []
+    },
+    "përputhshmëria_e_markës": {
+      "pikët": 45,
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "paragrafi 6: 'Por mos harroni'",
+          "lloji_i_problemit": "shkelje e 'lejohet_veta_e_parë': false dhe ton i drejtpërdrejtë ndaj audiencës",
+          "udhëzim": "Riformulo pa iu drejtuar lexuesit me 'mos harroni'.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "paragrafi 6: 'kemi shume pune'",
+          "lloji_i_problemit": "përdorim i veta së parë (nuk lejohet)",
+          "udhëzim": "Përdor formën pësore ose jopersonale: 'ka ende shumë për të bërë'.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 5: 'cudi'",
+          "lloji_i_problemit": "ton joformal dhe i papërshtatshëm, bie ndesh me përshkruesit 'profesional' dhe 'i qartë'",
+          "udhëzim": "Hiq 'cudi' ose zëvendëso me 'gjithashtu'.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "paragrafi 4: 'pardon, gabim shtypi'",
+          "lloji_i_problemit": "ton jo profesional, sarkazëm i lehtë",
+          "udhëzim": "Hiq komentin e brendshëm. Nëse emri është i gabuar, korrigjo pa shënim.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 6: 'por kjo eshte nje tjeter histori'",
+          "lloji_i_problemit": "fraze bisedore dhe devijim nga tema, cenon qartësinë",
+          "udhëzim": "Hiq këtë frazë pasi nuk sjell vlerë dhe dobëson argumentin.",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "përputhshmëria_e_marketingut": {
+      "pikët": 60,
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "paragrafi 6: toni përfundimtar",
+          "lloji_i_problemit": "fund i dobët me pyetje retorike dhe vërejtje personale",
+          "udhëzim": "Zëvendëso me një përmbledhje pozitive dhe të qëndrueshme që përforcon mesazhin kryesor pa u bërë moralizues.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 2: 'ProfesION' (drejtshkrim i paqëndrueshëm)",
+          "lloji_i_problemit": "mospërputhje në përdorimin e emrit të nismës (ProfesiON / ProfesION)",
+          "udhëzim": "Standardizo shkrimin e emrit 'ProfesiON' në të gjithë artikullin.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "struktura": {
+      "vendimi": "nuk_kalon",
+      "mbulimi_i_pikave_kryesore": [
+        {
+          "pika_kryesore": "COD hap hapësirë për dialog",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Takimi ProfesiON në COD",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Roli i shkollës Harry Fultz",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Bashkëpunimi me bizneset",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Arsimi profesional si urë për punësim",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        }
+      ],
+      "lloji_i_strukturës_së_zbuluar": "lineare",
+      "udhëzim": "Struktura e përgjithshme është lineare dhe logjike, por paragrafi i fundit thyen koherencën me një ton joprofesional dhe digresion. Hiq komentin metatekstual në paragrafin 4 dhe frazat bisedore në paragrafin 6 për të ruajtur seriozitetin dhe rrjedhën e qartë."
+    }
+  }
+}

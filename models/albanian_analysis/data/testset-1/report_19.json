@@ -1,0 +1,182 @@
+{
+  "id": "alb-editorial-0001",
+  "metadata": {
+    "regjistri": "editorial",
+    "shënuesi": "sintetik",
+    "i_pranueshëm_për_rlhf": true,
+    "version": "2.0.0",
+    "recensuesi": "trajnimi_ai_v1",
+    "rishikuar_më": "2026-05-12"
+  },
+  "input": {
+    "udhëzimet_e_markës": {
+      "id_klienti": "klient_demo_001",
+      "emri_i_klientit": "Arti i Të Shkruarit SHA",
+      "përshkruesit_e_tonit": "profesional, inkurajues, i qartë, pa ironi",
+      "fraza_të_ndaluara": "përshëndetje, siç e dini, vërtetë",
+      "fraza_të_preferuara": "fuqizojmë, zhvillim, bashkëpunim",
+      "niveli_i_formalitetit": "gjysmë-formal",
+      "audienca_e_synuar": "mësues dhe adoleshentë 14–18 vjeç",
+      "preferenca_e_gjatësisë_së_fjalisë": "e_mesme",
+      "kërkohet_veprorja": true,
+      "lejohet_veta_e_parë": false,
+      "lejohen_pasthirrmat": false,
+      "shënime": "Shmangni ironinë dhe sarkazmën. Përdorni fjali aktive."
+    },
+    "pikat_kryesore": [
+      "Prezantimi i projektit AI4Youth në shkollë",
+      "Përzgjedhja e nxënësve të viteve të dyta dhe të treta",
+      "Synimi: të menduarit kritik përmes AI dhe Python",
+      "Takimi i parë më 7 Tetor për përmbajtjen dhe synimet",
+      "Trajnime dy herë në javë, përgatitje për projekt final"
+    ],
+    "teksti_i_artikullit": "Projekti 'AI4Youth' si cdo vit tjeter plot projekte dhe sfida, por këtë vit shkolla jone u zgjodh per te qene pjese e Projektit 'AI4Youth'. Ky projekt implementohet nga AADF-ja, dhe eshte mjaft i mire. U zgjodhen disa nxënës te viteve te dyta dhe te treta, te cilet drejtoheshin nga mesuesit e departamentit te Elektronikes. Qellimi kryesor ishte shpalosja e mendimit kritik nepermjet Inteligjences Artificiale dhe programimit ne gjuhen 'Python', qe per fat te keq nuk e njohin te gjithe. 7 Tetori u shënua takimi i pare. Ne këtë takim u diskutua per permbajtjen dhe synimet e projektit, qe per qendër kishte: Idet?, Zgjidhjen Problemore, Pervoje dhe Fuqizimin — por vetem nepermjet IA. Grupet e formuara i jane nenshtruar moduleve dhe seancave trajnimi dy here ne jave, duke filluar te pergatiten per projektin final ne fund te ksaj sfide, e cila disave u duket pak e vështirë. Urojme suksese, megjithese sarkastikisht dyshojme se do ia dalin."
+  },
+  "output": {
+    "gramatika": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "rreshti 1, 'cdo vit tjeter'",
+          "lloji_i_problemit": "drejtshkrim",
+          "udhëzim": "Zëvendëso 'cdo' me 'çdo' dhe 'tjeter' me 'tjetër' sipas normës standarde.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "rreshti 1, 'shkolla jone u zgjodh'",
+          "lloji_i_problemit": "përdorimi i paautorizuar i vetës së parë (veta e parë shumës)",
+          "udhëzim": "Zëvendëso 'jone' me një formë jopersonale si 'shkolla u zgjodh' për të ruajtur zërin e markës që nuk lejon vetën e parë.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "rreshti 2, 'eshte mjaft i mire'",
+          "lloji_i_problemit": "shprehje e papërshtatshme për regjistrin editorial dhe keqpërdorim i theksit (eshte → është)",
+          "udhëzim": "Përdor trajtën 'është' dhe shmang vlerësimin subjektiv 'mjaft i mirë' pa kontekst.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "rreshti 3, 'qellimi kryesor ishte'",
+          "lloji_i_problemit": "mungesë e diakritikës (qellimi → qëllimi)",
+          "udhëzim": "Shto theksin në 'qëllimi' sipas rregullave drejtshkrimore.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "stili_i_të_shkruarit": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "rreshti 3, 'qe per fat te keq nuk e njohin te gjithe'",
+          "lloji_i_problemit": "ton negativ dhe devijim nga përshkruesit e synuar 'profesional, inkurajues'",
+          "udhëzim": "Zëvendëso komentin negativ me një deklaratë neutrale ose inkurajuese pa nënkuptuar mungesë dijeje.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "rreshti 5, 'Idet?'",
+          "lloji_i_problemit": "shenjë pyetje e gabuar dhe mungesë theksi (Idet? → Ide?)",
+          "udhëzim": "Korrigjo në 'Idetë' me pikëpyetje të duhur nëse është pyetje, ose hoqe shenjën nëse është listë.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "rreshti 5, 'nepermjet IA'",
+          "lloji_i_problemit": "përdorim i huazimit të panevojshëm (IA në vend të AI ose Inteligjencë Artificiale)",
+          "udhëzim": "Përdor formën standarde shqipe 'Inteligjencës Artificiale' ose shkurtesën e qartë 'AI' si në fillim të tekstit.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "rreshti 6, 'e cila disave u duket pak e vështirë'",
+          "lloji_i_problemit": "ton nënçmues dhe sarkastik, kundër udhëzimeve të markës (pa ironi, pa sarkazëm)",
+          "udhëzim": "Riformulo si një deklaratë mbështetëse për përpjekjet e nxënësve pa gjykim vlerësues.",
+          "ashpërsia": "kritike"
+        }
+      ],
+      "regjistri_i_zbuluar": "i_përzier",
+      "regjistri_i_pritshëm": "gjysmë-formal"
+    },
+    "formatimi": {
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "rreshti 5, 'Idet? Zgjidhjen Problemore, Pervoje'",
+          "lloji_i_problemit": "mungesë e shkronjave të mëdha dhe përdorim i pikëpyetjes së gabuar brenda një liste",
+          "udhëzim": "Përdor pika ose numërim të qartë, rregullo theksimet: 'Idetë, Zgjidhjen ProblemorE, Përvojën'.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "përputhshmëria_e_markës": {
+      "pikët": 62,
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "i gjithë teksti, përdorimi i 'jone', 'dyshojme'",
+          "lloji_i_problemit": "shkelje e 'lejohet_veta_e_parë = false'",
+          "udhëzim": "Zëvendëso format me veta të parë (jone, urojme, dyshojme) me forma jopersonale ose veprore pa subjekt të parë.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "rreshti 3, 'qe per fat te keq' dhe rreshti 6, 'sarkastikisht dyshojme se do ia dalin'",
+          "lloji_i_problemit": "ton ironik dhe sarkastik, kundrejt 'pa ironi' dhe 'pa sarkazëm'",
+          "udhëzim": "Hiq çdo gjurmë sarkazme dhe ironie; mbaj ton inkurajues e profesional.",
+          "ashpërsia": "kritike"
+        },
+        {
+          "vendndodhja": "rreshti 6, 'Urojme suksese, megjithèse...'",
+          "lloji_i_problemit": "pasthirrmë e ndjekur nga sarkazmë (kundër 'lejohen_pasthirrmat = false')",
+          "udhëzim": "Hiq pasthirrmën dhe riformulo përfundimin pa dyshim ironik.",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "përputhshmëria_e_marketingut": {
+      "pikët": 58,
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "rreshti 1, 'si cdo vit tjeter plot projekte dhe sfida'",
+          "lloji_i_problemit": "përdorim i frazës jo të preferuar, mungesë e fjalëve inkurajuese si 'fuqizojmë' dhe 'zhvillim'",
+          "udhëzim": "Zëvendëso hapjen me një deklaratë që përfshin 'fuqizojmë' ose 'zhvillim' për t'u lidhur me zërin e markës.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "rreshti 4, 'ksaj sfide' (në vend të 'kësaj sfide')",
+          "lloji_i_problemit": "gabim tipografik që dëmton besueshmërinë e markës",
+          "udhëzim": "Korrigjo 'ksaj' në 'kësaj' për të ruajtur profesionalizmin.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "struktura": {
+      "vendimi": "i_pjesshëm",
+      "mbulimi_i_pikave_kryesore": [
+        {
+          "pika_kryesore": "Prezantimi i projektit AI4Youth në shkollë",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Përzgjedhja e nxënësve të viteve të dyta dhe të treta",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Synimi: të menduarit kritik përmes AI dhe Python",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Takimi i parë më 7 Tetor për përmbajtjen dhe synimet",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Trajnime dy herë në javë, përgatitje për projekt final",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        }
+      ],
+      "lloji_i_strukturës_së_zbuluar": "lineare",
+      "udhëzim": "Përmirëso tranzicionin mes paragrafëve; shmang komentet negative që ndërpresin rrjedhën logjike. Shto një përmbyllje pozitive pa sarkazëm."
+    }
+  }
+}

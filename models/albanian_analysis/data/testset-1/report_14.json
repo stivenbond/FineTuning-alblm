@@ -1,0 +1,157 @@
+{
+  "id": "alb-editorial-0001",
+  "metadata": {
+    "regjistri": "editorial",
+    "shënuesi": "sintetik",
+    "i_pranueshëm_për_rlhf": true,
+    "version": "2.0.0",
+    "recensuesi": "trajnimi_auto_v1",
+    "rishikuar_më": "2026-05-12"
+  },
+  "input": {
+    "udhëzimet_e_markës": {
+      "id_klienti": "rit_tirana_001",
+      "emri_i_klientit": "RIT Tirana",
+      "përshkruesit_e_tonit": ["inspirues", "profesional", "i arritshëm"],
+      "fraza_të_ndaluara": ["për mrekulli", "asnjëherë më parë"],
+      "fraza_të_preferuara": ["inovacion i aplikuar", "përvojë praktike"],
+      "niveli_i_formalitetit": "gjysmë-formal",
+      "audienca_e_synuar": "të rinj dhe prindër në Shqipëri",
+      "preferenca_e_gjatësisë_së_fjalisë": "e_shumëllojshme",
+      "kërkohet_veprorja": true,
+      "lejohet_veta_e_parë": false,
+      "lejohen_pasthirrmat": false,
+      "shënime": "Shmangni përdorimin e huazimeve të panevojshme; preferoni fjalë shqipe."
+    },
+    "pikat_kryesore": [
+      "RIT hap dyert në Tiranë",
+      "Infrastrukturë moderne dhe laboratorë",
+      "Fokus te praktika dhe punësimi",
+      "Alternativë për të rinjtë që të mos emigrojnë"
+    ],
+    "teksti_i_artikullit": "Me një ndjenjë pritje dhe emocion, u zhvillua ceremonia e inaugurimit të 'Rochester Institute of Technology'. Ky aktivitet shënon momente të rëndësishme në kalendarin akademik. Institucioni ka traditë të gjatë në teknologji, inovacion dhe arsim të aplikuar. Tani vjen në Shqipëri jo thjesht të shtojë një emër tjetër, por të sjellë një mënyrë të re të të menduarit. Ishin përfaqësues të lartë, drejtues vendorë, profesorë, studentë, biznesi dhe kultura. Ata ndanë të njëjtin vizion. Edukimi cilësor nuk njeh kufij. Përgatit të rinjtë të jenë të suksesshëm profesionalisht dhe gjithashtu qytetarë të motivuar. Kampusi ka infrastrukturë moderne. Ka laboratorë të teknologjisë së fundit. Klasa interaktive dhe hapësira që inkurajojnë kreativitetin. Nuk ngjan me modelin tradicional ku mësimi kufizohet brenda mureve. Gjithçka është menduar për një përvojë që i afron studentët me botën reale përmes projekteve praktike, partneriteteve me kompani dhe mundësive për ndërveprim. Fjalët e ceremonisë nuk ishin protokoll. Ato shprehën besimin se institucioni nuk erdhi për të kopjuar, por për të sjellë diçka të re, të domosdoshme dhe të guximshme. Në një kohë kur të rinjtë kërkojnë arsim jashtë, RIT tregon se cilësia mund të ndërtohet këtu, por vetëm nëse ka vullnet, vizion dhe përkushtim. Ky inaugurim është më shumë se simbol. Është thirrje për studentët, prindërit, mësuesit, dhe shoqëria që ka nevojë për dije të zbatueshme. RIT sjell emrin e një universiteti prestigjioz, por gjithashtu një mënyrë të menduari që na fton të ndërtojmë diçka me vlerë. Kjo i duhet vendit sot — një model që punon me durim për të krijuar një të ardhme ku dijet janë mjete për të ndërtuar diçka konkrete dhe të dobishme."
+  },
+  "output": {
+    "gramatika": {
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "paragrafi 1, fjalia 1",
+          "lloji_i_problemit": "marrëveshje e gabuar e foljes",
+          "udhëzim": "Përdor formën 'Me një ndjenjë pritjeje dhe emocioni' në vend të 'pritje' pa -je, pasi kërkon rasën gjinore.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "paragrafi 4, fjalia 4",
+          "lloji_i_problemit": "presje e munguar në fjali të përbëra",
+          "udhëzim": "Para 'dhe gjithashtu' duhet presje: 'profesionalisht, dhe gjithashtu qytetarë të motivuar'.",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "paragrafi 5, fjalia 5",
+          "lloji_i_problemit": "përdorim jo i saktë i parafjalës",
+          "udhëzim": "Në vend të 'përmes projekteve praktike, partneriteteve' duhet 'përmes projekteve praktike dhe partneriteteve' ose ristrukturim.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 6, fjalia 3",
+          "lloji_i_problemit": "mungesë lidhore për koherencë",
+          "udhëzim": "Fjalia 'Ato shprehën besimin se...' lidhet dobët me fjalitë e mëparshme; përdor 'Këto fjalë shprehën...' për qartësi.",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "stili_i_të_shkruarit": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "paragrafi 2",
+          "lloji_i_problemit": "rrjedhë logjike e ndërprerë",
+          "udhëzim": "Fjalitë janë shumë të shkurtra dhe të copëtuara ('Institucioni ka traditë... Tani vjen në Shqipëri...'). Bashkojini në fjali më komplekse për rrjedhshmëri.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 4",
+          "lloji_i_problemit": "sarkazëm delikate e paqëllimtë",
+          "udhëzim": "'Edukimi cilësor nuk njeh kufij' është klishe; në kontekst mund të lexohet si ironike. Zëvendëso me një shprehje origjinale.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 6, fjalia 4",
+          "lloji_i_problemit": "ton jokonsistent (gjysmë-formal → tepër i ngritur)",
+          "udhëzim": "'Të domosdoshme dhe të guximshme' ngjan e detyruar. Përdor 'të nevojshme dhe të guximshme' ose riformulo.",
+          "ashpërsia": "e_vogël"
+        }
+      ],
+      "regjistri_i_zbuluar": "i_përzier",
+      "regjistri_i_pritshëm": "gjysmë-formal"
+    },
+    "formatimi": {
+      "vendimi": "kalon",
+      "problemet": []
+    },
+    "përputhshmëria_e_markës": {
+      "pikët": 72,
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "paragrafi 5, fjalia 2",
+          "lloji_i_problemit": "huazim i panevojshëm (frëngjizëm)",
+          "udhëzim": "Përdor 'veprimtari' në vend të 'aktivitet' për të respektuar preferencën e markës për fjalë shqipe.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 7, fjalia 3",
+          "lloji_i_problemit": "fraza e ndaluar e markës",
+          "udhëzim": "'por vetëm nëse' — struktura kushtore negative është e dekurajuar. Zëvendëso me 'për aq kohë sa ka vullnet'.",
+          "ashpërsia": "kritike"
+        }
+      ]
+    },
+    "përputhshmëria_e_marketingut": {
+      "pikët": 65,
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "paragrafi 1",
+          "lloji_i_problemit": "shtjellim i pabarabartë i pikave kryesore",
+          "udhëzim": "Pika e parë ('hapja e dyerve') përmendet, por infrastruktura dhe laboratorët trajtohen sipërfaqësisht në paragrafin 5.",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 6",
+          "lloji_i_problemit": "mungon thirrja për veprim ose përfitimi specifik",
+          "udhëzim": "Marka pret që artikujt e marketingut të përfshijnë një përfitim konkret për audiencën (p.sh., 'studentët do të kenë akses në...'). Shto një shembull të qartë.",
+          "ashpërsia": "kritike"
+        }
+      ]
+    },
+    "struktura": {
+      "vendimi": "nuk_kalon",
+      "mbulimi_i_pikave_kryesore": [
+        {
+          "pika_kryesore": "RIT hap dyert në Tiranë",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Infrastrukturë moderne dhe laboratorë",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Fokus te praktika dhe punësimi",
+          "e_mbuluar": false,
+          "cilësia_e_përpunimit": "mungon"
+        },
+        {
+          "pika_kryesore": "Alternativë për të rinjtë që të mos emigrojnë",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        }
+      ],
+      "lloji_i_strukturës_së_zbuluar": "e_paqartë",
+      "udhëzim": "Artikulli nuk ndjek një strukturë logjike lineare. Paragrafët 2 dhe 3 janë shumë të shkurtër dhe nuk lidhen mirë me njëri-tjetrin. Pika e tretë kryesore ('praktika dhe punësimi') mungon plotësisht. Rekomandohet ristrukturimi në: (1) Hapja dhe rëndësia, (2) Infrastruktura, (3) Përfitimi praktik për studentët, (4) Alternativa kundër emigracionit, (5) Konkluzion inspirues."
+    }
+  }
+}

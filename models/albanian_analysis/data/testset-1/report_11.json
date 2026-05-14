@@ -1,0 +1,164 @@
+{
+  "id": "alb-muzike-0001",
+  "metadata": {
+    "regjistri": "informativ",
+    "shënuesi": "sintetik",
+    "i_pranueshëm_për_rlhf": true,
+    "version": "2.0.0",
+    "recensuesi": "trajnues_ai_v2",
+    "rishikuar_më": "2026-05-12"
+  },
+  "input": {
+    "udhëzimet_e_markës": {
+      "id_klienti": "brand_albania_edu",
+      "emri_i_klientit": "Arti i të Shkruarit Shqip",
+      "përshkruesit_e_tonit": ["profesional", "i qetë", "autoritar", "miqësor"],
+      "fraza_të_ndaluara": ["thjesht", "normalisht", "çuditërisht", "mbase"],
+      "fraza_të_preferuara": ["vlen të theksohet", "hulumtimet tregojnë", "fakt bindës", "siç dihet"],
+      "niveli_i_formalitetit": "gjysmë-formal",
+      "audienca_e_synuar": "lexues të arsimuar, të interesuar për kulturë",
+      "preferenca_e_gjatësisë_së_fjalisë": "e_shumëllojshme",
+      "kërkohet_veprorja": true,
+      "lejohet_veta_e_parë": false,
+      "lejohen_pasthirrmat": false,
+      "shënime": "Shmangni huazimet e panevojshme nga anglishtja. Përdorni 'veprimtari' në vend të 'aktivitet'."
+    },
+    "pikat_kryesore": [
+      "Muzika ndikon në emocione dhe ka efekte terapeutike",
+      "Fakte të veçanta për këngët e njohura dhe artistët",
+      "Të dhëna rekordesh dhe statistika interesante"
+    ],
+    "teksti_i_artikullit": "Fakte befasuese që mbase nuk i keni ditur kurrë për muzikën. Muzika luan një rol të rëndësishëm në shumicën e jetës sonë. Dëgjimi i këngëve dhe artistëve tanë të preferuar mund të na të na ndihmojë të përpunojmë emocione të vështira ose të ngjallë nostalgji të fortë. Është zbuluar se muzika ka një efekt terapeutik te njerëzit dhe madje mund t’i bëjë bimët të rriten më shpejt. \n\nKënga juaj e preferuar – Hulumtimet sugjerojnë se kënga jonë e preferuar ka të ngjarë të lidhet me një moment të rëndësishëm emocional në jetën tonë. \n\nOrigjinali është më i miri – Shumica e njerëzve preferojnë versionin origjinal të një kënge. Kjo nuk do të thotë sepse origjinali është versioni më autentik ose më i mirë i këngës, por sepse thjesht na pëlqen kënga ashtu siç e dëgjuam për herë të parë. \n\n‘Happy Birthday to You’ – “Kënga e ditëlindjes” është në pronësi të Warner Music. Ajo fiton atyre rreth 2 milion dollarë në vit në fitime. \n\nFender – Leo Fender projektoi dy modelet më të njohura të kitarës elektrike për markën e tij tashmë të përhapur. Për ironi, ai nuk dinte të luante kitarë! \n\nInstrumenti më i shtrenjtë në botë – Një violinë Stradivarius u shit për 15.9 milionë dollarë në vitin 2011. \n\nMetallica – Metallica është grupi i parë dhe i vetëm që ka performuar ndonjëherë në të shtatë kontinentet. \n\nReperi më i shpejtë në botë – Twista raportohet të jetë reperi më i shpejtë në botë, i aftë të prodhojë 10.87 rrokje në sekondë. \n\nKëndimi në grup – Në vitin 2013, revista Time raportoi gjetjet se të kënduarit në grup ul nivelet e stresit, lehtëson ankthin dhe çliron endorfinë. \n\nKoncerti më i madh falas – Rod Stewart kryesoi koncertin më të madh falas në histori në vitin 1994. Ai kishte një audiencë prej 4.2 milionë njerëz në plazhin Copacabana të Rio de Zhaneiros. \n\nMuzika i ndihmon bimët të rriten – Hulumtimet kanë treguar se bimët rriten më shpejt kur rreth tyre luhet muzika. Është teorizuar se ata kanë gjene që u mundësojnë \"të dëgjojnë\"."
+  },
+  "output": {
+    "gramatika": {
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "paragrafi 1, fjalia 3: 'mund të na të na ndihmojë'",
+          "lloji_i_problemit": "dublikim_përemri",
+          "udhëzim": "Hiq përemrin e përsëritur 'të na' – forma e saktë: 'mund të na ndihmojë'",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "paragrafi 2 (Origjinali), fjalia 2: 'Kjo nuk do të thotë sepse origjinali...'",
+          "lloji_i_problemit": "gabim_ndërtimor",
+          "udhëzim": "Ndërtimi 'nuk do të thotë sepse' është i gabuar. Zëvendëso me 'Kjo nuk ndodh sepse' ose 'Arsyeja nuk është se'",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 4 (Happy Birthday), fjalia 2: 'Ajo fiton atyre rreth 2 milion dollarë'",
+          "lloji_i_problemit": "mungesë_kallëzuesi",
+          "udhëzim": "Kërkohet përemri vetor në rasën rrjedhore: 'Ajo u fiton atyre' ose thjesht 'Ajo gjeneron rreth 2 milionë dollarë'",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "stili_i_të_shkruarit": {
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "titulli: 'Fakte befasuese që mbase nuk i keni ditur'",
+          "lloji_i_problemit": "fjalë_e_ndaluar_marke",
+          "udhëzim": "Fjala 'mbase' është e ndaluar nga udhëzimet e markës. Zëvendëso me 'ndoshta' ose riformulo: 'që mund të mos i keni ditur'",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "paragrafi 1, fjalia e fundit: 'madje mund t’i bëjë bimët të rriten më shpejt' – përsëritet në fund",
+          "lloji_i_problemit": "përsëritje_e_panevojshme",
+          "udhëzim": "Pohimi për bimët përsëritet fjalë për fjalë në fund të artikullit. Hiq njërën prej tyre për të shmangur teprimin",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 5 (Fender): 'Për ironi, ai nuk dinte të luante kitarë!'",
+          "lloji_i_problemit": "pasthirrmë_e_palejuar",
+          "udhëzim": "Pasthirrmat nuk lejohen sipas udhëzimeve të markës. Zëvendëso pikëçuditësin me pikë të thjeshtë",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "tregimi për Twista: 'i aftë të prodhojë 10.87 rrokje në sekondë'",
+          "lloji_i_problemit": "ton_joprofesional",
+          "udhëzim": "Në kontekstin gjysmë-formal, thjesht renditja e statistikës pa sqarim duket e thatë. Shto një frazë lidhëse si 'sipas studimeve' ose 'vlerësohet se'",
+          "ashpërsia": "e_vogël"
+        }
+      ],
+      "regjistri_i_zbuluar": "informativ",
+      "regjistri_i_pritshëm": "informativ"
+    },
+    "formatimi": {
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "gjithë artikulli",
+          "lloji_i_problemit": "mungesë_hierarkie",
+          "udhëzim": "Artikulli ka titull dhe nëntituj të shënuar me vizë, por mungon një strukturë e qartë hyrëse, trupore dhe përfunduese. Pikat e renditura janë të lirshme",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "paragrafi 3-10",
+          "lloji_i_problemit": "mungesë_kalimesh",
+          "udhëzim": "Kalimi ndërmjet fakteve është i papritur. Shto fraza lidhëse si 'Po ashtu, ...' ose 'Një tjetër fakt interesant...'",
+          "ashpërsia": "e_vogël"
+        }
+      ]
+    },
+    "përputhshmëria_e_markës": {
+      "pikët": 72,
+      "vendimi": "i_pjesshëm",
+      "problemet": [
+        {
+          "vendndodhja": "titulli dhe paragrafi 1",
+          "lloji_i_problemit": "frazë_e_ndaluar",
+          "udhëzim": "Përdorimi i 'mbase' (e ndaluar) dhe mungesa e frazave të preferuara si 'hulumtimet tregojnë' ose 'fakt bindës' e ul përputhshmërinë",
+          "ashpërsia": "e_vogël"
+        },
+        {
+          "vendndodhja": "paragrafi 1: 'mund t’i bëjë bimët të rriten'",
+          "lloji_i_problemit": "shkelje_e_zërit",
+          "udhëzim": "Kërkohet forma veprore: 'mund të përshpejtojë rritjen e bimëve' në vend të formës pësore të tërthortë",
+          "ashpërsia": "madhore"
+        }
+      ]
+    },
+    "përputhshmëria_e_marketingut": {
+      "pikët": 65,
+      "vendimi": "nuk_kalon",
+      "problemet": [
+        {
+          "vendndodhja": "paragrafi 5 (Fender)",
+          "lloji_i_problemit": "ton_sarkastik",
+          "udhëzim": "Fraza 'Për ironi' krijon një ton të lehtë tallës që bie ndesh me përshkruesin 'profesional dhe i qetë'",
+          "ashpërsia": "madhore"
+        },
+        {
+          "vendndodhja": "mungesë thirrjeje për veprim ose lidhje me audiencën",
+          "lloji_i_problemit": "dobësi_marketingu",
+          "udhëzim": "Artikulli mbetet thjesht listë faktesh pa e lidhur përmbajtjen me vlerat ose interesat e lexuesit (audiencë e arsimuar). Shto një paragraf hyrës ose përfundimtar që i drejtohet lexuesit",
+          "ashpërsia": "kritike"
+        }
+      ]
+    },
+    "struktura": {
+      "vendimi": "i_pjesshëm",
+      "mbulimi_i_pikave_kryesore": [
+        {
+          "pika_kryesore": "Muzika ndikon në emocione dhe ka efekte terapeutike",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        },
+        {
+          "pika_kryesore": "Fakte të veçanta për këngët e njohura dhe artistët",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "adekuate"
+        },
+        {
+          "pika_kryesore": "Të dhëna rekordesh dhe statistika interesante",
+          "e_mbuluar": true,
+          "cilësia_e_përpunimit": "sipërfaqësore"
+        }
+      ],
+      "lloji_i_strukturës_së_zbuluar": "jo-lineare",
+      "udhëzim": "Struktura është e fragmentuar si listë faktesh pa një rrjedhë logjike. Pikat kryesore trajtohen por në mënyrë sipërfaqësore. Rekomandohet një strukturë lineare: hyrje → zhvillim i kategorive (terapi, fakte të çuditshme, rekorde) → përfundim. Mungon përfundimi"
+    }
+  }
+}
