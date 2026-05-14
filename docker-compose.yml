@@ -21,35 +21,31 @@ services:
       - ollama_data:/root/.ollama
 
   ollama-setup:
-    image: curlimages/curl:latest
+    image: ollama/ollama:latest
+    pull_policy: always
     depends_on:
       - ollama
     volumes:
       - ./Modelfile:/Modelfile
+    environment:
+      - OLLAMA_HOST=ollama:11434
     entrypoint: ["/bin/sh", "-c"]
     command:
       - |
         echo "Waiting for Ollama to start..."
-        until curl -s http://ollama:11434/api/tags > /dev/null; do sleep 2; done
-        echo "Ollama is up."
-        # Use $$ for shell variables to prevent Docker Compose from interpolating them
-        OLLAMA_MODEL_NAME="gemma4:e2b"
-        echo "Checking if model $$OLLAMA_MODEL_NAME exists..."
-        if curl -s http://ollama:11434/api/tags | grep -q "$$OLLAMA_MODEL_NAME"; then
-          echo "Model already exists. Skipping creation."
-        else
-          echo "Pulling base model (gemma:2b)..."
-          curl -X POST http://ollama:11434/api/pull -d '{"name": "gemma:2b"}'
-          echo "Creating $$OLLAMA_MODEL_NAME from Modelfile..."
-          MODELEFILE_RAW=$$(cat /Modelfile)
-          # Escape for JSON and handle newlines
-          MODELEFILE_ESCAPED=$$(echo "$$MODELEFILE_RAW" | sed 's/"/\\"/g' | awk '{printf "%s\\n", $$0}' | tr -d '\r')
-          curl -X POST http://ollama:11434/api/create -d "{
-            \"name\": \"$$OLLAMA_MODEL_NAME\",
-            \"modelfile\": \"$$MODELEFILE_ESCAPED\"
-          }"
-          echo "Model created."
-        fi
+        until ollama list > /dev/null 2>&1; do sleep 2; done
+        
+        echo "Current Ollama version:"
+        ollama --version
+        
+        echo "Ensuring base model gemma4:e2b is available..."
+        # If this fails with a version error, the pull_policy above should have fixed it
+        # by giving us the actual latest Ollama binary.
+        ollama pull gemma4:e2b || echo "Pull failed. Checking local models..."
+        
+        echo "Applying Modelfile customizations..."
+        ollama create gemma4:e2b -f /Modelfile
+        echo "Model update complete."
 
 volumes:
   ollama_data:

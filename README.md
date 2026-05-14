@@ -9,12 +9,20 @@ The project is structured to support multiple specialized models within a shared
 - **`api/`**: A centralized FastAPI server that handles:
   - Dynamic model loading from HuggingFace Hub or local storage.
   - Multi-model state management.
+  - Multi-user Authentication via hashed API keys (`lh_...`).
   - SSE Streaming for real-time model responses.
-  - Project-specific output validation and feedback collection (RLHF).
-- **`models/`**: Independent directories for each specialized model:
-  - `albanian_analysis/`: Structural, grammatical, and style editing.
-  - `teacher_diary_generator/`: Structured generation for educational contexts.
-- **`docs/`**: Technical specifications and architectural documentation.
+  - Project-specific output validation and RLHF Dashboard.
+
+- **`models/`**: Independent directories for each specialized model.
+- **`docs/`**: Comprehensive guides for data, training, and deployment.
+
+## 📚 Documentation
+- [Data Collection & Annotation](file:///c:/Users/stive/Projects/Thesis/Lahuta/docs/DATA_GUIDE.md)
+- [RLHF & DPO Workflow](file:///c:/Users/stive/Projects/Thesis/Lahuta/docs/RLHF_GUIDE.md)
+- [RLHF Dashboard Guide](file:///c:/Users/stive/Projects/Thesis/Lahuta/docs/DASHBOARD_GUIDE.md)
+- [API Authentication & Keys](file:///c:/Users/stive/Projects/Thesis/Lahuta/docs/API_AUTH.md)
+- [Model Export & GGUF](file:///c:/Users/stive/Projects/Thesis/Lahuta/docs/EXPORT.md)
+
 
 ## 🛠️ Getting Started
 
@@ -45,9 +53,21 @@ uvicorn api.server:app --host 0.0.0.0 --port 8000 --reload
 
 ### Key Endpoints:
 - `POST /analyze`: Main inference endpoint. Supports `"stream": true`.
+- `POST /auth/register`: Register a new user and get an API key.
+- `GET /rlhf/dashboard`: Access the human-in-the-loop improvement UI.
 - `POST /models/load`: Load a new model or update configuration at runtime.
 - `GET /health`: Monitor loaded models and server uptime.
-- `POST /feedback`: Collect user corrections for future DPO/RLHF training.
+- `POST /feedback`: Write each feedback event as a JSON file to data/rlhf/collected/.
+
+## Human-in-the-loop Improvement
+If the automated teacher model (e.g., Claude/GPT) fails to provide a high-quality "chosen" response, the feedback is marked for human review.
+
+1. **Access the Dashboard**: Navigate to `/rlhf/dashboard` in your browser.
+2. **Authenticate**: Enter your API key (generate one via `POST /auth/register` if needed).
+3. **Review Tasks**: The "Pending Improvements" section lists outputs flagged as unhelpful.
+4. **Correct**: Provide a better, clearer instruction in Albanian and click "Submit Correction".
+5. **DPO Integration**: Resolving a task automatically appends a new pair to `rlhf/dpo_pairs.jsonl` for RLHF training.
+
 
 ## 📊 Data Pipeline
 

@@ -1,18 +1,23 @@
 from fastapi import FastAPI, HTTPException, Security, Depends, Request
 from fastapi.security.api_key import APIKeyHeader
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, HTMLResponse
 from pydantic import BaseModel, Field
+
 from typing import List, Optional, Any, Dict
 import os
 import json
 import time
 import asyncio
+import copy
+
 import importlib.util
 from pathlib import Path
 import sys
 from dotenv import load_dotenv
 from huggingface_hub import hf_hub_download
 import httpx
+import auth
+
 
 
 # Load environment variables
@@ -26,11 +31,22 @@ API_KEY = os.environ.get("API_KEY")
 api_key_header = APIKeyHeader(name="x-api-key", auto_error=False)
 
 async def get_api_key(api_key_header: str = Security(api_key_header)):
+    # 1. Check legacy/master key from env
+    if API_KEY and api_key_header == API_KEY:
+        return {"id": 0, "username": "admin", "key_name": "legacy_env_key"}
+    
+    # 2. Check DB keys
+    if api_key_header:
+        user_info = auth.verify_key(api_key_header)
+        if user_info:
+            return user_info
+        
+    # 3. Allow access if no master key is set (development mode)
     if not API_KEY:
-        return api_key_header 
-    if api_key_header == API_KEY:
-        return api_key_header
+        return {"id": -1, "username": "anonymous", "key_name": "no_key_mode"}
+
     raise HTTPException(status_code=403, detail="Could not validate API key")
+
 
 # Global state for Multi-Model Support
 class ModelState:
@@ -60,6 +76,20 @@ class LoadModelRequest(BaseModel):
     hf_repo_id: Optional[str] = None
     hf_filename: Optional[str] = None
     force_download: bool = False
+
+class RegisterRequest(BaseModel):
+    username: str
+
+class KeyRequest(BaseModel):
+    name: Optional[str] = "default"
+
+
+class ResolveTaskRequest(BaseModel):
+    model_id: str
+    task_id: str
+    chosen_guidance: str
+
+
 
 class FeedbackRequest(BaseModel):
     session_id: str
@@ -213,6 +243,27 @@ def list_models():
         }
 
     return results
+
+@app.post("/auth/register")
+async def register(req: RegisterRequest):
+    """Register a new user and return an initial API key."""
+    user_id = auth.create_user(req.username)
+    api_key = auth.generate_key(user_id, name="initial_key")
+    return {"status": "success", "username": req.username, "api_key": api_key}
+
+@app.post("/auth/keys")
+async def create_key(req: KeyRequest, user_info: dict = Depends(get_api_key)):
+    """Generate a new API key for the current user."""
+    if user_info["id"] <= 0:
+        raise HTTPException(status_code=400, detail="Cannot generate keys for special accounts")
+    api_key = auth.generate_key(user_info["id"], name=req.name)
+    return {"status": "success", "api_key": api_key}
+
+@app.get("/auth/me")
+async def get_me(user_info: dict = Depends(get_api_key)):
+    """Return info about the current authenticated user."""
+    return user_info
+
 
 @app.post("/models/load")
 async def load_model_on_fly(req: LoadModelRequest, api_key: str = Depends(get_api_key)):
@@ -411,6 +462,113 @@ async def collect_feedback(req: FeedbackRequest, api_key: str = Depends(get_api_
         json.dump(req.dict(), f, indent=2, ensure_ascii=False)
         
     return {"status": "success", "message": "Feedback saved."}
+
+@app.get("/rlhf/stats")
+async def get_rlhf_stats(user_info: dict = Depends(get_api_key)):
+    """Return stats about RLHF collection across all models."""
+    stats = {}
+    for model_id, cfg in ModelState.config.items():
+        if "project_path" not in cfg: continue
+        
+        proj_path = repo_root / cfg["project_path"]
+        collected_dir = proj_path / "data" / "rlhf" / "collected"
+        human_dir = proj_path / "data" / "rlhf" / "needs_human_improvement"
+        dpo_file = proj_path / "rlhf" / "dpo_pairs.jsonl"
+        
+        collected_count = len(list(collected_dir.glob("*.json"))) if collected_dir.exists() else 0
+        human_count = len(list(human_dir.glob("*.json"))) if human_dir.exists() else 0
+        
+        dpo_count = 0
+        if dpo_file.exists():
+            try:
+                with open(dpo_file, "r", encoding="utf-8") as f:
+                    dpo_count = sum(1 for _ in f)
+            except:
+                pass
+        
+        stats[model_id] = {
+            "collected": collected_count,
+            "needs_human": human_count,
+            "dpo_ready": dpo_count
+        }
+    return stats
+
+@app.get("/rlhf/tasks")
+async def list_rlhf_tasks(model_id: str = "albanian_analysis", user_info: dict = Depends(get_api_key)):
+    """List pending tasks that need human improvement."""
+    cfg = ModelState.config.get(model_id)
+    if not cfg or "project_path" not in cfg:
+        raise HTTPException(status_code=404, detail="Model project not found")
+        
+    human_dir = repo_root / cfg["project_path"] / "data" / "rlhf" / "needs_human_improvement"
+    tasks = []
+    if human_dir.exists():
+        for filepath in human_dir.glob("*.json"):
+            try:
+                with open(filepath, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    data["id"] = filepath.name
+                    tasks.append(data)
+            except:
+                continue
+    return tasks
+
+@app.post("/rlhf/tasks/resolve")
+async def resolve_rlhf_task(req: ResolveTaskRequest, user_info: dict = Depends(get_api_key)):
+    """Accept a human correction and move the task to the DPO dataset."""
+    cfg = ModelState.config.get(req.model_id)
+    if not cfg or "project_path" not in cfg:
+        raise HTTPException(status_code=404, detail="Model project not found")
+        
+    proj_path = repo_root / cfg["project_path"]
+    human_dir = proj_path / "data" / "rlhf" / "needs_human_improvement"
+    dpo_file = proj_path / "rlhf" / "dpo_pairs.jsonl"
+    task_file = human_dir / req.task_id
+    
+    if not task_file.exists():
+        raise HTTPException(status_code=404, detail="Task not found")
+        
+    with open(task_file, "r", encoding="utf-8") as f:
+        task_data = json.load(f)
+        
+    # Construct DPO pair
+    chosen_out = copy.deepcopy(task_data["original_output"])
+    task_name = task_data["task_name"]
+    idx = task_data["issue_index"]
+    
+    # Update the guidance in the chosen output
+    if task_name in chosen_out and "issues" in chosen_out[task_name]:
+        issues = chosen_out[task_name]["issues"]
+        if idx < len(issues):
+            issues[idx]["guidance"] = req.chosen_guidance
+    
+    pair = {
+        "input": task_data["input"],
+        "chosen": chosen_out,
+        "rejected": task_data["original_output"]
+    }
+    
+    # Append to DPO file
+    dpo_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(dpo_file, "a", encoding="utf-8") as f:
+        f.write(json.dumps(pair, ensure_ascii=False) + "\n")
+        
+    # Remove human task
+    task_file.unlink()
+    
+    return {"status": "success", "message": "Task resolved and pair added to DPO dataset."}
+
+
+@app.get("/rlhf/dashboard", response_class=HTMLResponse)
+async def rlhf_dashboard():
+    """Serve the RLHF Admin Dashboard."""
+    template_path = repo_root / "api" / "templates" / "rlhf_dashboard.html"
+    if template_path.exists():
+        with open(template_path, "r", encoding="utf-8") as f:
+            return f.read()
+    return HTMLResponse("Dashboard template not found.", status_code=404)
+
+
 
 if __name__ == "__main__":
     import uvicorn

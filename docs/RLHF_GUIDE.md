@@ -14,7 +14,17 @@ The PWA must log the following on each "unhelpful" feedback action:
 
 Write each feedback event as a JSON file to data/rlhf/collected/.
 
+## Human-in-the-loop Improvement
+If the automated teacher model (e.g., Claude/GPT) fails to provide a high-quality "chosen" response, the feedback is marked for human review in `data/rlhf/needs_human_improvement/`.
+
+1. **Access the Dashboard**: Navigate to `/rlhf/dashboard` in your browser.
+2. **Authenticate**: Enter your API key (generate one via `POST /auth/register` if needed).
+3. **Review Tasks**: The "Pending Improvements" section lists outputs flagged as unhelpful.
+4. **Correct**: Provide a better, clearer instruction in Albanian and click "Submit Correction".
+5. **DPO Integration**: Resolving a task automatically appends a new pair to `rlhf/dpo_pairs.jsonl`.
+
 ## Running DPO
+
 ```bash
 # 1. Process raw feedback into pairs
 python rlhf/collect_preferences.py --teacher  # uses teacher model to improve chosen responses
