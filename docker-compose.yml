@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   api:
     build: .
@@ -33,16 +31,25 @@ services:
       - |
         echo "Waiting for Ollama to start..."
         until curl -s http://ollama:11434/api/tags > /dev/null; do sleep 2; done
-        echo "Ollama is up. Pulling base model..."
-        curl -X POST http://ollama:11434/api/pull -d '{"name": "gemma:2b"}'
-        echo "Creating gemma4:e2b from Modelfile..."
-        # Read Modelfile and escape it for JSON
-        MODELEFILE_CONTENT=$(cat /Modelfile)
-        curl -X POST http://ollama:11434/api/create -d "{
-          \"name\": \"gemma4:e2b\",
-          \"modelfile\": \"$(echo "$MODELEFILE_CONTENT" | sed 's/"/\\"/g' | awk '{printf "%s\\n", $0}')\"
-        }"
-        echo "Model gemma4:e2b created successfully."
+        echo "Ollama is up."
+        # Use $$ for shell variables to prevent Docker Compose from interpolating them
+        OLLAMA_MODEL_NAME="gemma4:e2b"
+        echo "Checking if model $$OLLAMA_MODEL_NAME exists..."
+        if curl -s http://ollama:11434/api/tags | grep -q "$$OLLAMA_MODEL_NAME"; then
+          echo "Model already exists. Skipping creation."
+        else
+          echo "Pulling base model (gemma:2b)..."
+          curl -X POST http://ollama:11434/api/pull -d '{"name": "gemma:2b"}'
+          echo "Creating $$OLLAMA_MODEL_NAME from Modelfile..."
+          MODELEFILE_RAW=$$(cat /Modelfile)
+          # Escape for JSON and handle newlines
+          MODELEFILE_ESCAPED=$$(echo "$$MODELEFILE_RAW" | sed 's/"/\\"/g' | awk '{printf "%s\\n", $$0}' | tr -d '\r')
+          curl -X POST http://ollama:11434/api/create -d "{
+            \"name\": \"$$OLLAMA_MODEL_NAME\",
+            \"modelfile\": \"$$MODELEFILE_ESCAPED\"
+          }"
+          echo "Model created."
+        fi
 
 volumes:
   ollama_data:
