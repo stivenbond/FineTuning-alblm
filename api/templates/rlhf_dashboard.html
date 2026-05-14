@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lahuta RLHF Dashboard</title>
+    <title>Lahuta Task Engine Admin</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -19,243 +19,93 @@
             --border: rgba(255, 255, 255, 0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
 
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            padding: 2rem;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(168, 85, 247, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 40%);
-        }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; }
+        h1 { font-size: 2rem; font-weight: 600; background: linear-gradient(to right, #a855f7, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        nav { display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+        nav button { background: none; border: none; color: var(--text-muted); font-size: 1rem; cursor: pointer; padding: 0.5rem 1rem; transition: all 0.3s; }
+        nav button.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3rem;
-        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
 
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            background: linear-gradient(to right, #a855f7, #6366f1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .card { background: var(--card-bg); border: 1px solid var(--border); padding: 1.5rem; border-radius: 16px; margin-bottom: 1.5rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
 
-        .api-key-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 1rem;
-            border-radius: 12px;
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
+        .api-key-section { background: var(--card-bg); border: 1px solid var(--border); padding: 0.5rem; border-radius: 12px; display: flex; gap: 0.5rem; }
+        input, textarea, select { background: rgba(0, 0, 0, 0.2); border: 1px solid var(--border); color: var(--text); padding: 0.75rem; border-radius: 8px; outline: none; width: 100%; }
+        button { background: var(--accent); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+        button:hover { transform: translateY(-2px); box-shadow: 0 4px 12px var(--accent-glow); }
+        button.secondary { background: rgba(255, 255, 255, 0.1); }
 
-        input {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            outline: none;
-        }
+        .task-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid var(--border); }
+        .task-info h4 { color: var(--accent); margin-bottom: 0.25rem; }
+        .task-info p { font-size: 0.875rem; color: var(--text-muted); }
 
-        button {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
+        .stat-val { font-size: 2rem; font-weight: 600; margin-top: 0.5rem; }
 
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px var(--accent-glow);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .stat-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 1.5rem;
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-        }
-
-        .stat-card h3 {
-            color: var(--text-muted);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 600;
-        }
-
-        .task-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .task-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .task-list {
-            padding: 1.5rem;
-        }
-
-        .task-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .task-item:hover {
-            border-color: var(--accent);
-        }
-
-        .task-meta {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-
-        .badge {
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .badge-warning { background: rgba(234, 179, 8, 0.1); color: var(--warning); }
-        .badge-danger { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
-
-        .content-diff {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .box {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .box label {
-            display: block;
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .correction-area {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        textarea {
-            width: 100%;
-            min-height: 100px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 1rem;
-            border-radius: 8px;
-            resize: vertical;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            background: var(--success);
-            color: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-            transform: translateY(100px);
-            transition: transform 0.3s;
-        }
-
-        .toast.show {
-            transform: translateY(0);
-        }
-
-        #loading {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-        }
+        .toast { position: fixed; bottom: 2rem; right: 2rem; padding: 1rem 2rem; border-radius: 8px; background: var(--success); color: white; transform: translateY(100px); transition: transform 0.3s; z-index: 1000; }
+        .toast.show { transform: translateY(0); }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <div>
-                <h1>Lahuta RLHF</h1>
-                <p style="color: var(--text-muted)">Human-in-the-loop preference collection</p>
+                <h1>Lahuta Task Engine</h1>
+                <p id="healthStatus" style="color: var(--text-muted)">Connecting...</p>
             </div>
             <div class="api-key-section">
-                <input type="password" id="apiKey" placeholder="Enter API Key" value="">
-                <button onclick="refreshData()">Connect</button>
+                <input type="password" id="apiKey" placeholder="Admin API Key" style="width: 200px">
+                <button onclick="refreshAll()">Connect</button>
             </div>
         </header>
 
-        <div class="stats-grid" id="statsContainer">
-            <!-- Stats will be loaded here -->
+        <nav>
+            <button id="btn-stats" class="active" onclick="switchTab('stats')">Statistics</button>
+            <button id="btn-tasks" onclick="switchTab('tasks')">Task Manager</button>
+            <button id="btn-rlhf" onclick="switchTab('rlhf')">RLHF & Feedback</button>
+        </nav>
+
+        <!-- Stats Tab -->
+        <div id="tab-stats" class="tab-content active">
+            <div class="grid" id="statsGrid">
+                <div class="card"><h3>Tasks Configured</h3><div class="stat-val" id="stat-tasks">-</div></div>
+                <div class="card"><h3>Total Feedback</h3><div class="stat-val" id="stat-feedback">-</div></div>
+                <div class="card"><h3>Uptime</h3><div class="stat-val" id="stat-uptime">-</div></div>
+            </div>
         </div>
 
-        <div class="task-section">
-            <div class="task-header">
-                <h2>Pending Improvements</h2>
-                <span id="taskCount" class="badge badge-warning">0 Tasks</span>
+        <!-- Tasks Tab -->
+        <div id="tab-tasks" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <h3>Create / Update Task</h3>
+                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem">
+                        <input id="t-id" placeholder="Task ID (e.g. summarizer)">
+                        <input id="t-name" placeholder="Friendly Name">
+                        <textarea id="t-desc" placeholder="Description"></textarea>
+                        <textarea id="t-prompt" style="min-height: 150px" placeholder="System Prompt"></textarea>
+                        <textarea id="t-schema" placeholder="Output Schema (JSON, optional)"></textarea>
+                        <button onclick="upsertTask()">Save Task</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Existing Tasks</h3>
+                    <div id="taskList" style="margin-top: 1rem"></div>
+                </div>
             </div>
-            <div id="taskList" class="task-list">
-                <div id="loading">Enter your API key to load tasks...</div>
+        </div>
+
+        <!-- RLHF Tab -->
+        <div id="tab-rlhf" class="tab-content">
+            <div class="card">
+                <h3>Feedback Analytics</h3>
+                <div id="feedbackTable" style="margin-top: 1rem"></div>
             </div>
         </div>
     </div>
@@ -263,135 +113,132 @@
     <div id="toast" class="toast">Action successful!</div>
 
     <script>
-        let currentApiKey = '';
-
         async function apiFetch(endpoint, method = 'GET', body = null) {
+            const key = document.getElementById('apiKey').value;
             const options = {
                 method,
-                headers: {
-                    'x-api-key': document.getElementById('apiKey').value,
-                    'Content-Type': 'application/json'
-                }
+                headers: { 'x-api-key': key, 'Content-Type': 'application/json' }
             };
             if (body) options.body = JSON.stringify(body);
-            
-            const response = await fetch(endpoint, options);
-            if (!response.ok) {
-                const err = await response.json();
+            const resp = await fetch(endpoint, options);
+            if (!resp.ok) {
+                const err = await resp.json();
                 throw new Error(err.detail || 'API Error');
             }
-            return response.json();
+            return resp.json();
         }
 
         function showToast(msg, isError = false) {
-            const toast = document.getElementById('toast');
-            toast.textContent = msg;
-            toast.style.background = isError ? 'var(--danger)' : 'var(--success)';
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.style.background = isError ? 'var(--danger)' : 'var(--success)';
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
         }
 
-        async function refreshData() {
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+            document.getElementById(`tab-${tab}`).classList.add('active');
+            document.getElementById(`btn-${tab}`).classList.add('active');
+        }
+
+        async function refreshAll() {
             try {
+                const health = await apiFetch('/health');
+                document.getElementById('healthStatus').textContent = `Connected • ${health.base_model_loaded ? 'Model Loaded' : 'No Model'}`;
+                document.getElementById('stat-uptime').textContent = `${Math.floor(health.uptime_seconds / 3600)}h ${Math.floor((health.uptime_seconds % 3600) / 60)}m`;
+                
+                const tasks = await apiFetch('/tasks');
+                renderTasks(tasks);
+                document.getElementById('stat-tasks').textContent = tasks.length;
+
                 const stats = await apiFetch('/rlhf/stats');
                 renderStats(stats);
                 
-                const tasks = await apiFetch('/rlhf/tasks');
-                renderTasks(tasks);
+                localStorage.setItem('lahuta_admin_key', document.getElementById('apiKey').value);
             } catch (err) {
                 showToast(err.message, true);
             }
-        }
-
-        function renderStats(stats) {
-            const container = document.getElementById('statsContainer');
-            container.innerHTML = '';
-            
-            Object.entries(stats).forEach(([modelId, data]) => {
-                container.innerHTML += `
-                    <div class="stat-card">
-                        <h3>${modelId.replace('_', ' ')}</h3>
-                        <div style="display: flex; justify-content: space-between; align-items: flex-end">
-                            <div>
-                                <label style="font-size: 0.75rem; color: var(--text-muted)">DPO READY</label>
-                                <div class="stat-value" style="color: var(--success)">${data.dpo_ready}</div>
-                            </div>
-                            <div style="text-align: right">
-                                <div style="color: var(--warning)">${data.needs_human} pending</div>
-                                <div style="color: var(--text-muted)">${data.collected} raw fb</div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
         }
 
         function renderTasks(tasks) {
             const list = document.getElementById('taskList');
-            document.getElementById('taskCount').textContent = `${tasks.length} Tasks`;
-            
-            if (tasks.length === 0) {
-                list.innerHTML = '<div id="loading">No pending human tasks. Great job!</div>';
-                return;
-            }
-
-            list.innerHTML = tasks.map(task => `
-                <div class="task-item" id="task-${task.id}">
-                    <div class="task-meta">
-                        <span class="badge badge-danger">${task.task_name}</span>
-                        <span>Issue #${task.issue_index}</span>
-                        <span>Reasons: ${task.reasons.join(', ')}</span>
+            list.innerHTML = tasks.map(t => `
+                <div class="task-item">
+                    <div class="task-info">
+                        <h4>${t.id}</h4>
+                        <p>${t.name}</p>
                     </div>
-                    
-                    <div class="content-diff">
-                        <div class="box">
-                            <label>INPUT ARTICLE SNIPPET</label>
-                            ${task.input.article ? task.input.article.substring(0, 200) + '...' : 'N/A'}
-                        </div>
-                        <div class="box">
-                            <label>REJECTED GUIDANCE</label>
-                            <span style="color: var(--danger)">${task.rejected_guidance}</span>
-                        </div>
-                    </div>
-
-                    <div class="correction-area">
-                        <textarea id="correct-${task.id}" placeholder="Enter improved Albanian guidance..."></textarea>
-                        <div style="text-align: right">
-                            <button onclick="resolveTask('${task.id}')">Submit Correction</button>
-                        </div>
+                    <div style="display: flex; gap: 0.5rem">
+                        <button class="secondary" onclick="editTask('${t.id}')">Edit</button>
+                        <button class="secondary" style="color: var(--danger)" onclick="deleteTask('${t.id}')">Delete</button>
                     </div>
                 </div>
             `).join('');
+            
+            // Store tasks globally for editing
+            window._tasks = tasks;
         }
 
-        async function resolveTask(taskId) {
-            const guidance = document.getElementById(`correct-${taskId}`).value;
-            if (!guidance) return showToast('Please enter guidance', true);
+        async function editTask(id) {
+            const task = window._tasks.find(x => x.id === id);
+            if (!task) return;
             
-            try {
-                await apiFetch('/rlhf/tasks/resolve', 'POST', {
-                    model_id: 'albanian_analysis', // Default for now
-                    task_id: taskId,
-                    chosen_guidance: guidance
-                });
-                showToast('Task resolved!');
-                refreshData();
-            } catch (err) {
-                showToast(err.message, true);
-            }
+            document.getElementById('t-id').value = task.id;
+            document.getElementById('t-name').value = task.name;
+            document.getElementById('t-desc').value = task.description || '';
+            document.getElementById('t-prompt').value = task.system_prompt || '';
+            document.getElementById('t-schema').value = task.output_schema ? JSON.stringify(task.output_schema, null, 2) : '';
         }
-        
-        // Auto-refresh if key in localstorage
+
+
+        async function upsertTask() {
+            const payload = {
+                id: document.getElementById('t-id').value,
+                name: document.getElementById('t-name').value,
+                system_prompt: document.getElementById('t-prompt').value,
+                description: document.getElementById('t-desc').value,
+                output_schema: document.getElementById('t-schema').value ? JSON.parse(document.getElementById('t-schema').value) : null
+            };
+            try {
+                await apiFetch('/tasks', 'POST', payload);
+                showToast('Task saved!');
+                refreshAll();
+            } catch (e) { showToast(e.message, true); }
+        }
+
+        async function deleteTask(id) {
+            if (!confirm('Delete task?')) return;
+            try {
+                await apiFetch(`/tasks/${id}`, 'DELETE');
+                showToast('Task deleted');
+                refreshAll();
+            } catch (e) { showToast(e.message, true); }
+        }
+
+        function renderStats(stats) {
+            const container = document.getElementById('feedbackTable');
+            let total = 0;
+            let html = '<table style="width: 100%; text-align: left; border-collapse: collapse;">';
+            html += '<tr><th>Task</th><th>Rating</th><th>Count</th></tr>';
+            Object.entries(stats).forEach(([tid, ratings]) => {
+                Object.entries(ratings).forEach(([r, count]) => {
+                    html += `<tr><td>${tid}</td><td>${r}</td><td>${count}</td></tr>`;
+                    total += count;
+                });
+            });
+            html += '</table>';
+            container.innerHTML = html;
+            document.getElementById('stat-feedback').textContent = total;
+        }
+
         window.onload = () => {
-            const saved = localStorage.getItem('lahuta_api_key');
+            const saved = localStorage.getItem('lahuta_admin_key');
             if (saved) {
                 document.getElementById('apiKey').value = saved;
-                refreshData();
+                refreshAll();
             }
-        };
-
-        document.getElementById('apiKey').onchange = (e) => {
-            localStorage.setItem('lahuta_api_key', e.target.value);
         };
     </script>
 </body>
