@@ -12,6 +12,8 @@ from pathlib import Path
 import sys
 from dotenv import load_dotenv
 from huggingface_hub import hf_hub_download
+import httpx
+
 
 # Load environment variables
 repo_root = Path(__file__).parent.parent
@@ -36,7 +38,9 @@ class ModelState:
     processors = {}      # model_id -> {build_prompt, parse_response, validate_and_repair}
     startup_time = time.time()
     last_inference = {}  # model_id -> timestamp
+    ollama_models = set() # model_id
     config = {}
+
 
 class AnalyzeRequest(BaseModel):
     model_id: str = "albanian_analysis"
@@ -90,8 +94,35 @@ def load_processor(model_id: str, project_path: str):
             ModelState.processors[model_id] = {}
         ModelState.processors[model_id]["validate_and_repair"] = getattr(ov_mod, "validate_and_repair", None)
 
+async def initialize_ollama_model(model_id: str, cfg: dict):
+    """Checks if an Ollama model is available."""
+    ollama_host = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
+    model_name = cfg.get("ollama_name", model_id)
+    
+    print(f"Checking Ollama for model {model_name}...")
+    try:
+        async with httpx.AsyncClient() as client:
+            resp = await client.get(f"{ollama_host}/api/tags")
+            if resp.status_code == 200:
+                models = [m["name"] for m in resp.json().get("models", [])]
+                if model_name in models or any(m.startswith(f"{model_name}:") for m in models):
+                    ModelState.ollama_models.add(model_id)
+                    # Load project-specific logic if any
+                    project_path = cfg.get("project_path")
+                    if project_path:
+                        load_processor(model_id, project_path)
+                    return f"ollama://{model_name}"
+            print(f"Ollama model {model_name} not found or Ollama unreachable.")
+    except Exception as e:
+        print(f"Ollama connection error: {e}")
+    return None
+
 async def initialize_model(model_id: str, cfg: dict):
+    if cfg.get("backend") == "ollama":
+        return await initialize_ollama_model(model_id, cfg)
+
     from llama_cpp import Llama
+
     
     hf_repo = cfg.get("hf_repo_id")
     hf_file = cfg.get("hf_filename")
@@ -161,9 +192,11 @@ def health_check():
     return {
         "status": "ok",
         "models_loaded": list(ModelState.models.keys()),
+        "ollama_models": list(ModelState.ollama_models),
         "uptime_seconds": int(time.time() - ModelState.startup_time),
         "last_inference_timestamps": ModelState.last_inference
     }
+
 
 @app.get("/models")
 def list_models():
@@ -173,10 +206,12 @@ def list_models():
         results[mid] = {
             "name": cfg.get("name"),
             "description": cfg.get("description"),
-            "loaded": mid in ModelState.models,
+            "loaded": mid in ModelState.models or mid in ModelState.ollama_models,
+            "backend": cfg.get("backend", "llama_cpp"),
             "hf_repo": cfg.get("hf_repo_id"),
             "project_path": cfg.get("project_path")
         }
+
     return results
 
 @app.post("/models/load")
@@ -226,10 +261,17 @@ def get_schema(model_id: str):
 @app.post("/analyze")
 async def analyze(req: AnalyzeRequest, api_key: str = Depends(get_api_key)):
     model_id = req.model_id
-    if model_id not in ModelState.models:
+    if model_id not in ModelState.models and model_id not in ModelState.ollama_models:
         raise HTTPException(status_code=404, detail=f"Model {model_id} not loaded.")
         
+    cfg = ModelState.config.get(model_id, {})
+    backend = cfg.get("backend", "llama_cpp")
+    
+    if backend == "ollama":
+        return await analyze_ollama(req, cfg)
+
     llm = ModelState.models[model_id]
+
     proc = ModelState.processors.get(model_id, {})
     cfg = ModelState.config.get(model_id, {})
     
@@ -278,6 +320,78 @@ async def analyze(req: AnalyzeRequest, api_key: str = Depends(get_api_key)):
             repaired, _ = validate_fn(parsed, **inputs)
             return repaired
         return parsed
+
+async def analyze_ollama(req: AnalyzeRequest, cfg: dict):
+    model_id = req.model_id
+    ollama_name = cfg.get("ollama_name", model_id)
+    ollama_host = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
+    
+    proc = ModelState.processors.get(model_id, {})
+    build_prompt_fn = proc.get("build_prompt")
+    parse_response_fn = proc.get("parse_response")
+    
+    inputs = req.get_model_inputs()
+    
+    # For Ollama models with custom Modelfiles, we often want to send raw data
+    # to avoid duplicating the SYSTEM prompt defined in the Modelfile.
+    if cfg.get("use_raw_input", True):
+        prompt = json.dumps(inputs, indent=2, ensure_ascii=False)
+    elif build_prompt_fn:
+        prompt = build_prompt_fn(**inputs)
+    else:
+        # Fallback to simple prompt if no processor
+        prompt = inputs.get("text") or inputs.get("prompt") or str(inputs)
+
+    ModelState.last_inference[model_id] = time.time()
+    temperature = cfg.get("temperature", 0.1)
+
+    payload = {
+        "model": ollama_name,
+        "prompt": prompt,
+        "stream": req.stream,
+        "format": req.model_extra.get("format") if req.model_extra else None,
+        "options": {"temperature": temperature}
+    }
+    
+    # Remove format if None to avoid issues
+    if payload["format"] is None and cfg.get("format"):
+        payload["format"] = cfg.get("format")
+    if payload["format"] is None:
+        del payload["format"]
+
+    if req.stream:
+        async def event_generator():
+            try:
+                async with httpx.AsyncClient(timeout=None) as client:
+                    async with client.stream("POST", f"{ollama_host}/api/generate", json=payload) as response:
+                        async for line in response.aiter_lines():
+                            if line:
+                                data = json.loads(line)
+                                if "response" in data:
+                                    yield f"data: {json.dumps({'token': data['response']})}\n\n"
+                                if data.get("done"):
+                                    break
+                        yield "data: [DONE]\n\n"
+            except Exception as e:
+                yield f"data: {json.dumps({'error': str(e)})}\n\n"
+        return StreamingResponse(event_generator(), media_type="text/event-stream")
+    else:
+        async with httpx.AsyncClient(timeout=None) as client:
+            resp = await client.post(f"{ollama_host}/api/generate", json=payload)
+            resp.raise_for_status()
+            response_text = resp.json().get("response", "")
+            
+        if parse_response_fn:
+            parsed = parse_response_fn(response_text)
+        else:
+            parsed = {"raw": response_text}
+            
+        validate_fn = proc.get("validate_and_repair")
+        if validate_fn:
+            repaired, _ = validate_fn(parsed, **inputs)
+            return repaired
+        return parsed
+
 
 @app.post("/feedback")
 async def collect_feedback(req: FeedbackRequest, api_key: str = Depends(get_api_key)):
