@@ -17,6 +17,12 @@ import db
 repo_root = Path(__file__).parent.parent
 load_dotenv(repo_root / ".env")
 
+# Production Config
+AI_BACKEND = os.environ.get("AI_BACKEND", "llama_cpp") # llama_cpp or ollama
+OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
+OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "gemma:2b")
+BASE_MODEL_PATH = os.environ.get("BASE_MODEL_PATH")
+
 app = FastAPI(
     title="Lahuta Task Engine API",
     description="A flexible, multipurpose Albanian AI task engine. Supports dynamic system prompts, JSON schema enforcement, and RLHF feedback collection.",
@@ -75,35 +81,32 @@ class FeedbackRequest(BaseModel):
 
 # Model Initialization
 async def initialize_base_model():
-    """Load the single base model defined in .env."""
+    """Load the base model locally if using llama_cpp backend."""
+    if AI_BACKEND != "llama_cpp":
+        print(f"Using {AI_BACKEND} backend. Skipping local model load.")
+        return
+
     from llama_cpp import Llama
     
-    model_path = os.environ.get("BASE_MODEL_PATH")
+    model_path = BASE_MODEL_PATH
     if not model_path:
-        # Check common locations or use a default name
-        potential_paths = [
-            "models/gemma-4e2b-q4_k_m.gguf",
-            "gemma-4e2b-q4_k_m.gguf"
-        ]
+        potential_paths = ["models/gemma-4e2b-q4_k_m.gguf", "gemma-4e2b-q4_k_m.gguf"]
         for p in potential_paths:
             if (repo_root / p).exists():
                 model_path = p
                 break
     
     if not model_path:
-        print("WARNING: No base model found. API will run in mock mode or error on inference.")
+        print("WARNING: No local base model found for llama_cpp backend.")
         return
 
     abs_path = repo_root / model_path
-    print(f"Loading Base LLM from {abs_path}...")
+    print(f"Loading Base LLM (llama_cpp) from {abs_path}...")
     try:
-        ModelState.base_llm = Llama(
-            model_path=str(abs_path),
-            n_ctx=8192,
-            n_threads=max(1, os.cpu_count() - 1)
-        )
+        ModelState.base_llm = Llama(model_path=str(abs_path), n_ctx=8192, n_threads=max(1, os.cpu_count() - 1))
     except Exception as e:
-        print(f"FAILED to load model: {e}")
+        print(f"FAILED to load local model: {e}")
+
 
 @app.on_event("startup")
 async def startup_event():
@@ -161,9 +164,6 @@ async def get_me(user_info: dict = Depends(get_api_key)):
 # Inference
 @app.post("/analyze")
 async def analyze(req: AnalyzeRequest, user_info: dict = Depends(get_api_key)):
-    if not ModelState.base_llm:
-        raise HTTPException(status_code=500, detail="Base LLM not loaded.")
-        
     task = db.get_task(req.task_id)
     if not task:
         raise HTTPException(status_code=404, detail="Task not found")
@@ -171,6 +171,12 @@ async def analyze(req: AnalyzeRequest, user_info: dict = Depends(get_api_key)):
     system_prompt = task["system_prompt"]
     input_json = json.dumps(req.input_data, indent=2, ensure_ascii=False)
     
+    if AI_BACKEND == "ollama":
+        return await analyze_ollama(system_prompt, input_json, req.stream)
+    
+    if not ModelState.base_llm:
+        raise HTTPException(status_code=500, detail="Local Base LLM not loaded.")
+        
     # Generic Prompt Template
     prompt = f"<|system|>\n{system_prompt}\n<|user|>\n{input_json}\n<|assistant|>\n"
     
@@ -187,18 +193,44 @@ async def analyze(req: AnalyzeRequest, user_info: dict = Depends(get_api_key)):
         return StreamingResponse(event_generator(), media_type="text/event-stream")
     else:
         response = ModelState.base_llm(prompt, max_tokens=2048, temperature=0.1, stop=["<end_of_turn>", "<|end|>"])
-        response_text = response['choices'][0]['text'].strip()
-        
-        # Clean markdown if model outputted it
-        if response_text.startswith("```json"):
-            response_text = response_text[7:].strip()
-        if response_text.endswith("```"):
-            response_text = response_text[:-3].strip()
-            
-        try:
-            return json.loads(response_text)
-        except json.JSONDecodeError:
-            return {"raw": response_text, "parse_error": True}
+        return parse_json_response(response['choices'][0]['text'])
+
+async def analyze_ollama(system_prompt: str, input_json: str, stream: bool):
+    payload = {
+        "model": OLLAMA_MODEL,
+        "prompt": input_json,
+        "system": system_prompt,
+        "stream": stream,
+        "format": "json"
+    }
+    
+    if stream:
+        async def event_generator():
+            async with httpx.AsyncClient(timeout=None) as client:
+                async with client.stream("POST", f"{OLLAMA_HOST}/api/generate", json=payload) as response:
+                    async for line in response.aiter_lines():
+                        if line:
+                            data = json.loads(line)
+                            if "response" in data:
+                                yield f"data: {json.dumps({'token': data['response']})}\n\n"
+                            if data.get("done"): break
+                    yield "data: [DONE]\n\n"
+        return StreamingResponse(event_generator(), media_type="text/event-stream")
+    else:
+        async with httpx.AsyncClient(timeout=None) as client:
+            resp = await client.post(f"{OLLAMA_HOST}/api/generate", json=payload)
+            resp.raise_for_status()
+            return parse_json_response(resp.json().get("response", ""))
+
+def parse_json_response(text: str):
+    text = text.strip()
+    if text.startswith("```json"): text = text[7:].strip()
+    if text.endswith("```"): text = text[:-3].strip()
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        return {"raw": text, "parse_error": True}
+
 
 # RLHF
 @app.post("/feedback")

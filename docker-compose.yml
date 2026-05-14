@@ -1,17 +1,24 @@
+version: '3.8'
+
 services:
   api:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     env_file:
       - .env
     environment:
+      - AI_BACKEND=ollama
       - OLLAMA_HOST=http://ollama:11434
+      - OLLAMA_MODEL=gemma:2b
     depends_on:
-      - ollama
+      ollama:
+        condition: service_healthy
     volumes:
       - .:/app
-      - ollama_models:/root/.cache/huggingface
+    restart: always
 
   ollama:
     image: ollama/ollama:latest
@@ -19,34 +26,27 @@ services:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: always
 
   ollama-setup:
     image: ollama/ollama:latest
-    pull_policy: always
     depends_on:
-      - ollama
-    volumes:
-      - ./Modelfile:/Modelfile
+      ollama:
+        condition: service_healthy
     environment:
       - OLLAMA_HOST=ollama:11434
     entrypoint: ["/bin/sh", "-c"]
     command:
       - |
-        echo "Waiting for Ollama to start..."
-        until ollama list > /dev/null 2>&1; do sleep 2; done
-        
-        echo "Current Ollama version:"
-        ollama --version
-        
-        echo "Ensuring base model gemma4:e2b is available..."
-        # If this fails with a version error, the pull_policy above should have fixed it
-        # by giving us the actual latest Ollama binary.
-        ollama pull gemma4:e2b || echo "Pull failed. Checking local models..."
-        
-        echo "Applying Modelfile customizations..."
-        ollama create gemma4:e2b -f /Modelfile
-        echo "Model update complete."
+        echo "Pulling production model: $$OLLAMA_MODEL"
+        ollama pull $$OLLAMA_MODEL
+        echo "Setup complete."
+
 
 volumes:
   ollama_data:
-  ollama_models:
